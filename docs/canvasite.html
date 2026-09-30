@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="pt-BR"><head><script>window["__codeletBootstrap__"]=JSON.parse('{"A":"A","B":"20260930-05-8966983","C":{"Abril Fatface":"YACgEZbkUVE,0","Alfa Slab One":"YACgEYS9sJU,0","Anton":"YACgEcYqQ-A,0","Archivo":"YACgEZulLoA,0","Arial Narrow":"YAGyDvJ_4Ts,0","Arial Rounded MT Bold":"YAFcfoaHu-s,0","Arial":"YAGyDvJ_4Ts,0","Avenir Next":"YAFcfmNq6UY,0","Baloo 2":"YADK30bC6HQ,0","Bebas Neue":"YACgESME5ew,0","Bricolage Grotesque":"YAFyMcdwzpc,0","Broken Glyph":"YADZ-exUkv0,0","Canva Sans":"YAFdJjTk5UU,1","Caveat":"YALBs2ploWQ,0","Comic Sans MS":"YAFcfvtOAUY,1","Cormorant Garamond":"YAFdJhX-538,0","Courier New":"YAGzXiGs0_8,0","Courier Prime":"YAD1aFjegN8,0","DM Sans":"YAD1aU3sLnI,0","DM Serif Display":"YAD1aYG82rc,0","Forum":"YACgEcnnqB4,0","Fraunces":"YAFdJpU7Kkk,0","Georgia":"YAGzXkO0pEM,0","Ghost Mono":"YAHQutsX00Q,0","Hanken Grotesk":"YAFcfhwp99E,0","Helvetica Neue":"YAFcf6CtJfI,0","Helvetica":"YAFcf6CtJfI,0","IBM Plex Mono":"YAFdJkmvhGI,0","Impact":"YAFcfnjI7Vk,0","Instrument Serif":"YAHFeOnZNEk,0","Inter":"YAFdJvSyp_k,3","Iowan Old Style":"YAGNIFa8j9o,0","Jacques Francois":"YADK3zbC6RM,0","JetBrains Mono":"YAFdJksXcAk,0","Josefin Sans":"YAFdJjvw9Ps,0","Lato":"YAFdJuFCnaw,0","Libre Baskerville":"YACgEUFdPdA,0","Lobster":"YAD8SnSjSFI,0","Lora":"YACgEXvxf8Q,0","Merriweather":"YACgEXvHxxs,0","Montserrat":"YAFdtQi73Xs,0","Nunito":"YAFdJoNRMmU,1","Oleo Script":"YACgEQQ14jI,0","Oswald":"YACgEQY10lw,0","Pacifico":"YADLjORQ1u4,0","Phantom Sans":"YAFdJvgJ5TU,0","Playfair Display":"YAFdJhem5V8,1","Plus Jakarta Sans":"YAGvf3_u0_Q,0","Poppins":"YAFdJjbTu24,1","Press Start 2P":"YAFyGr-8pmQ,0","Quicksand":"YAFdJpYtCxE,1","Raleway":"YAFdJhmxbVQ,1","Roboto Slab":"YAFdJswIKAg,0","Rockwell":"YAFcfyVZnN0,0","Rye":"YACgEdQP21k,0","Segoe UI":"YAHNdRD1Klw,0","Source Sans 3":"YAG4lO1Mj10,0","Source Serif 4":"YACgEfdj394,0","Space Grotesk":"YADZ-dYEmhg,0","Space Mono":"YADW1-vpsoc,0","Times New Roman":"YAGzXW3gftg,0","Times":"YAGzXW3gftg,0","Trebuchet MS":"YAFcfrglpVA,0","UV Display":"YAEdVfSSpYo,0","UV Sans":"YAFdJvgJ5TU,0","Ubuntu":"YACgERDU--Q,0","Verdana":"YAGzXTctYtQ,0","Work Sans":"YAGXhLOKv44,0","Yellowtail":"YACgEYG4kG4,0","ui-monospace":"YAD1aFjegN8,0","ui-sans-serif":"YACkoD1yZN0,0"}}');</script><script src="/_sdk/6542d56fbfe7a3eb.telemetry_sdk.js" integrity="sha512-ECdM0nK7EkwDuOqho2qxgyRQXyBHk9hZqRKMBr+Xsu6zjeHlt+qkO2N2YRiHN7Kg4e1fEHDhjIp4bGJYVypv1g=="></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MDT UFSM</title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+:root{--bg:#f5f7fa;--surface:#fff;--surface2:#eef2f8;--text:#14213d;--muted:#50607a;--border:#dbe2ec;--primary:#0a3a7a;--primary-2:#2f6fd0;--soft:#e4edfb;--accent:#1d7048;--accent-soft:#e3f3ea;--warn:#8a5a00;--warn-soft:#fdf2d8;--err:#a12a2a}
+.dark{--bg:#0f1624;--surface:#172134;--surface2:#1d2a41;--text:#e7ecf5;--muted:#a7b3c7;--border:#2b3a55;--primary:#8fb6f5;--primary-2:#8fb6f5;--soft:#20345a;--accent:#6fcf9b;--accent-soft:#183a2a;--warn:#f0c46a;--warn-soft:#3a2f14;--err:#f19a9a}
+body{font-family:'Work Sans',sans-serif}
+.app-shell{width:100%;min-height:100vh;background:var(--bg);color:var(--text);transition:background .25s,color .25s}
+.surface{background:var(--surface);border:1px solid var(--border);border-radius:12px;box-shadow:0 1px 2px rgba(15,30,60,.05)}
+.muted{color:var(--muted)}
+.topbar{background:var(--surface);border-bottom:1px solid var(--border)}
+.nav-link{padding:.45rem .75rem;border-radius:8px;color:var(--muted);font-weight:500;transition:background .15s,color .15s}
+.nav-link:hover{background:var(--surface2);color:var(--text)}
+.nav-link[aria-current="page"]{background:var(--soft);color:var(--primary)}
+.btn{display:inline-flex;align-items:center;gap:.45rem;padding:.6rem 1rem;border-radius:9px;font-weight:600;border:1px solid transparent;transition:transform .12s,background .15s,opacity .15s}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:var(--primary);color:#fff}.dark .btn-primary{color:#0f1624}
+.btn-primary:hover{opacity:.92}
+.btn-accent{background:var(--accent);color:#fff}.dark .btn-accent{color:#0f1624}
+.btn-ghost{background:var(--surface);color:var(--text);border-color:var(--border)}
+.btn-ghost:hover{background:var(--surface2)}
+.btn[disabled]{opacity:.55;cursor:progress}
+.icon-btn{padding:.4rem;border-radius:8px;color:var(--muted);border:1px solid transparent}
+.icon-btn:hover{background:var(--surface2);color:var(--text)}
+:focus-visible{outline:3px solid var(--primary-2);outline-offset:2px}
+.field{width:100%;background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:.5rem .65rem}
+.field:focus{border-color:var(--primary-2)}
+.badge{display:inline-block;padding:.12rem .55rem;border-radius:999px;border:1px solid var(--border);font-size:.75rem;font-weight:600}
+.badge-os{background:var(--accent-soft);color:var(--accent);border-color:transparent}
+.st-ok{background:var(--accent-soft);color:var(--accent)}
+.st-warn{background:var(--warn-soft);color:var(--warn)}
+.st-pend{background:var(--surface2);color:var(--muted)}
+.demo-strip{background:var(--warn-soft);color:var(--warn);border-bottom:1px solid var(--border)}
+.tab-btn{width:100%;text-align:left;display:flex;gap:.6rem;align-items:center;padding:.6rem .75rem;border-radius:9px;color:var(--muted);font-weight:500}
+.tab-btn:hover{background:var(--surface2)}
+.tab-btn[aria-selected="true"]{background:var(--soft);color:var(--primary);font-weight:600}
+.progress-track{height:8px;background:var(--surface2);border-radius:99px;overflow:hidden}
+.progress-bar{height:100%;background:var(--accent);transition:width .4s ease}
+.flow-step{border:1px solid var(--border);border-radius:10px;padding:.75rem 1rem;background:var(--surface)}
+.flow-num{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--soft);color:var(--primary);font-weight:700;font-size:.85rem}
+.feat{text-align:left;padding:1.25rem;transition:border-color .15s,transform .15s}
+.feat:hover{border-color:var(--primary-2);transform:translateY(-2px)}
+.tree-row{display:flex;align-items:center;gap:.5rem;padding:.35rem .4rem;border-radius:8px}
+.tree-row:hover{background:var(--surface2)}
+.tree-row input[type=text]{background:transparent;border:1px solid transparent;border-radius:6px;padding:.2rem .4rem;flex:1;min-width:0;color:var(--text)}
+.tree-row input[type=text]:focus{border-color:var(--primary-2);background:var(--surface)}
+.tree-row.done input[type=text]{color:var(--muted);text-decoration:line-through}
+.chip{padding:.35rem .8rem;border-radius:999px;border:1px solid var(--border);font-weight:500;color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--primary);color:#fff;border-color:var(--primary)}.dark .chip[aria-pressed="true"]{color:#0f1624}
+table.reftable{width:100%;border-collapse:collapse}
+.reftable th{text-align:left;font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);padding:.6rem .5rem;border-bottom:1px solid var(--border)}
+.reftable td{padding:.35rem .4rem;border-bottom:1px solid var(--border);vertical-align:middle}
+.reftable td input,.reftable td select{background:transparent;border:1px solid transparent;border-radius:6px;padding:.3rem .4rem;width:100%;color:var(--text)}
+.reftable td input:focus,.reftable td select:focus{border-color:var(--primary-2);background:var(--surface)}
+.toast{position:fixed;right:1rem;bottom:1rem;z-index:60;padding:.8rem 1rem;border-radius:10px;background:var(--text);color:var(--bg);box-shadow:0 8px 24px rgba(0,0,0,.18);transform:translateY(20px);opacity:0;transition:all .25s;pointer-events:none;max-width:22rem}
+.toast.show{transform:none;opacity:1}
+.toast.error{background:var(--err);color:#fff}
+.fade-in{animation:fade .35s ease both}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+details summary{cursor:pointer;list-style:none}
+details summary::-webkit-details-marker{display:none}
+details[open] .chev{transform:rotate(180deg)}
+.chev{transition:transform .2s}
+.link-ph{color:var(--primary);text-decoration:underline;text-underline-offset:3px}
+.note{background:var(--soft);border-left:4px solid var(--primary);border-radius:8px}
+</style>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com/3.4.17" type="text/javascript"></script>
+  <script src="/_sdk/6c2ecc939521f244.data_sdk.js" type="text/javascript" integrity="sha512-gRx8s+XsZDN6mSIQu2sivLZysbV0WHhb5kXNUWlgVb5lCMU1foJYukyMEDPv8Tnoocb8iwqB4XdRrWc7oEGzIQ=="></script>
+  <script src="/_sdk/6e4b845d05dd79e4.editing_sdk.js" type="text/javascript" integrity="sha512-nfDAoBO2Sn6o6rLYgdnzgUs0nZfi4v1NV7M2ioocHZ6oj+ZnIEUmJGLGqFu2dnCue3Bjs5kWMae4qsFt05LfIA=="></script>
+  <script src="/_sdk/ddcab3e45959c817.resizing_sdk.js" type="text/javascript" integrity="sha512-VAviUKfZVzugWBSeULYjSljTX+nb84wc6Zzbx5GQaQgh6X2ISSjXi8eIiCDGdwDh10esJMY0+QFQgUy9NcrTlQ=="></script>
+ </head>
+ <body data-template-id="__page-root" class="m-0" style="background: rgb(245, 247, 250);">
+  <div id="shell" class="app-shell">
+   <header class="topbar sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 h-16 flex items-center gap-4"><button type="button" class="flex items-center gap-2" data-go="inicio" aria-label="Ir para o início"> <span class="w-8 h-8 rounded-md grid place-items-center" style="background:var(--primary);color:var(--surface)"><i data-lucide="book-open" style="width:18px;height:18px"></i></span> <span data-template-id="brand-name" class="canva-text font-bold" style="font-weight: 700; font-style: normal; font-size: 18px;">MDT UFSM</span> </button> <span data-template-id="badge-open-source" class="canva-tag badge badge-os hidden sm:inline-block" style="font-weight: 400; font-style: normal; font-size: 16px;">open source</span>
+     <nav aria-label="Principal" class="hidden md:flex items-center gap-1 ml-4"><button type="button" class="nav-link" data-nav="inicio" data-template-id="nav-inicio" style="font-weight: 400; font-style: normal; font-size: 16px;">Início</button> <button type="button" class="nav-link" data-nav="trabalho" data-template-id="nav-trabalho" style="font-weight: 400; font-style: normal; font-size: 16px;">Meu trabalho</button> <button type="button" class="nav-link" data-nav="structure" data-template-id="nav-estrutura" style="font-weight: 400; font-style: normal; font-size: 16px;">Estrutura</button> <button type="button" class="nav-link" data-nav="validation" data-template-id="nav-validacao" style="font-weight: 400; font-style: normal; font-size: 16px;">Validação</button> <button type="button" class="nav-link" data-nav="ajuda" data-template-id="nav-ajuda" style="font-weight: 400; font-style: normal; font-size: 16px;">Ajuda</button>
+     </nav>
+     <div class="ml-auto flex items-center gap-1"><button type="button" id="theme-btn" class="icon-btn" aria-label="Alternar tema claro e escuro"><span id="theme-icon"><i data-lucide="moon"></i></span></button> <button type="button" id="menu-btn" class="icon-btn md:hidden" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu"><i data-lucide="menu"></i></button>
+     </div>
+    </div>
+    <nav id="mobile-menu" aria-label="Menu mobile" class="md:hidden hidden border-t px-4 py-2 flex-col gap-1" style="border-color:var(--border)"><button type="button" class="nav-link text-left" data-nav="inicio" data-template-id="mnav-inicio" style="font-weight: 400; font-style: normal; font-size: 16px;">Início</button> <button type="button" class="nav-link text-left" data-nav="trabalho" data-template-id="mnav-trabalho" style="font-weight: 400; font-style: normal; font-size: 16px;">Meu trabalho</button> <button type="button" class="nav-link text-left" data-nav="structure" data-template-id="mnav-estrutura" style="font-weight: 400; font-style: normal; font-size: 16px;">Estrutura</button> <button type="button" class="nav-link text-left" data-nav="validation" data-template-id="mnav-validacao" style="font-weight: 400; font-style: normal; font-size: 16px;">Validação</button> <button type="button" class="nav-link text-left" data-nav="ajuda" data-template-id="mnav-ajuda" style="font-weight: 400; font-style: normal; font-size: 16px;">Ajuda</button>
+    </nav>
+    <div class="demo-strip">
+     <div class="max-w-7xl mx-auto px-4 md:px-6 py-1.5 flex items-center gap-2 text-sm"><i data-lucide="flask-conical" style="width:15px;height:15px;flex-shrink:0"></i>
+      <p data-template-id="demo-banner-text" class="canva-text" style="font-weight: 400; font-style: normal; font-size: 14px;">Protótipo em desenvolvimento: conteúdo demonstrativo. Confira sempre as regras na fonte oficial do MDT 2021.</p>
+     </div>
+    </div>
+   </header>
+   <main id="main" class="max-w-7xl mx-auto px-4 md:px-6 py-8"><!-- INÍCIO -->
+    <section id="view-inicio" data-view="inicio" class="fade-in">
+     <div class="grid lg:grid-cols-5 gap-10 items-center py-6 md:py-10">
+      <div class="lg:col-span-3">
+       <p data-template-id="hero-eyebrow" class="canva-text uppercase tracking-wider font-semibold mb-3" style="color: var(--primary); font-weight: 400; font-style: normal; font-size: 13px;">Ferramenta open source · MDT 2021</p>
+       <h1 data-template-id="hero-title" class="canva-text font-bold leading-tight mb-4" style="font-weight: 700; font-style: normal; font-size: 44px; line-height: 1.15;">Seu trabalho acadêmico, estruturado com clareza</h1>
+       <p data-template-id="hero-text" class="canva-text muted max-w-xl mb-7 leading-relaxed" style="font-weight: 400; font-style: normal; font-size: 18px;">A ferramenta ajuda você a criar, organizar, validar e gerar trabalhos acadêmicos segundo o Manual de Dissertações e Teses da UFSM (MDT 2021).</p>
+       <div class="flex flex-wrap gap-3"><button type="button" class="btn btn-primary" data-nav="trabalho"><i data-lucide="file-plus" style="width:18px;height:18px"></i><span data-template-id="hero-cta-start" class="canva-text" style="font-weight: 400; font-style: normal; font-size: 16px;">Começar um trabalho</span></button> <button type="button" class="btn btn-ghost" data-nav="ajuda"><i data-lucide="compass" style="width:18px;height:18px"></i><span data-template-id="hero-cta-guide" class="canva-text" style="font-weight: 400; font-style: normal; font-size: 16px;">Explorar o guia</span></button>
+       </div>
+      </div>
+      <ol class="lg:col-span-2 grid grid-cols-2 gap-3" aria-label="Fluxo em quatro etapas">
+       <li class="flow-step">
+        <div class="flow-num mb-2">
+         1
+        </div><p data-template-id="flow-1" class="canva-text font-semibold" style="font-weight: 400; font-style: normal; font-size: 16px;">Criar</p></li>
+       <li class="flow-step">
+        <div class="flow-num mb-2">
+         2
+        </div><p data-template-id="flow-2" class="canva-text font-semibold" style="font-weight: 400; font-style: normal; font-size: 16px;">Estruturar</p></li>
+       <li class="flow-step">
+        <div class="flow-num mb-2">
+         3
+        </div><p data-template-id="flow-3" class="canva-text font-semibold" style="font-weight: 400; font-style: normal; font-size: 16px;">Validar</p></li>
+       <li class="flow-step">
+        <div class="flow-num mb-2">
+         4
+        </div><p data-template-id="flow-4" class="canva-text font-semibold" style="font-weight: 400; font-style: normal; font-size: 16px;">Gerar</p></li>
+      </ol>
+     </div>
+     <section class="py-8" aria-labelledby="features-h">
+      <h2 id="features-h" data-template-id="features-title" class="canva-text font-bold mb-6" style="font-weight: 700; font-style: normal; font-size: 24px;">O que você pode fazer</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4"><button type="button" class="surface feat" data-nav="structure"><i data-lucide="list-tree" style="color:var(--primary)"></i><h3 data-template-id="feat-1-title" class="canva-text font-semibold mt-3 mb-1" style="font-weight: 400; font-style: normal; font-size: 19px;">Montar a estrutura</h3><p data-template-id="feat-1-text" class="canva-text muted mb-3" style="font-weight: 400; font-style: normal; font-size: 15px;">Organize os elementos pré-textuais, textuais e pós-textuais em uma árvore editável.</p><span data-template-id="feat-1-link" class="canva-link font-semibold" style="color: var(--primary); font-weight: 400; font-style: normal; font-size: 14px;">Abrir estrutura →</span></button> <button type="button" class="surface feat" data-nav="validation"><i data-lucide="list-checks" style="color:var(--primary)"></i><h3 data-template-id="feat-2-title" class="canva-text font-semibold mt-3 mb-1" style="font-weight: 400; font-style: normal; font-size: 19px;">Validar requisitos</h3><p data-template-id="feat-2-text" class="canva-text muted mb-3" style="font-weight: 400; font-style: normal; font-size: 15px;">Acompanhe um checklist de conformidade com referências gerais ao MDT 2021.</p><span data-template-id="feat-2-link" class="canva-link font-semibold" style="color: var(--primary); font-weight: 400; font-style: normal; font-size: 14px;">Abrir validação →</span></button> <button type="button" class="surface feat" data-nav="references"><i data-lucide="library" style="color:var(--primary)"></i><h3 data-template-id="feat-3-title" class="canva-text font-semibold mt-3 mb-1" style="font-weight: 400; font-style: normal; font-size: 19px;">Organizar referências</h3><p data-template-id="feat-3-text" class="canva-text muted mb-3" style="font-weight: 400; font-style: normal; font-size: 15px;">Cadastre, busque e revise referências com uma prévia formatada.</p><span data-template-id="feat-3-link" class="canva-link font-semibold" style="color: var(--primary); font-weight: 400; font-style: normal; font-size: 14px;">Abrir referências →</span></button> <button type="button" class="surface feat" data-nav="generate"><i data-lucide="file-output" style="color:var(--primary)"></i><h3 data-template-id="feat-4-title" class="canva-text font-semibold mt-3 mb-1" style="font-weight: 400; font-style: normal; font-size: 19px;">Gerar o documento final</h3><p data-template-id="feat-4-text" class="canva-text muted mb-3" style="font-weight: 400; font-style: normal; font-size: 15px;">Escolha formato e opções e visualize o fluxo de geração (protótipo).</p><span data-template-id="feat-4-link" class="canva-link font-semibold" style="color: var(--primary); font-weight: 400; font-style: normal; font-size: 14px;">Abrir geração →</span></button>
+      </div>
+     </section>
+     <section class="py-6" aria-labelledby="sc-h">
+      <h2 id="sc-h" data-template-id="shortcuts-title" class="canva-text font-bold mb-4" style="font-weight: 700; font-style: normal; font-size: 20px;">Atalhos rápidos</h2>
+      <div class="flex flex-wrap gap-3"><button type="button" class="btn btn-ghost" data-action="new"><i data-lucide="file-plus-2" style="width:18px;height:18px"></i><span data-template-id="sc-new" class="canva-text" style="font-weight: 400; font-style: normal; font-size: 16px;">Novo projeto</span></button> <button type="button" class="btn btn-ghost" data-nav="validation"><i data-lucide="shield-check" style="width:18px;height:18px"></i><span data-template-id="sc-validate" class="canva-text" style="font-weight: 400; font-style: normal; font-size: 16px;">Validar agora</span></button> <button type="button" class="btn btn-ghost" data-nav="generate"><i data-lucide="download" style="width:18px;height:18px"></i><span data-template-id="sc-export" class="canva-text" style="font-weight: 400; font-style: normal; font-size: 16px;">Exportar</span></button>
+      </div>
+     </section>
+    </section><!-- MEU TRABALHO -->
+    <section id="view-trabalho" data-view="trabalho" class="hidden fade-in">
+     <div class="surface p-5 mb-6">
+      <div class="flex flex-wrap items-start gap-4 justify-between">
+       <div>
+        <div class="flex items-center gap-2 flex-wrap mb-1">
+         <h1 data-template-id="project-title" class="canva-text font-bold" style="font-weight: 700; font-style: normal; font-size: 26px;">Dissertação de Mestrado</h1><span data-template-id="project-status" class="canva-tag badge st-warn" style="font-weight: 400; font-style: normal; font-size: 16px;">Em desenvolvimento</span>
+        </div>
+        <div class="flex items-center gap-2 mt-2"><label for="work-type" data-template-id="worktype-label" class="canva-text muted font-medium" style="font-weight: 400; font-style: normal; font-size: 14px;">Tipo de trabalho</label> <select id="work-type" class="field" style="width:auto"> <option value="tcc">TCC</option><option value="dissertacao">Dissertação</option><option value="tese">Tese</option> </select>
+        </div>
+       </div>
+       <div class="flex flex-col items-end gap-2"><button type="button" id="save-btn" class="btn btn-accent"><i data-lucide="save" style="width:18px;height:18px"></i><span data-template-id="save-button" class="canva-text" style="font-weight: 400; font-style: normal; font-size: 16px;">Salvar rascunho</span></button> <span data-template-id="save-state-saved" id="saved-ind" class="canva-text muted text-sm" style="font-weight: 400; font-style: normal; font-size: 13px;">Todas as alterações salvas</span> <span data-template-id="save-state-unsaved" id="unsaved-ind" class="canva-text text-sm hidden" style="color: var(--warn); font-weight: 400; font-style: normal; font-size: 13px;">Alterações não salvas</span>
+       </div>
+      </div>
+      <div class="mt-4">
+       <div class="flex justify-between text-sm mb-1">
+        <span data-template-id="progress-label" class="canva-text muted" style="font-weight: 400; font-style: normal; font-size: 14px;">Progresso geral</span><span id="progress-text" class="font-semibold"></span>
+       </div>
+       <div class="progress-track" role="progressbar" aria-labelledby="progress-text" id="progress-aria" aria-valuemin="0" aria-valuemax="100">
+        <div id="progress-bar" class="progress-bar" style="width:0"></div>
+       </div>
+      </div>
+     </div>
+     <div class="grid lg:grid-cols-[220px_1fr] gap-6">
+      <aside aria-label="Áreas do projeto">
+       <div role="tablist" aria-orientation="vertical" class="surface p-2 flex lg:flex-col gap-1 overflow-x-auto"><button type="button" role="tab" class="tab-btn" data-tab="overview"><i data-lucide="layout-dashboard" style="width:18px;height:18px"></i><span data-template-id="tab-overview" class="canva-text whitespace-nowrap" style="font-weight: 400; font-style: normal; font-size: 16px;">Visão geral</span></button> <button type="button" role="tab" class="tab-btn" data-tab="structure"><i data-lucide="list-tree" style="width:18px;height:18px"></i><span data-template-id="tab-structure" class="canva-text whitespace-nowrap" style="font-weight: 400; font-style: normal; font-size: 16px;">Estrutura</span></button> <button type="button" role="tab" class="tab-btn" data-tab="validation"><i data-lucide="list-checks" style="width:18px;height:18px"></i><span data-template-id="tab-validation" class="canva-text whitespace-nowrap" style="font-weight: 400; font-style: normal; font-size: 16px;">Validação</span></button> <button type="button" role="tab" class="tab-btn" data-tab="references"><i data-lucide="library" style="width:18px;height:18px"></i><span data-template-id="tab-references" class="canva-text whitespace-nowrap" style="font-weight: 400; font-style: normal; font-size: 16px;">Referências</span></button> <button type="button" role="tab" class="tab-btn" data-tab="generate"><i data-lucide="file-output" style="width:18px;height:18px"></i><span data-template-id="tab-generate" class="canva-text whitespace-nowrap" style="font-weight: 400; font-style: normal; font-size: 16px;">Gerar documento</span></button>
+       </div>
+      </aside>
+      <div class="min-w-0"><!-- Visão geral -->
+       <section data-panel="overview" role="tabpanel" class="fade-in">
+        <h2 data-template-id="ov-title" class="canva-text font-bold mb-4" style="font-weight: 400; font-style: normal; font-size: 22px;">Visão geral do projeto</h2>
+        <div class="grid sm:grid-cols-3 gap-4 mb-6">
+         <div class="surface p-4">
+          <p data-template-id="ov-sections-label" class="canva-text muted text-sm" style="font-weight: 400; font-style: normal; font-size: 16px;">Seções concluídas</p>
+          <p id="ov-sections" class="font-bold text-2xl mt-1"></p>
+         </div>
+         <div class="surface p-4">
+          <p data-template-id="ov-conform-label" class="canva-text muted text-sm" style="font-weight: 400; font-style: normal; font-size: 16px;">Conformidade</p>
+          <p id="ov-conform" class="font-bold text-2xl mt-1"></p>
+         </div>
+         <div class="surface p-4">
+          <p data-template-id="ov-refs-label" class="canva-text muted text-sm" style="font-weight: 400; font-style: normal; font-size: 16px;">Referências</p>
+          <p id="ov-refs" class="font-bold text-2xl mt-1"></p>
+         </div>
+        </div>
+        <div class="surface p-5 note">
+         <p data-template-id="ov-note" class="canva-text" style="font-weight: 400; font-style: normal; font-size: 16px;">Este é um projeto de exemplo. Edite a estrutura, valide os requisitos e salve o rascunho para continuar depois.</p>
+        </div>
+       </section><!-- Estrutura -->
+       <section data-panel="structure" role="tabpanel" class="hidden fade-in">
+        <h2 data-template-id="st-title" class="canva-text font-bold mb-1" style="font-weight: 400; font-style: normal; font-size: 22px;">Editor de estrutura</h2>
+        <p data-template-id="st-sub" class="canva-text muted mb-4" style="font-weight: 400; font-style: normal; font-size: 16px;">Renomeie, reordene e marque seções como concluídas. A prévia é atualizada automaticamente.</p>
+        <div class="grid xl:grid-cols-[1fr_300px] gap-5">
+         <div class="surface p-4">
+          <form id="add-section-form" class="grid sm:grid-cols-[1fr_170px_auto] gap-2 items-end mb-4 pb-4 border-b" style="border-color:var(--border)">
+           <div>
+            <label for="new-sec-title" data-template-id="st-new-label" class="canva-text text-sm font-medium block mb-1" style="font-weight: 400; font-style: normal; font-size: 16px;">Nova seção</label><input id="new-sec-title" data-template-id="st-new-input" class="canva-input field" type="text" maxlength="120" placeholder="Ex.: Referencial teórico" style="font-weight: 400; font-style: normal; font-size: 16px;">
+           </div>
+           <div>
+            <label for="new-sec-group" data-template-id="st-group-label" class="canva-text text-sm font-medium block mb-1" style="font-weight: 400; font-style: normal; font-size: 16px;">Grupo</label> <select id="new-sec-group" class="field"><option value="pre">Pré-textuais</option><option value="text" selected="">Textuais</option><option value="post">Pós-textuais</option></select>
+           </div><button type="submit" class="btn btn-primary"><i data-lucide="plus" style="width:18px;height:18px"></i><span data-template-id="st-add-button" class="canva-text" style="font-weight: 400; font-style: normal; font-size: 16px;">Adicionar seção</span></button>
+          </form>
+          <div id="tree" aria-live="polite"></div>
+         </div>
+         <aside class="surface p-4 self-start" aria-labelledby="prev-h">
+          <h3 id="prev-h" data-template-id="st-preview-title" class="canva-text font-semibold mb-3" style="font-weight: 400; font-style: normal; font-size: 19px;">Prévia da estrutura</h3>
+          <ol id="preview" class="space-y-1 text-sm"></ol>
+         </aside>
+        </div>
+       </section><!-- Validação -->
+       <section data-panel="validation" role="tabpanel" class="hidden fade-in">
+        <h2 data-template-id="va-title" class="canva-text font-bold mb-3" style="font-weight: 400; font-style: normal; font-size: 22px;">Painel de validação</h2>
+        <div class="note p-3 mb-4 flex gap-2">
+         <i data-lucide="info" style="width:18px;height:18px;flex-shrink:0;color:var(--primary)"></i>
+         <p data-template-id="va-note" class="canva-text text-sm" style="font-weight: 400; font-style: normal; font-size: 16px;">Ferramenta em desenvolvimento: os itens são referências gerais ao MDT 2021. A conferência final deve ser feita com o manual vigente.</p>
+        </div>
+        <div class="surface p-4 mb-4 grid sm:grid-cols-4 gap-3 items-center">
+         <div class="sm:col-span-1">
+          <p data-template-id="va-summary-label" class="canva-text muted text-sm" style="font-weight: 400; font-style: normal; font-size: 16px;">Conformidade</p>
+          <p id="va-percent" class="font-bold text-3xl" style="color:var(--accent)"></p>
+         </div>
+         <div class="sm:col-span-3 flex flex-wrap gap-2 text-sm" id="va-counts"></div>
+        </div>
+        <div class="flex flex-wrap gap-2 mb-4" role="group" aria-label="Filtrar por status"><button type="button" class="chip" data-vfilter="all" aria-pressed="true">Todos</button> <button type="button" class="chip" data-vfilter="ok" aria-pressed="false">Aprovado</button> <button type="button" class="chip" data-vfilter="warn" aria-pressed="false">Atenção</button> <button type="button" class="chip" data-vfilter="pend" aria-pressed="false">Pendente</button>
+        </div>
+        <div id="checklist" class="space-y-4"></div>
+       </section><!-- Referências -->
+       <section data-panel="references" role="tabpanel" class="hidden fade-in">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+         <h2 data-template-id="rf-title" class="canva-text font-bold" style="font-weight: 400; font-style: normal; font-size: 22px;">Referências</h2><button type="button" id="add-ref" class="btn btn-primary"><i data-lucide="plus" style="width:18px;height:18px"></i><span data-template-id="rf-add-button" class="canva-text" style="font-weight: 400; font-style: normal; font-size: 16px;">Adicionar referência</span></button>
+        </div>
+        <p data-template-id="rf-demo-note" class="canva-text text-sm muted mb-3" style="font-weight: 400; font-style: normal; font-size: 16px;">Os dados abaixo são exemplos neutros de demonstração e podem ser substituídos.</p>
+        <div class="grid sm:grid-cols-3 gap-3 mb-3">
+         <div>
+          <label for="rf-search" data-template-id="rf-search-label" class="canva-text text-sm font-medium block mb-1" style="font-weight: 400; font-style: normal; font-size: 16px;">Buscar</label><input id="rf-search" data-template-id="rf-search-input" class="canva-input field" type="search" placeholder="Autor, título ou ano" style="font-weight: 400; font-style: normal; font-size: 16px;">
+         </div>
+         <div>
+          <label for="rf-type" data-template-id="rf-type-label" class="canva-text text-sm font-medium block mb-1" style="font-weight: 400; font-style: normal; font-size: 16px;">Tipo</label> <select id="rf-type" class="field"><option value="all">Todos</option><option>Livro</option><option>Artigo</option><option>Capítulo</option><option>Documento eletrônico</option><option>Outro</option></select>
+         </div>
+         <div>
+          <label for="rf-status" data-template-id="rf-status-label" class="canva-text text-sm font-medium block mb-1" style="font-weight: 400; font-style: normal; font-size: 16px;">Status</label> <select id="rf-status" class="field"><option value="all">Todos</option><option value="complete">Completa</option><option value="incomplete">Incompleta</option></select>
+         </div>
+        </div>
+        <div class="surface overflow-x-auto mb-5">
+         <table class="reftable min-w-[720px]">
+          <thead>
+           <tr>
+            <th scope="col">Autor</th>
+            <th scope="col" style="width:90px">Ano</th>
+            <th scope="col">Título</th>
+            <th scope="col" style="width:170px">Tipo</th>
+            <th scope="col" style="width:120px">Status</th>
+            <th scope="col" style="width:50px"><span class="sr-only">Ações</span></th>
+           </tr>
+          </thead>
+          <tbody id="ref-body"></tbody>
+         </table>
+         <p id="ref-empty" class="muted p-4 hidden">Nenhuma referência encontrada.</p>
+        </div>
+        <div class="surface p-4">
+         <div class="flex flex-wrap items-center gap-3 mb-3">
+          <h3 data-template-id="rf-preview-title" class="canva-text font-semibold" style="font-weight: 400; font-style: normal; font-size: 19px;">Prévia formatada</h3><label for="rf-style" data-template-id="rf-style-label" class="canva-text text-sm muted ml-auto" style="font-weight: 400; font-style: normal; font-size: 16px;">Estilo</label> <select id="rf-style" class="field" style="width:auto"><option value="abnt">ABNT (formato geral)</option><option value="autordata">Autor-data simplificado</option></select>
+         </div>
+         <ul id="ref-preview" class="space-y-2 text-sm leading-relaxed"></ul>
+        </div>
+       </section><!-- Gerar -->
+       <section data-panel="generate" role="tabpanel" class="hidden fade-in">
+        <h2 data-template-id="gn-title" class="canva-text font-bold mb-4" style="font-weight: 400; font-style: normal; font-size: 22px;">Gerar documento</h2>
+        <div class="grid md:grid-cols-2 gap-5">
+         <div class="surface p-4">
+          <h3 data-template-id="gn-summary-title" class="canva-text font-semibold mb-3" style="font-weight: 400; font-style: normal; font-size: 19px;">Resumo do projeto</h3>
+          <dl id="gn-summary" class="text-sm space-y-2"></dl>
+         </div>
+         <form id="gen-form" class="surface p-4 space-y-3">
+          <div>
+           <label for="gn-format" data-template-id="gn-format-label" class="canva-text text-sm font-medium block mb-1" style="font-weight: 400; font-style: normal; font-size: 16px;">Formato de saída</label> <select id="gn-format" class="field"><option>PDF</option><option>DOCX</option><option>LaTeX</option></select>
+          </div>
+          <fieldset class="space-y-2">
+           <legend data-template-id="gn-options-legend" class="canva-text text-sm font-medium mb-1" style="font-weight: 400; font-style: normal; font-size: 16px;">Incluir no documento</legend>
+           <div class="flex items-center gap-2">
+            <input type="checkbox" id="op-toc" checked=""><label for="op-toc" data-template-id="gn-op-toc" class="canva-text" style="font-weight: 400; font-style: normal; font-size: 16px;">Sumário</label>
+           </div>
+           <div class="flex items-center gap-2">
+            <input type="checkbox" id="op-fig" checked=""><label for="op-fig" data-template-id="gn-op-fig" class="canva-text" style="font-weight: 400; font-style: normal; font-size: 16px;">Lista de figuras</label>
+           </div>
+           <div class="flex items-center gap-2">
+            <input type="checkbox" id="op-tab"><label for="op-tab" data-template-id="gn-op-tab" class="canva-text" style="font-weight: 400; font-style: normal; font-size: 16px;">Lista de tabelas</label>
+           </div>
+           <div class="flex items-center gap-2">
+            <input type="checkbox" id="op-ref" checked=""><label for="op-ref" data-template-id="gn-op-ref" class="canva-text" style="font-weight: 400; font-style: normal; font-size: 16px;">Referências</label>
+           </div>
+          </fieldset><button type="submit" id="gen-btn" class="btn btn-primary w-full justify-center"><i data-lucide="file-cog" style="width:18px;height:18px"></i><span data-template-id="gen-button" class="canva-text" style="font-weight: 400; font-style: normal; font-size: 16px;">Gerar documento</span></button>
+          <div id="gen-progress-wrap" class="hidden">
+           <div class="progress-track">
+            <div id="gen-bar" class="progress-bar" style="width:0"></div>
+           </div>
+          </div>
+          <p id="gen-live" class="text-sm" role="status" aria-live="polite"></p>
+          <div id="gen-done" class="hidden note p-3">
+           <p data-template-id="gen-done-text" class="canva-text text-sm" style="font-weight: 400; font-style: normal; font-size: 16px;">Protótipo funcional: o fluxo de geração foi simulado. A exportação real de arquivos ainda não está disponível nesta versão.</p>
+          </div>
+         </form>
+        </div>
+       </section>
+      </div>
+     </div>
+    </section><!-- AJUDA -->
+    <section id="view-ajuda" data-view="ajuda" class="hidden fade-in max-w-3xl">
+     <h1 data-template-id="help-title" class="canva-text font-bold mb-2" style="font-weight: 700; font-style: normal; font-size: 32px;">Guia de ajuda</h1>
+     <p data-template-id="help-sub" class="canva-text muted mb-6" style="font-weight: 400; font-style: normal; font-size: 16px;">Perguntas frequentes sobre o uso da ferramenta e o MDT 2021.</p>
+     <div class="note p-4 mb-6">
+      <h2 data-template-id="help-warn-title" class="canva-text font-semibold mb-1" style="font-weight: 400; font-style: normal; font-size: 24px;">Sobre a versão do manual</h2>
+      <p data-template-id="help-warn-text" class="canva-text text-sm" style="font-weight: 400; font-style: normal; font-size: 16px;">Esta ferramenta toma como referência o MDT 2021. Verifique sempre se há versão mais recente e confira as regras diretamente na fonte oficial.</p>
+     </div>
+     <div class="space-y-3 mb-8">
+      <details class="surface p-4">
+       <summary class="flex justify-between items-center gap-3"><span data-template-id="faq-1-q" class="canva-text font-semibold" style="font-weight: 400; font-style: normal; font-size: 16px;">O que é o MDT 2021?</span><i data-lucide="chevron-down" class="chev"></i></summary>
+       <p data-template-id="faq-1-a" class="canva-text muted mt-3" style="font-weight: 400; font-style: normal; font-size: 16px;">É o Manual de Dissertações e Teses da UFSM, que orienta a estrutura e a apresentação de trabalhos acadêmicos na instituição.</p>
+      </details>
+      <details class="surface p-4">
+       <summary class="flex justify-between items-center gap-3"><span data-template-id="faq-2-q" class="canva-text font-semibold" style="font-weight: 400; font-style: normal; font-size: 16px;">A validação garante que meu trabalho está correto?</span><i data-lucide="chevron-down" class="chev"></i></summary>
+       <p data-template-id="faq-2-a" class="canva-text muted mt-3" style="font-weight: 400; font-style: normal; font-size: 16px;">Não. O checklist é um apoio organizacional. A conferência final deve ser feita com o manual vigente e com seu orientador.</p>
+      </details>
+      <details class="surface p-4">
+       <summary class="flex justify-between items-center gap-3"><span data-template-id="faq-3-q" class="canva-text font-semibold" style="font-weight: 400; font-style: normal; font-size: 16px;">Meus dados ficam salvos?</span><i data-lucide="chevron-down" class="chev"></i></summary>
+       <p data-template-id="faq-3-a" class="canva-text muted mt-3" style="font-weight: 400; font-style: normal; font-size: 16px;">Sim. Ao clicar em "Salvar rascunho", estrutura, validação, referências e preferências são guardadas para você retomar depois.</p>
+      </details>
+      <details class="surface p-4">
+       <summary class="flex justify-between items-center gap-3"><span data-template-id="faq-4-q" class="canva-text font-semibold" style="font-weight: 400; font-style: normal; font-size: 16px;">Posso exportar o documento?</span><i data-lucide="chevron-down" class="chev"></i></summary>
+       <p data-template-id="faq-4-a" class="canva-text muted mt-3" style="font-weight: 400; font-style: normal; font-size: 16px;">Ainda não. A área de geração apresenta o fluxo como protótipo; a exportação real está em desenvolvimento.</p>
+      </details>
+     </div>
+     <div class="flex flex-wrap gap-6"><button type="button" class="link-ph" data-placeholder="" data-template-id="help-link-mdt" style="font-weight: 400; font-style: normal; font-size: 16px;">Consultar o MDT 2021 (link a definir)</button> <button type="button" class="link-ph" data-placeholder="" data-template-id="help-link-contrib" style="font-weight: 400; font-style: normal; font-size: 16px;">Contribuir com o projeto (link a definir)</button>
+     </div>
+    </section>
+   </main>
+   <footer class="border-t mt-10" style="border-color:var(--border);background:var(--surface)">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 py-6 flex flex-col md:flex-row gap-4 md:items-center justify-between text-sm">
+     <div class="space-y-1">
+      <p data-template-id="footer-license" class="canva-text muted" style="font-weight: 400; font-style: normal; font-size: 16px;">Licença: [nome da licença open source a definir]</p>
+      <p data-template-id="footer-status" class="canva-text font-semibold" style="color: var(--warn); font-weight: 400; font-style: normal; font-size: 16px;">Projeto em desenvolvimento</p>
+     </div>
+     <nav aria-label="Rodapé" class="flex flex-wrap gap-4"><button type="button" class="link-ph" data-placeholder="" data-template-id="footer-repo" style="font-weight: 400; font-style: normal; font-size: 16px;">Repositório (a definir)</button> <button type="button" class="link-ph" data-placeholder="" data-template-id="footer-docs" style="font-weight: 400; font-style: normal; font-size: 16px;">Documentação (a definir)</button> <button type="button" class="link-ph" data-placeholder="" data-template-id="footer-contrib" style="font-weight: 400; font-style: normal; font-size: 16px;">Contribuições (a definir)</button> <button type="button" class="link-ph" data-placeholder="" data-template-id="footer-contact" style="font-weight: 400; font-style: normal; font-size: 16px;">Contato (a definir)</button>
+     </nav>
+    </div>
+   </footer>
+   <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </div>
+  <script>
+// ---- Dados de demonstração (fáceis de substituir) ----
+const uid = () => Math.random().toString(36).slice(2, 9);
+const DEFAULT_STRUCTURE = () => [
+  ['pre','Capa'],['pre','Folha de rosto'],['pre','Folha de aprovação'],['pre','Resumo'],['pre','Abstract'],['pre','Sumário'],
+  ['text','Introdução'],['text','Revisão de literatura'],['text','Metodologia'],['text','Resultados e discussão'],['text','Conclusão'],
+  ['post','Referências'],['post','Apêndices'],['post','Anexos']
+].map(([group,title],i)=>({id:uid(),group,title,done:i<2}));
+const DEFAULT_REFS = () => [
+  {id:uid(),author:'SOBRENOME, Nome (exemplo)',year:'2020',title:'Título de livro de exemplo',type:'Livro'},
+  {id:uid(),author:'AUTOR, Exemplo',year:'2019',title:'Título de artigo de exemplo',type:'Artigo'},
+  {id:uid(),author:'',year:'2021',title:'Documento eletrônico de exemplo',type:'Documento eletrônico'}
+];
+const CHECKLIST = [
+  {cat:'Estrutura',items:[['s1','Elementos pré-textuais na ordem indicada pelo MDT 2021'],['s2','Seções textuais com introdução, desenvolvimento e conclusão'],['s3','Numeração progressiva das seções conferida']]},
+  {cat:'Formatação',items:[['f1','Margens, fonte e espaçamento conforme o manual'],['f2','Paginação conferida com o MDT 2021'],['f3','Títulos de seções com destaque consistente']]},
+  {cat:'Referências',items:[['r1','Todas as citações possuem referência correspondente'],['r2','Referências com dados completos'],['r3','Ordenação das referências conferida']]},
+  {cat:'Elementos obrigatórios',items:[['o1','Resumo e palavras-chave presentes'],['o2','Resumo em língua estrangeira presente'],['o3','Sumário presente']]}
+];
+const DEFAULT_VALIDATION = () => ({s1:'ok',s2:'warn',r2:'warn',o1:'ok'});
+const GROUPS = {pre:'Pré-textuais',text:'Textuais',post:'Pós-textuais'};
+const STATUS = {ok:'Aprovado',warn:'Atenção',pend:'Pendente'};
+const WT = {tcc:'TCC',dissertacao:'Dissertação',tese:'Tese'};
+
+let state = freshState();
+function freshState(){return {workType:'dissertacao',structure:DEFAULT_STRUCTURE(),validation:DEFAULT_VALIDATION(),references:DEFAULT_REFS(),refStyle:'abnt',theme:'light'};}
+let backendRecords = [], dirty = false, loaded = false, vFilter = 'all', initialTimer;
+
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+function toast(msg, err){const t=$('#toast');t.textContent=msg;t.className='toast show'+(err?' error':'');clearTimeout(t._h);t._h=setTimeout(()=>t.className='toast',3200);}
+function markDirty(){dirty=true;$('#saved-ind').classList.add('hidden');$('#unsaved-ind').classList.remove('hidden');renderProgress();}
+function markClean(){dirty=false;$('#saved-ind').classList.remove('hidden');$('#unsaved-ind').classList.add('hidden');}
+function esc(s){return String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+
+// ---- Navegação ----
+const TABS=['overview','structure','validation','references','generate'];
+function go(target){
+  const view = TABS.includes(target) && target!=='overview' ? 'trabalho' : target;
+  $$('[data-view]').forEach(v=>v.classList.toggle('hidden',v.dataset.view!==view));
+  if(view==='trabalho') setTab(TABS.includes(target)?target:'overview');
+  $$('[data-nav]').forEach(b=>{if(b.classList.contains('nav-link')){const n=b.dataset.nav;const active=(n===target)||(n==='trabalho'&&view==='trabalho'&&!['structure','validation'].includes(target));b.toggleAttribute('aria-current',active);if(active)b.setAttribute('aria-current','page');}});
+  $('#mobile-menu').classList.add('hidden');$('#mobile-menu').classList.remove('flex');$('#menu-btn').setAttribute('aria-expanded','false');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function setTab(t){
+  $$('[data-tab]').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.tab===t)));
+  $$('[data-panel]').forEach(p=>p.classList.toggle('hidden',p.dataset.panel!==t));
+  if(t==='generate') renderSummary();
+}
+document.addEventListener('click',e=>{
+  const n=e.target.closest('[data-nav]'); if(n){go(n.dataset.nav);return;}
+  const g=e.target.closest('[data-go]'); if(g){go(g.dataset.go);return;}
+  const tb=e.target.closest('[data-tab]'); if(tb){setTab(tb.dataset.tab);return;}
+  if(e.target.closest('[data-placeholder]')) toast('Link ainda não definido (placeholder).');
+  if(e.target.closest('[data-action="new"]')){state=freshState();state.theme=document.getElementById('shell').classList.contains('dark')?'dark':'light';renderAll();markDirty();go('trabalho');toast('Novo projeto iniciado. Clique em "Salvar rascunho" para guardar.');}
+});
+$('#menu-btn').addEventListener('click',()=>{const m=$('#mobile-menu');const open=m.classList.contains('hidden');m.classList.toggle('hidden',!open);m.classList.toggle('flex',open);$('#menu-btn').setAttribute('aria-expanded',String(open));});
+
+// ---- Tema ----
+function applyTheme(){$('#shell').classList.toggle('dark',state.theme==='dark');$('#theme-icon').innerHTML=`<i data-lucide="${state.theme==='dark'?'sun':'moon'}"></i>`;lucide.createIcons();}
+$('#theme-btn').addEventListener('click',()=>{state.theme=state.theme==='dark'?'light':'dark';applyTheme();markDirty();});
+
+// ---- Estrutura ----
+function renderTree(){
+  const tree=$('#tree');tree.innerHTML='';
+  Object.keys(GROUPS).forEach(g=>{
+    const items=state.structure.filter(s=>s.group===g);
+    const wrap=document.createElement('div');wrap.className='mb-4';
+    wrap.innerHTML=`<h3 class="font-semibold text-sm uppercase tracking-wide muted mb-1">${GROUPS[g]}</h3>`;
+    if(!items.length) wrap.innerHTML+='<p class="text-sm muted px-2">Nenhuma seção.</p>';
+    items.forEach((s,i)=>{
+      const row=document.createElement('div');row.className='tree-row'+(s.done?' done':'');row.dataset.id=s.id;
+      row.innerHTML=`<input type="checkbox" ${s.done?'checked':''} aria-label="Concluída: ${esc(s.title)}" data-act="done">
+      <input type="text" value="${esc(s.title)}" aria-label="Nome da seção" data-act="rename">
+      <button type="button" class="icon-btn" data-act="up" aria-label="Mover para cima" ${i===0?'disabled':''}><i data-lucide="arrow-up" style="width:16px;height:16px"></i></button>
+      <button type="button" class="icon-btn" data-act="down" aria-label="Mover para baixo" ${i===items.length-1?'disabled':''}><i data-lucide="arrow-down" style="width:16px;height:16px"></i></button>
+      <button type="button" class="icon-btn" data-act="del" aria-label="Remover seção"><i data-lucide="trash-2" style="width:16px;height:16px"></i></button>`;
+      wrap.appendChild(row);
+    });
+    tree.appendChild(wrap);
+  });
+  lucide.createIcons();renderPreview();
+}
+function renderPreview(){
+  let n=0;$('#preview').innerHTML=Object.keys(GROUPS).map(g=>state.structure.filter(s=>s.group===g).map(s=>{
+    const num=g==='text'?`${++n} `:'';
+    return `<li class="flex gap-2 ${s.done?'':'muted'}"><span aria-hidden="true">${s.done?'✓':'○'}</span><span class="${g==='text'?'font-semibold':''}">${num}${esc(s.title.toUpperCase())}</span></li>`;
+  }).join('')).join('<li class="border-t my-1" style="border-color:var(--border)" aria-hidden="true"></li>');
+}
+$('#tree').addEventListener('change',e=>{
+  const row=e.target.closest('.tree-row');if(!row)return;const s=state.structure.find(x=>x.id===row.dataset.id);
+  if(e.target.dataset.act==='done'){s.done=e.target.checked;row.classList.toggle('done',s.done);}
+  if(e.target.dataset.act==='rename'){const v=e.target.value.trim();if(!v){e.target.value=s.title;toast('O nome da seção não pode ficar vazio.',true);return;}s.title=v;toast('Seção renomeada.');}
+  renderPreview();markDirty();
+});
+$('#tree').addEventListener('click',e=>{
+  const b=e.target.closest('button[data-act]');if(!b)return;const row=b.closest('.tree-row');const s=state.structure.find(x=>x.id===row.dataset.id);
+  const act=b.dataset.act;
+  if(act==='del'){state.structure=state.structure.filter(x=>x!==s);toast('Seção removida.');}
+  else{
+    const same=state.structure.filter(x=>x.group===s.group);const i=same.indexOf(s);const j=act==='up'?i-1:i+1;if(j<0||j>=same.length)return;
+    const a=state.structure.indexOf(s),c=state.structure.indexOf(same[j]);[state.structure[a],state.structure[c]]=[state.structure[c],state.structure[a]];
+  }
+  renderTree();markDirty();
+  const again=$(`.tree-row[data-id="${s.id}"] [data-act="${act}"]`);if(again&&!again.disabled)again.focus();
+});
+$('#add-section-form').addEventListener('submit',e=>{
+  e.preventDefault();const t=$('#new-sec-title').value.trim();
+  if(!t){toast('Informe o nome da seção.',true);$('#new-sec-title').focus();return;}
+  state.structure.push({id:uid(),group:$('#new-sec-group').value,title:t,done:false});$('#new-sec-title').value='';renderTree();markDirty();toast('Seção adicionada.');
+});
+
+// ---- Validação ----
+const allItems=()=>CHECKLIST.flatMap(c=>c.items);
+const statusOf=id=>state.validation[id]||'pend';
+function conformity(){const it=allItems();return Math.round(it.filter(([id])=>statusOf(id)==='ok').length/it.length*100);}
+function renderChecklist(){
+  $('#checklist').innerHTML=CHECKLIST.map(c=>{
+    const rows=c.items.filter(([id])=>vFilter==='all'||statusOf(id)===vFilter);
+    if(!rows.length)return '';
+    return `<div class="surface p-4"><h3 class="font-semibold mb-2">${c.cat}</h3><ul class="space-y-2">${rows.map(([id,txt])=>{const st=statusOf(id);return `<li class="flex flex-wrap items-center gap-3 py-1">
+      <input type="checkbox" id="chk-${id}" data-vid="${id}" ${st==='ok'?'checked':''}><label for="chk-${id}" class="flex-1 min-w-[200px]">${txt}</label>
+      <span class="badge st-${st}">${STATUS[st]}</span>
+      <label for="sel-${id}" class="sr-only">Status de: ${txt}</label>
+      <select id="sel-${id}" class="field text-sm" style="width:auto;padding:.25rem .5rem" data-vsel="${id}">${Object.entries(STATUS).map(([k,v])=>`<option value="${k}" ${k===st?'selected':''}>${v}</option>`).join('')}</select></li>`;}).join('')}</ul></div>`;
+  }).join('')||'<p class="muted">Nenhum item com este status.</p>';
+  const it=allItems();const cnt=k=>it.filter(([id])=>statusOf(id)===k).length;
+  $('#va-percent').textContent=conformity()+'%';
+  $('#va-counts').innerHTML=Object.entries(STATUS).map(([k,v])=>`<span class="badge st-${k}">${v}: ${cnt(k)}</span>`).join('');
+}
+$('#checklist').addEventListener('change',e=>{
+  const id=e.target.dataset.vid||e.target.dataset.vsel;if(!id)return;
+  state.validation[id]=e.target.dataset.vid?(e.target.checked?'ok':'pend'):e.target.value;renderChecklist();markDirty();
+});
+$$('[data-vfilter]').forEach(b=>b.addEventListener('click',()=>{vFilter=b.dataset.vfilter;$$('[data-vfilter]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));renderChecklist();}));
+
+// ---- Referências ----
+const complete=r=>r.author.trim()&&r.year.trim()&&r.title.trim()&&r.type;
+const TYPES=['Livro','Artigo','Capítulo','Documento eletrônico','Outro'];
+function filteredRefs(){
+  const q=$('#rf-search').value.toLowerCase(),t=$('#rf-type').value,s=$('#rf-status').value;
+  return state.references.filter(r=>(!q||(r.author+r.title+r.year).toLowerCase().includes(q))&&(t==='all'||r.type===t)&&(s==='all'||(s==='complete')===!!complete(r)));
+}
+function statusBadge(r){return complete(r)?'<span class="badge st-ok">Completa</span>':'<span class="badge st-warn">Incompleta</span>';}
+function renderRefs(){
+  const list=filteredRefs();
+  $('#ref-body').innerHTML=list.map(r=>`<tr data-id="${r.id}">
+    <td><input aria-label="Autor" data-f="author" value="${esc(r.author)}" placeholder="SOBRENOME, Nome"></td>
+    <td><input aria-label="Ano" data-f="year" value="${esc(r.year)}" inputmode="numeric" maxlength="4"></td>
+    <td><input aria-label="Título" data-f="title" value="${esc(r.title)}"></td>
+    <td><select aria-label="Tipo" data-f="type">${TYPES.map(t=>`<option ${t===r.type?'selected':''}>${t}</option>`).join('')}</select></td>
+    <td class="st-cell">${statusBadge(r)}</td>
+    <td><button type="button" class="icon-btn" data-del aria-label="Remover referência"><i data-lucide="trash-2" style="width:16px;height:16px"></i></button></td></tr>`).join('');
+  $('#ref-empty').classList.toggle('hidden',list.length>0);lucide.createIcons();renderRefPreview();
+}
+function renderRefPreview(){
+  const refs=[...state.references].filter(complete).sort((a,b)=>a.author.localeCompare(b.author));
+  $('#ref-preview').innerHTML=refs.length?refs.map(r=>state.refStyle==='abnt'
+    ?`<li>${esc(r.author.toUpperCase())}. <strong>${esc(r.title)}</strong>. [${esc(r.type)}], ${esc(r.year)}.</li>`
+    :`<li>${esc(r.author)} (${esc(r.year)}). <em>${esc(r.title)}</em>. ${esc(r.type)}.</li>`).join('')+'<li class="muted text-xs pt-2">Prévia simplificada — confira o formato exato no MDT 2021.</li>'
+    :'<li class="muted">Nenhuma referência completa para exibir.</li>';
+}
+$('#ref-body').addEventListener('input',e=>{
+  const tr=e.target.closest('tr');const r=state.references.find(x=>x.id===tr.dataset.id);r[e.target.dataset.f]=e.target.value;
+  tr.querySelector('.st-cell').innerHTML=statusBadge(r);renderRefPreview();markDirty();
+});
+$('#ref-body').addEventListener('click',e=>{if(!e.target.closest('[data-del]'))return;const id=e.target.closest('tr').dataset.id;state.references=state.references.filter(r=>r.id!==id);renderRefs();markDirty();toast('Referência removida.');});
+$('#add-ref').addEventListener('click',()=>{
+  ['#rf-search','#rf-type','#rf-status'].forEach(s=>$(s).value=s==='#rf-search'?'':'all');
+  state.references.push({id:uid(),author:'',year:'',title:'',type:'Livro'});renderRefs();markDirty();
+  const inputs=$$('#ref-body tr:last-child input');inputs[0]&&inputs[0].focus();toast('Nova referência adicionada. Preencha os campos.');
+});
+['#rf-search','#rf-type','#rf-status'].forEach(s=>$(s).addEventListener('input',renderRefs));
+$('#rf-style').addEventListener('change',e=>{state.refStyle=e.target.value;renderRefPreview();markDirty();});
+
+// ---- Progresso / resumo ----
+function progress(){const s=state.structure;const sp=s.length?s.filter(x=>x.done).length/s.length*100:0;return Math.round((sp+conformity())/2);}
+function renderProgress(){
+  const p=progress();$('#progress-bar').style.width=p+'%';$('#progress-text').textContent=p+'%';$('#progress-aria').setAttribute('aria-valuenow',p);
+  $('#ov-sections').textContent=`${state.structure.filter(x=>x.done).length}/${state.structure.length}`;
+  $('#ov-conform').textContent=conformity()+'%';$('#ov-refs').textContent=state.references.length;
+}
+function renderSummary(){
+  const rows=[['Tipo de trabalho',WT[state.workType]],['Seções',state.structure.length],['Conformidade',conformity()+'%'],['Referências',state.references.length],['Progresso',progress()+'%']];
+  $('#gn-summary').innerHTML=rows.map(([k,v])=>`<div class="flex justify-between border-b pb-1" style="border-color:var(--border)"><dt class="muted">${k}</dt><dd class="font-semibold">${v}</dd></div>`).join('');
+}
+$('#work-type').addEventListener('change',e=>{state.workType=e.target.value;markDirty();renderSummary();toast('Tipo de trabalho: '+WT[state.workType]);});
+
+// ---- Gerar (simulado) ----
+$('#gen-form').addEventListener('submit',e=>{
+  e.preventDefault();const btn=$('#gen-btn');btn.disabled=true;$('#gen-done').classList.add('hidden');
+  $('#gen-progress-wrap').classList.remove('hidden');let p=0;$('#gen-live').textContent='Processando documento (simulação)…';
+  const iv=setInterval(()=>{p+=20;$('#gen-bar').style.width=p+'%';
+    if(p>=100){clearInterval(iv);btn.disabled=false;$('#gen-live').textContent=`Simulação concluída (${$('#gn-format').value}).`;$('#gen-done').classList.remove('hidden');}},600);
+});
+
+function renderAll(){$('#work-type').value=state.workType;$('#rf-style').value=state.refStyle;applyTheme();renderTree();renderChecklist();renderRefs();renderProgress();renderSummary();}
+
+// ---- Canva Sheet ----
+function loadFromRecord(r){
+  try{
+    state={workType:r.work_type||'dissertacao',structure:JSON.parse(r.structure_json||'[]'),validation:JSON.parse(r.validation_json||'{}'),references:JSON.parse(r.references_json||'[]'),refStyle:r.reference_style||'abnt',theme:r.theme_preference||'light'};
+  }catch(err){toast('Não foi possível ler o rascunho salvo.',true);}
+}
+const handler={onDataChanged(data){
+  clearTimeout(initialTimer);backendRecords=data;
+  if(!loaded){loaded=true;if(data[0]&&!dirty){loadFromRecord(data[0]);renderAll();markClean();}}
+}};
+async function initData(){
+  clearTimeout(initialTimer);
+  initialTimer=setTimeout(()=>toast('Não foi possível carregar o rascunho salvo. Recarregue para tentar de novo.',true),8000);
+  const res=await window.dataSdk.init(handler);
+  if(!res.isOk){clearTimeout(initialTimer);toast('Não foi possível conectar ao salvamento.',true);}
+}
+$('#save-btn').addEventListener('click',async e=>{
+  const btn=e.currentTarget;btn.disabled=true;
+  const rec={work_type:state.workType,structure_json:JSON.stringify(state.structure),validation_json:JSON.stringify(state.validation),references_json:JSON.stringify(state.references),reference_style:state.refStyle,theme_preference:state.theme,progress_percent:progress(),updated_at:new Date().toISOString()};
+  try{
+    let res;
+    if(backendRecords[0]) res=await window.dataSdk.update({...backendRecords[0],...rec});
+    else{if(backendRecords.length>=999){toast('Limite de registros atingido.',true);return;}res=await window.dataSdk.create(rec);}
+    if(res.isOk){markClean();toast('Rascunho salvo com sucesso.');}
+    else toast('Não foi possível confirmar o salvamento. Recarregue antes de tentar de novo.',true);
+  }catch(err){toast('Erro ao salvar o rascunho.',true);}
+  finally{btn.disabled=false;}
+});
+
+document.addEventListener('DOMContentLoaded',()=>{lucide.createIcons();renderAll();markClean();go('inicio');initData();});
+</script>
+ 
+</body></html>
