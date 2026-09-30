@@ -29,6 +29,17 @@
     .status-box{padding:12px 14px;border-left:3px solid var(--ufsm-blue);background:#f1f6f8;color:var(--muted);font-size:13px}
     .status-box.ok{border-left-color:var(--ufsm-orange);color:var(--ink)}
     .actions-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+    .structure-editor{display:grid;gap:8px;padding:12px;border:1px solid var(--line);background:#fafaf8}
+    .structure-row{display:grid;grid-template-columns:28px minmax(0,1fr) auto;gap:8px;align-items:center;padding:8px;border-top:1px solid var(--line)}
+    .structure-row:first-child{border-top:0}
+    .structure-row[aria-selected="true"]{background:#eef4f6;outline:1px solid var(--ufsm-blue)}
+    .structure-number{font:700 11px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ufsm-blue)}
+    .structure-title{border:0;background:transparent;padding:5px;width:100%;font:600 15px Georgia,"Times New Roman",serif;color:var(--ink)}
+    .structure-title:focus{outline:2px solid var(--ufsm-orange);background:#fff}
+    .structure-actions{display:flex;gap:2px}
+    .structure-actions button{border:0;background:transparent;color:var(--muted);padding:5px;cursor:pointer}
+    .structure-actions button:hover{color:var(--ufsm-blue);background:#fff}
+    .structure-empty{margin:0;padding:12px;color:var(--muted);font-size:13px}
     .hidden{display:none!important}
     @media(max-width:820px){.creator-grid{grid-template-columns:1fr}.preview{position:static}.metadata-grid{grid-template-columns:1fr}}
   </style>
@@ -89,13 +100,23 @@
             </div>
 
             <div class="field-group">
-              <label for="section-title">Primeira seção textual</label>
+              <label>Estrutura do documento</label>
+              <small>Organize as seções textuais do rascunho. A ordem será preservada no contrato do documento.</small>
+              <div id="structure-editor" class="structure-editor" aria-label="Editor de estrutura"></div>
+              <div class="actions-row">
+                <button class="button" type="button" id="add-section-btn">Adicionar seção</button>
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label for="section-title">Título da seção selecionada</label>
               <input id="section-title" class="field" name="section_title" value="Introdução" required>
             </div>
 
             <div class="field-group">
               <label for="section-content">Conteúdo inicial</label>
               <textarea id="section-content" name="section_content" rows="9" required placeholder="Insira um rascunho da seção."></textarea>
+              <small id="section-help">O conteúdo editado aqui pertence à seção selecionada.</small>
             </div>
 
             <div class="field-group">
