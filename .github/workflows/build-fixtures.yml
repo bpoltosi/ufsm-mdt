@@ -1,4 +1,4 @@
-name: Build MDT fixture
+name: Build MDT fixtures
 
 on:
   workflow_dispatch:
@@ -12,6 +12,21 @@ concurrency:
 
 jobs:
   build:
+    strategy:
+      fail-fast: false
+      matrix:
+        type:
+          - article
+          - didactic-material
+          - dissertation
+          - internship-report
+          - monograph
+          - pedagogical-resource
+          - professional-project
+          - research-project
+          - tcc
+          - technical-report
+          - thesis
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -26,16 +41,16 @@ jobs:
       - run: python -m pip install --disable-pip-version-check -e .
       - run: |
           set -euo pipefail
-          python -m ufsm_mdt.cli generate tests/fixtures/dissertation/document.json build/fixture
+          python -m ufsm_mdt.cli generate tests/fixtures/${{ matrix.type }}/document.json build/${{ matrix.type }}
       - uses: xu-cheng/latex-action@6549dc21effb2730855a1281407ecfcececc6c1b # v4
         with:
-          root_file: build/fixture/main.tex
+          root_file: build/${{ matrix.type }}/main.tex
           texlive_version: "2026"
           latexmk_use_xelatex: true
           work_in_root_file_dir: true
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
-          name: ufsm-mdt-fixture-dissertation
-          path: build/fixture/main.pdf
+          name: ufsm-mdt-${{ matrix.type }}
+          path: build/${{ matrix.type }}/main.pdf
           retention-days: 3
           if-no-files-found: error
