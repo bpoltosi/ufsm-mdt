@@ -1,0 +1,25 @@
+{
+  "id": "internship-report",
+  "name": "Relatório de Estágio",
+  "source": "MDT UFSM 2021 §2.2",
+  "template_command": "relatorio",
+  "required_metadata": [
+    "author",
+    "title",
+    "english_title",
+    "centro_ensino",
+    "centro_ensino_sigla",
+    "nivel_ensino",
+    "curso",
+    "status_curso",
+    "cidade",
+    "estado",
+    "grau_ensino",
+    "grau_obtido",
+    "email",
+    "day",
+    "month",
+    "year"
+  ],
+  "notes": "Usa o comando upstream relatorio, cuja semântica no template é Relatório de Estágio."
+}
