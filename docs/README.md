@@ -1,8 +1,10 @@
 # Documentação
 
 - [Visão geral](visao-geral.md)
-- [Arquitetura](arquitetura.md)
+- [Arquitetura técnica](arquitetura.md)
+- [Especificação técnica](especificacao-tecnica.md)
 - [Roadmap](roadmap.md)
-- [Fontes e referências](fontes.md)
+- [Fontes e rastreabilidade](fontes.md)
+- [Guia rápido](guia-rapido.md)
 
-A documentação não substitui o MDT, editais, regulamentos ou orientações oficiais da UFSM.
+A arquitetura e a especificação devem ser atualizadas antes de mudanças estruturais no template, gerador ou validador.
