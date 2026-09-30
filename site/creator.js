@@ -10,6 +10,10 @@ const sectionTitle = document.querySelector("#section-title");
 const sectionContent = document.querySelector("#section-content");
 const sectionHelp = document.querySelector("#section-help");
 const steps = [...document.querySelectorAll("[data-step]")];
+const DRAFT_KEY = "ufsm-mdt:creator:draft:v1";
+const saveButton = document.querySelector("#save-btn");
+const downloadButton = document.querySelector("#download-btn");
+const resetButton = document.querySelector("#reset-btn");
 
 const LABELS = {
   author:"Autor", title:"Título", english_title:"Título em inglês",
@@ -148,6 +152,53 @@ function renderPreview(data=buildDocument()) {
   preview.textContent=JSON.stringify(data,null,2);
 }
 
+function saveDraft() {
+  const data=buildDocument();
+  localStorage.setItem(DRAFT_KEY,JSON.stringify({profile:selectedProfile?.id ?? "",document:data}));
+  updateStatus("Rascunho salvo neste navegador.",true);
+}
+
+function loadDraft() {
+  try {
+    const raw=localStorage.getItem(DRAFT_KEY);
+    if(!raw) return false;
+    const saved=JSON.parse(raw);
+    const profileId=saved?.profile;
+    if(profileId && catalog.some((profile)=>profile.id===profileId)) {
+      profileSelect.value=profileId;
+      selectProfile(profileId);
+    }
+    const data=saved?.document;
+    if(!data) return false;
+    Object.entries(data.metadata ?? {}).forEach(([field,value])=>{
+      const input=document.querySelector("#meta-"+CSS.escape(field));
+      if(input) input.value=value ?? "";
+    });
+    sections=Array.isArray(data.sections) ? data.sections.map((item)=>({title:String(item.title ?? "Seção sem título"),content:String(item.content ?? "")})) : DEFAULT_SECTIONS.map((item)=>({...item}));
+    selectedSection=0;
+    document.querySelector("#references").value=data.references ?? "";
+    renderStructure();
+    if(sections.length) selectSection(0);
+    renderPreview();
+    return true;
+  } catch(error) {
+    localStorage.removeItem(DRAFT_KEY);
+    return false;
+  }
+}
+
+function downloadJson() {
+  const data=buildDocument();
+  const blob=new Blob([JSON.stringify(data,null,2)+"\\n"],{type:"application/json"});
+  const url=URL.createObjectURL(blob);
+  const anchor=document.createElement("a");
+  anchor.href=url;
+  anchor.download=(data.type || "ufsm-mdt")+"-documento.json";
+  anchor.click();
+  URL.revokeObjectURL(url);
+  updateStatus("JSON do documento baixado. Use o CLI para validar e gerar o projeto LaTeX.",true);
+}
+
 function updateStatus(message,ok=false) {
   statusBox.textContent=message;
   statusBox.classList.toggle("ok",ok);
@@ -235,7 +286,7 @@ form.addEventListener("submit",(event)=>{
   updateStatus("Formulário e estrutura consistentes. A validação normativa completa será executada pelo núcleo Python.",true);
 });
 
-document.querySelector("#reset-btn").addEventListener("click",()=>{
+resetButton.addEventListener("click",()=>{
   form.reset();
   sections=DEFAULT_SECTIONS.map((item)=>({...item}));
   selectedSection=0;
@@ -245,5 +296,8 @@ document.querySelector("#reset-btn").addEventListener("click",()=>{
   updateStatus("Formulário e estrutura limpos. Nenhuma validação normativa foi executada.",false);
   setStep(1); renderPreview();
 });
+
+saveButton.addEventListener("click",saveDraft);
+downloadButton.addEventListener("click",downloadJson);
 
 loadProfiles();
