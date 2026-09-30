@@ -24,5 +24,7 @@ def test_every_fixture_generates_complete_project(tmp_path, source):
 
     tex = (out / "main.tex").read_text(encoding="utf-8")
     assert f"\\{profile['template_command']}" in tex
+    assert "\\videoconferenciabancap" in tex
+    assert "\\videoconferenciabancas" in tex
     assert "\\begin{document}" in tex
     assert "\\end{document}" in tex
