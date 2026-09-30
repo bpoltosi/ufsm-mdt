@@ -205,7 +205,14 @@ document.querySelector("#add-section-btn").addEventListener("click",()=>{
 sectionTitle.addEventListener("input",()=>{
   if(!sections[selectedSection]) return;
   sections[selectedSection].title=sectionTitle.value;
-  renderStructure(); renderPreview(); setStep(3);
+  renderPreview(); setStep(3);
+});
+
+sectionTitle.addEventListener("change",()=>{
+  if(!sections[selectedSection]) return;
+  sections[selectedSection].title=sectionTitle.value.trim() || "Seção sem título";
+  sectionTitle.value=sections[selectedSection].title;
+  renderStructure(); renderPreview();
 });
 
 sectionContent.addEventListener("input",()=>{
