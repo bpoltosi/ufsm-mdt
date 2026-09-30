@@ -1,0 +1,27 @@
+name: Dependency review
+
+on:
+  pull_request:
+    paths:
+      - "pyproject.toml"
+      - ".github/workflows/**"
+      - ".github/dependabot.yml"
+      - "requirements*.txt"
+      - "poetry.lock"
+      - "uv.lock"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: dependency-review-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/dependency-review-action@05fe4576374b728f0c523d6a13d64c25081e0803 # v4.8.3
+        with:
+          fail-on-severity: high

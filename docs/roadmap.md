@@ -12,37 +12,37 @@
 
 ## Fase 1 — Engenharia do MDT
 - [ ] Mapear elementos do MDT 2021
-- [ ] Mapear tipos de trabalho
+- [x] Mapear tipos de trabalho
 - [ ] Mapear metadados por tipo
 - [ ] Mapear elementos obrigatórios/opcionais
 - [ ] Registrar regras com seção/página
 - [ ] Registrar ambiguidades
 
 ## Fase 2 — Template
-- [ ] Incorporar base LaTeX permitida
-- [ ] Registrar origem e versão
-- [ ] Isolar arquivos auxiliares
-- [ ] Definir ambiente de compilação
-- [ ] Criar fixture mínimo para cada tipo inicialmente suportado
+- [x] Incorporar base LaTeX permitida
+- [x] Registrar origem e versão
+- [x] Isolar arquivos auxiliares
+- [x] Definir ambiente de compilação
+- [x] Criar fixture mínimo para cada tipo inicialmente suportado
 
 ## Fase 3 — Modelo e perfis
-- [ ] Definir modelo interno
-- [ ] Definir formato dos perfis
-- [ ] Criar perfis dos tipos suportados
+- [x] Definir modelo interno
+- [x] Definir formato dos perfis
+- [x] Criar perfis dos tipos suportados
 - [ ] Validar perfis contra o MDT
 - [ ] Criar exemplos mínimos
 
 ## Fase 4 — Gerador
-- [ ] Gerar metadados
-- [ ] Gerar elementos pré-textuais
-- [ ] Gerar conteúdo textual
+- [x] Gerar metadados
+- [x] Gerar elementos pré-textuais
+- [x] Gerar conteúdo textual
 - [ ] Gerar elementos pós-textuais
-- [ ] Gerar referências
+- [x] Gerar referências
 - [ ] Gerar assets
-- [ ] Gerar projeto independente
+- [x] Gerar projeto independente
 
 ## Fase 5 — Validador
-- [ ] Regras de configuração
+- [x] Regras de configuração
 - [ ] Regras estruturais
 - [ ] Regras de conteúdo
 - [ ] Regras de referências
@@ -51,10 +51,10 @@
 - [ ] Relatório ERROR/WARNING/INFO
 
 ## Fase 6 — Testes
-- [ ] Testes unitários
-- [ ] Testes de geração
+- [x] Testes unitários
+- [x] Testes de geração
 - [ ] Testes de build
-- [ ] Testes por tipo de trabalho
+- [x] Testes por tipo de trabalho
 - [ ] Regressão de template
 - [ ] Avaliar testes visuais
 

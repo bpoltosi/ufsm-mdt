@@ -63,7 +63,7 @@ A prioridade é a correção do gerador e das regras do MDT.
 
 ## Tecnologias
 
-A tecnologia final será escolhida em função do núcleo do projeto. A base LaTeX utiliza XeLaTeX conforme a documentação do template de referência. A aplicação deverá manter o núcleo independente da interface.
+O núcleo está implementado em Python e mantém o modelo de documento independente da apresentação. A base LaTeX incorporada usa XeLaTeX. GitHub Actions é o ambiente oficial de testes e build controlado. O PDF para usuário é compilado somente sob solicitação explícita.
 
 ## Licença
 

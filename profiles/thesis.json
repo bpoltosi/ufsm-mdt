@@ -1,0 +1,25 @@
+{
+  "id": "thesis",
+  "name": "Tese",
+  "source": "MDT UFSM 2021 §2.2",
+  "template_command": "tese",
+  "required_metadata": [
+    "author",
+    "title",
+    "english_title",
+    "centro_ensino",
+    "centro_ensino_sigla",
+    "nivel_ensino",
+    "curso",
+    "status_curso",
+    "cidade",
+    "estado",
+    "grau_ensino",
+    "grau_obtido",
+    "email",
+    "day",
+    "month",
+    "year"
+  ],
+  "notes": "Perfil implementado como tipologia declarada. Quando o template não possui comando dedicado, usa-se generico sem afirmar equivalência normativa."
+}

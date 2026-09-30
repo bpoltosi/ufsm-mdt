@@ -197,3 +197,16 @@ A arquitetura será considerada adequada quando conseguirmos:
 6. baixar o projeto;
 7. solicitar o PDF online somente quando desejado;
 8. reproduzir o resultado sem depender da aplicação web.
+
+
+## Implementação atual — 2026-09-30
+
+As 11 tipologias documentadas estão implementadas como perfis declarativos em `profiles/`, consumidos pelo modelo interno e pelo gerador.
+
+Perfis: `research-project`, `tcc`, `internship-report`, `dissertation`, `thesis`, `article`, `technical-report`, `monograph`, `didactic-material`, `pedagogical-resource`, `professional-project`.
+
+Quando a classe upstream possui comando próprio, o perfil o utiliza. Para tipologias sem comando dedicado, o perfil usa `generico`. Isso é uma decisão de implementação e não uma declaração de equivalência normativa.
+
+O build oficial automatizado usa GitHub Actions, XeLaTeX/latexmk e TeX Live 2026. O PDF destinado ao usuário é gerado somente por workflow manual sob solicitação explícita.
+
+A regra de UX é privilegiar completude: campos opcionais podem ser omitidos, mas a interface deve favorecer o preenchimento mais completo quando houver informação disponível e compatível com a MDT.

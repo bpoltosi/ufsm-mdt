@@ -100,3 +100,22 @@ O cruzamento acima não declara que duas tipologias são equivalentes. Ele regis
 3. definir os metadados necessários;
 4. criar fixture mínimo;
 5. validar e compilar o fixture.
+
+
+## Implementação dos perfis
+
+Todas as 11 tipologias desta matriz agora possuem perfil declarativo e fixture de integração. Tipologias sem comando dedicado utilizam `generico` para preservar o tipo solicitado sem afirmar equivalência normativa.
+
+| ID | Perfil | Base LaTeX |
+|---|---|---|
+| MDT-TYPE-001 | `research-project` | `generico` |
+| MDT-TYPE-002 | `tcc` | `tcc` |
+| MDT-TYPE-003 | `internship-report` | `relatorio` |
+| MDT-TYPE-004 | `dissertation` | `dissertacao` |
+| MDT-TYPE-005 | `thesis` | `tese` |
+| MDT-TYPE-006 | `article` | `generico` |
+| MDT-TYPE-007 | `technical-report` | `generico` |
+| MDT-TYPE-008 | `monograph` | `monografia` |
+| MDT-TYPE-009 | `didactic-material` | `generico` |
+| MDT-TYPE-010 | `pedagogical-resource` | `generico` |
+| MDT-TYPE-011 | `professional-project` | `generico` |
