@@ -25,6 +25,6 @@ def test_generator_escapes_latex_metadata(tmp_path):
     )
     out = generate(doc, tmp_path / "escaped")
     tex = (out / "main.tex").read_text(encoding="utf-8")
-    assert r"Autor \\& Co." in tex
-    assert r"Título\\_100\\% \\{teste\\}" in tex
-    assert r"A \\textbackslash{} B \\textasciitilde{} C \\textasciicircum{} D" in tex
+    assert r"Autor \& Co." in tex
+    assert r"Título\_100\% \{teste\}" in tex
+    assert r"A \textbackslash{} B \textasciitilde{} C \textasciicircum{} D" in tex
