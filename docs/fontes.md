@@ -1,17 +1,62 @@
 # Fontes e referências
 
-## Fonte institucional principal
+## 1. Fonte normativa principal
 
-Universidade Federal de Santa Maria (UFSM) — Manual de Dissertações e Teses (MDT).
+**Universidade Federal de Santa Maria — Manual de Dissertações e Teses da UFSM: Estrutura e Apresentação Documental para Trabalhos Acadêmicos — 2021.**
 
-Status: verificar versão vigente antes da implementação das regras.
+A página oficial de Normas MDT informa que a MDT 2021 passou a ser obrigatória para os trabalhos a partir de 2022.2 e que o manual também orienta TCCs, trabalhos de pós-graduação e iniciação científica.
 
-## Template LaTeX / Overleaf
+## 2. Modelo LaTeX adotado como referência
 
-O projeto deverá avaliar o template disponibilizado para uso acadêmico e verificar sua relação com o MDT institucional.
+**Eugênio Piveta Pozzobon — mdt-ufsm-2021-latex.**
 
-## Rastreabilidade
+O portal da UFSM informa que o modelo foi desenvolvido por Eugênio Piveta Pozzobon, atualizado conforme a MDT 2021 e revisado/aprovado por unidades de biblioteca da UFSM.
 
-Para cada regra implementada, registrar fonte, versão/data quando disponível, seção ou página relevante, data de verificação e observações sobre ambiguidades.
+## 3. Overleaf
 
-Uma implementação existente no template não deve ser tratada, sozinha, como prova de que uma regra continua vigente.
+O modelo **MDT UFSM 2021** está publicado no Overleaf com autoria de Eugênio Pozzobon. A página informa **Creative Commons CC BY 4.0** e aponta o GitHub como fonte atualizada.
+
+O GitHub analisado não possui arquivo LICENSE explícito. Portanto, antes de redistribuir arquivos derivados, devemos registrar origem, atribuição e licença indicada pela distribuição.
+
+## 4. Implementação técnica observada
+
+A referência utiliza:
+
+- `ufsm_2021.cls`;
+- `report` como classe base;
+- `abntex2cite` para citações;
+- BibTeX com `abntex2-alf`;
+- `babel` em português;
+- `fontenc`;
+- `setspace`;
+- `hyperref`;
+- `caption`;
+- `tocloft`;
+- `tocstyle.sty`;
+- comandos e ambientes próprios da MDT.
+
+O README recomenda XeLaTeX e, no desktop, XeLaTeX + MakeIndex + BibTeX.
+
+## 5. Rastreabilidade
+
+Cada regra implementada deve registrar:
+
+| Campo | Obrigatório |
+|---|---|
+| ID | Sim |
+| Fonte | Sim |
+| Versão | Sim |
+| Seção/página | Sim, quando disponível |
+| Descrição | Sim |
+| Implementação | Sim |
+| Teste | Sim |
+| Data da verificação | Sim |
+| Ambiguidade | Quando aplicável |
+
+## 6. Papel de cada fonte
+
+- **UFSM:** regra institucional.
+- **Overleaf:** publicação/distribuição do modelo.
+- **GitHub:** implementação concreta do modelo.
+
+O código do template não deve ser tratado sozinho como fonte normativa.
