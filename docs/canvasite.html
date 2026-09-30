@@ -522,38 +522,6 @@ async function initData(){clearTimeout(initialTimer);initialTimer=setTimeout(()=
 $('#save-btn').addEventListener('click',async e=>{const btn=e.currentTarget;btn.disabled=true;state.updated_at=new Date().toISOString();saveLocal();const rec={work_type:state.workType,structure_json:JSON.stringify(state.structure),validation_json:JSON.stringify(state.validation),references_json:JSON.stringify(state.references),reference_style:state.refStyle,theme_preference:state.theme,progress_percent:progress(),updated_at:state.updated_at};try{let res;if(backendRecords[0])res=await window.dataSdk.update({...backendRecords[0],...rec});else{if(backendRecords.length>=999){toast('Limite de registros atingido.',true);return}res=await window.dataSdk.create(rec)}if(res.isOk){conflict=false;markClean();saveLocal();toast('Rascunho sincronizado com sucesso.')}else{setSaveState('error');toast('Não foi possível confirmar a sincronização. O rascunho local foi preservado.',true)}}catch(err){setSaveState('error');toast('Erro ao sincronizar. O rascunho local foi preservado.',true)}finally{btn.disabled=false}});
 document.addEventListener('DOMContentLoaded',()=>{lucide.createIcons();localSnapshot=readLocal();if(localSnapshot)adoptLocal(localSnapshot);else{state=freshState();renderAll();}history.undo=[];history.redo=[];lastSnapshot=snapshot();updateHistoryButtons();go('inicio');initData();});
 // ---- End state ----
-(){$('#work-type').value=state.workType;$('#rf-style').value=state.refStyle;applyTheme();renderTree();renderChecklist();renderRefs();renderProgress();renderSummary();}
-
-// ---- Canva Sheet ----
-function loadFromRecord(r){
-  try{
-    state={workType:r.work_type||'dissertacao',structure:JSON.parse(r.structure_json||'[]'),validation:JSON.parse(r.validation_json||'{}'),references:JSON.parse(r.references_json||'[]'),refStyle:r.reference_style||'abnt',theme:r.theme_preference||'light'};
-  }catch(err){toast('Não foi possível ler o rascunho salvo.',true);}
-}
-const handler={onDataChanged(data){
-  clearTimeout(initialTimer);backendRecords=data;
-  if(!loaded){loaded=true;if(data[0]&&!dirty){loadFromRecord(data[0]);renderAll();markClean();}}
-}};
-async function initData(){
-  clearTimeout(initialTimer);
-  initialTimer=setTimeout(()=>toast('Não foi possível carregar o rascunho salvo. Recarregue para tentar de novo.',true),8000);
-  const res=await window.dataSdk.init(handler);
-  if(!res.isOk){clearTimeout(initialTimer);toast('Não foi possível conectar ao salvamento.',true);}
-}
-$('#save-btn').addEventListener('click',async e=>{
-  const btn=e.currentTarget;btn.disabled=true;
-  const rec={work_type:state.workType,structure_json:JSON.stringify(state.structure),validation_json:JSON.stringify(state.validation),references_json:JSON.stringify(state.references),reference_style:state.refStyle,theme_preference:state.theme,progress_percent:progress(),updated_at:new Date().toISOString()};
-  try{
-    let res;
-    if(backendRecords[0]) res=await window.dataSdk.update({...backendRecords[0],...rec});
-    else{if(backendRecords.length>=999){toast('Limite de registros atingido.',true);return;}res=await window.dataSdk.create(rec);}
-    if(res.isOk){markClean();toast('Rascunho salvo com sucesso.');}
-    else toast('Não foi possível confirmar o salvamento. Recarregue antes de tentar de novo.',true);
-  }catch(err){toast('Erro ao salvar o rascunho.',true);}
-  finally{btn.disabled=false;}
-});
-
-document.addEventListener('DOMContentLoaded',()=>{lucide.createIcons();const hadLocal=loadLocal();renderAll();markClean();history.undo=[];history.redo=[];lastSnapshot=snapshot();updateHistoryButtons();go('inicio');if(hadLocal)toast('Rascunho local restaurado automaticamente.');initData();});
 </script>
  
 </body></html>
