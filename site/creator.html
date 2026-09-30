@@ -1,1 +1,132 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Criador — UFSM-MDT</title><link rel="stylesheet" href="./styles.css"></head><body><a class="skip-link" href="#conteudo">Ir para o conteúdo</a><header class="site-header"><div class="container nav"><a class="brand" href="./">UFSM-MDT</a><nav class="nav-links"><a href="./profiles.html">Perfis</a><a href="./rules.html">Regras</a></nav></div></header><main id="conteudo"><section class="hero compact-hero"><div class="container"><div class="kicker">Criador guiado</div><h1>Comece pelo perfil.</h1><p class="lede">Escolha um perfil e preencha os dados básicos. A validação normativa completa continua pertencendo ao núcleo Python.</p></div></section><section class="section"><div class="container"><form id="creator-form"><label>Tipo de trabalho<select id="profile" required></select></label><div id="metadata"></div><label>Título da primeira seção<input name="section_title" value="Introdução" required></label><label>Conteúdo<textarea name="section_content" rows="10" required></textarea></label><label>Referências BibTeX<textarea name="references" rows="8"></textarea></label><button class="button primary" type="submit">Pré-validar formulário</button></form><p id="status" class="section-intro" role="status">Carregando perfis…</p><pre id="preview"></pre></div></section></main><script src="./creator.js" defer></script></body></html>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Criador guiado do UFSM-MDT.">
+  <meta name="theme-color" content="#005C8B">
+  <title>Criador — UFSM-MDT</title>
+  <link rel="stylesheet" href="./styles.css">
+  <style>
+    .creator-hero{padding:72px 0 56px;border-bottom:1px solid var(--line)}
+    .creator-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(320px,.9fr);gap:64px;align-items:start}
+    .creator-workspace{padding:48px 0 88px}
+    .creator-panel{border:1px solid var(--line);background:var(--surface);padding:28px}
+    .creator-panel h2{margin:0 0 8px;font-size:30px}
+    .creator-panel h3{margin:28px 0 10px;font-size:21px}
+    .creator-form{display:grid;gap:18px}
+    .field-group{display:grid;gap:7px}
+    .field-group label,.field-label{font-size:13px;font-weight:750}
+    .field-group small{color:var(--muted);font-size:12px}
+    .field,.field-group textarea,.field-group select{width:100%;padding:11px 12px;border:1px solid var(--line);background:#fff;color:var(--ink);font:inherit}
+    .field:focus,.field-group textarea:focus,.field-group select:focus{outline:3px solid color-mix(in srgb,var(--ufsm-orange) 45%,transparent);border-color:var(--ufsm-blue)}
+    .metadata-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .stepper{display:flex;gap:0;margin:0 0 28px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .step{flex:1;padding:13px 8px;color:var(--muted);font-size:12px;font-weight:750;text-align:center}
+    .step[aria-current="step"]{color:var(--ufsm-blue);box-shadow:inset 0 -3px 0 var(--ufsm-blue)}
+    .preview{position:sticky;top:96px}
+    .preview pre{margin:18px 0 0;max-height:600px;overflow:auto;padding:18px;background:#f4f5f3;border:1px solid var(--line);font:12px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace}
+    .status-box{padding:12px 14px;border-left:3px solid var(--ufsm-blue);background:#f1f6f8;color:var(--muted);font-size:13px}
+    .status-box.ok{border-left-color:var(--ufsm-orange);color:var(--ink)}
+    .actions-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+    .hidden{display:none!important}
+    @media(max-width:820px){.creator-grid{grid-template-columns:1fr}.preview{position:static}.metadata-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="./" aria-label="UFSM-MDT — início"><span class="brand-mark" aria-hidden="true">M</span><span>UFSM-MDT</span></a>
+    <nav class="nav-links" aria-label="Navegação principal">
+      <a href="./profiles.html">Perfis</a><a href="./rules.html">Regras</a><a href="./">Início</a>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo">
+  <section class="creator-hero">
+    <div class="container creator-grid">
+      <div>
+        <div class="kicker">Criador guiado · protótipo funcional</div>
+        <h1>Do perfil ao documento.</h1>
+        <p class="lede">Uma interface simples para reunir os dados necessários antes da validação do núcleo UFSM-MDT.</p>
+        <p class="meta">O navegador faz apenas uma pré-validação de formulário. A validação normativa continua no núcleo Python.</p>
+      </div>
+      <ol class="flow" aria-label="Fluxo do criador">
+        <li><b>01</b><span>Escolha o perfil</span></li>
+        <li><b>02</b><span>Preencha os metadados</span></li>
+        <li><b>03</b><span>Monte o conteúdo inicial</span></li>
+        <li><b>04</b><span>Revise o documento</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="creator-workspace">
+    <div class="container">
+      <div class="stepper" aria-label="Etapas">
+        <div class="step" data-step="1" aria-current="step">01 Perfil</div>
+        <div class="step" data-step="2">02 Metadados</div>
+        <div class="step" data-step="3">03 Conteúdo</div>
+        <div class="step" data-step="4">04 Revisão</div>
+      </div>
+
+      <div class="creator-grid">
+        <section class="creator-panel" aria-labelledby="form-title">
+          <h2 id="form-title">Criar documento</h2>
+          <p class="section-intro">Os campos obrigatórios são derivados diretamente do perfil declarativo publicado em <code>profiles/</code>.</p>
+
+          <form id="creator-form" class="creator-form">
+            <div class="field-group">
+              <label for="profile">Perfil documental</label>
+              <select id="profile" class="field" required></select>
+              <small id="profile-help">Carregando perfis…</small>
+            </div>
+
+            <div id="metadata-section" class="hidden">
+              <h3>Metadados obrigatórios</h3>
+              <div id="metadata" class="metadata-grid"></div>
+            </div>
+
+            <div class="field-group">
+              <label for="section-title">Primeira seção textual</label>
+              <input id="section-title" class="field" name="section_title" value="Introdução" required>
+            </div>
+
+            <div class="field-group">
+              <label for="section-content">Conteúdo inicial</label>
+              <textarea id="section-content" name="section_content" rows="9" required placeholder="Insira um rascunho da seção."></textarea>
+            </div>
+
+            <div class="field-group">
+              <label for="references">Referências BibTeX</label>
+              <textarea id="references" name="references" rows="7" placeholder="@book{exemplo, ...}"></textarea>
+              <small>O campo é transportado para o documento; a conformidade bibliográfica será verificada posteriormente.</small>
+            </div>
+
+            <div class="actions-row">
+              <button class="button primary" type="submit">Revisar documento</button>
+              <button class="button" type="button" id="reset-btn">Limpar formulário</button>
+            </div>
+          </form>
+
+          <div id="status" class="status-box" role="status" aria-live="polite">Carregando catálogo de perfis…</div>
+        </section>
+
+        <aside class="creator-panel preview" aria-labelledby="preview-title">
+          <div class="kicker">Prévia técnica</div>
+          <h2 id="preview-title">Documento</h2>
+          <p class="section-intro">A prévia representa o formato de dados consumido pelo núcleo. Ela não substitui a validação.</p>
+          <pre id="preview" aria-label="Prévia JSON do documento">{}</pre>
+        </aside>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-row"><strong>UFSM-MDT</strong><span>Projeto open source em desenvolvimento</span><a href="https://github.com/bpoltosi/ufsm-mdt" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+</footer>
+<script src="./creator.js" defer></script>
+</body>
+</html>
