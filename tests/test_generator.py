@@ -12,3 +12,19 @@ def test_generator_emits_independent_project(tmp_path):
     assert (out/"tocstyle.sty").is_file()
     assert (out/"referencias.bib").is_file()
     assert "\\dissertacao" in (out/"main.tex").read_text(encoding="utf-8")
+
+
+def test_generator_escapes_latex_metadata(tmp_path):
+    doc = Document(
+        type="article",
+        metadata={
+            "author": "Autor & Co.",
+            "title": "Título_100% {teste}",
+            "english_title": "A \\ B ~ C ^ D",
+        },
+    )
+    out = generate(doc, tmp_path / "escaped")
+    tex = (out / "main.tex").read_text(encoding="utf-8")
+    assert r"Autor \\& Co." in tex
+    assert r"Título\\_100\\% \\{teste\\}" in tex
+    assert r"A \\textbackslash{} B \\textasciitilde{} C \\textasciicircum{} D" in tex
