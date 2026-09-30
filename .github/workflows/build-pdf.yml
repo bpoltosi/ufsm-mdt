@@ -7,44 +7,41 @@ on:
         description: "Tipo de trabalho"
         required: true
         type: choice
-        options:
-          - research-project
-          - tcc
-          - internship-report
-          - dissertation
-          - thesis
-          - article
-          - technical-report
-          - monograph
-          - didactic-material
-          - pedagogical-resource
-          - professional-project
+        options: [research-project,tcc,internship-report,dissertation,thesis,article,technical-report,monograph,didactic-material,pedagogical-resource,professional-project]
 
 permissions:
   contents: read
 
+concurrency:
+  group: pdf-${{ inputs.type }}
+  cancel-in-progress: true
+
 jobs:
   pdf:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-python@v6
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
         with:
           python-version: "3.12"
-      - run: python -m pip install -e .
-      - name: Generate requested project
-        env:
+          cache: pip
+      - run: python -m pip install --disable-pip-version-check -e .
+      - env:
           TYPE: ${{ inputs.type }}
-        run: python -m ufsm_mdt.cli generate "tests/fixtures/$TYPE/document.json" "build/requested"
-      - name: Compile requested PDF
-        uses: xu-cheng/latex-action@v4
+        run: python -m ufsm_mdt.cli generate "tests/fixtures/$TYPE/document.json" build/requested
+      - uses: xu-cheng/latex-action@6549dc21effb2730855a1281407ecfcececc6c1b # v4
         with:
           root_file: build/requested/main.tex
           texlive_version: "2026"
           latexmk_use_xelatex: true
           work_in_root_file_dir: true
-      - name: Upload requested PDF
-        uses: actions/upload-artifact@v7
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: ufsm-mdt-${{ inputs.type }}-pdf
           path: build/requested/main.pdf
+          retention-days: 3
+          if-no-files-found: error
