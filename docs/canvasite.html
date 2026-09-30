@@ -110,7 +110,7 @@ button,input,select{font:inherit}button{cursor:pointer}
 main{isolation:isolate}main>section{animation:section-in .45s var(--ease) both}@keyframes section-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .skip-link{position:fixed;left:1rem;top:.75rem;z-index:100;padding:.6rem .85rem;border-radius:10px;background:var(--text);color:var(--bg);transform:translateY(-150%);transition:transform .18s}.skip-link:focus{transform:none;outline:3px solid var(--primary-2);outline-offset:2px}
 @media (max-width:767px){main{padding-top:1.25rem!important;padding-bottom:2rem!important}h1{font-size:clamp(2rem,9vw,3rem)!important}.feat{min-height:0}.demo-strip p{line-height:1.35}}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}}
+ .mobile-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}.mobile-scroll table{min-width:760px}button:disabled{cursor:not-allowed!important}.btn-accent{box-shadow:0 6px 18px color-mix(in srgb,var(--accent) 20%,transparent)}@media (max-width:767px){.btn{min-height:44px}.icon-btn{min-width:40px;min-height:40px}.tab-btn{min-height:44px}.toast{left:.75rem;right:.75rem;bottom:.75rem;max-width:none}.reftable th,.reftable td{white-space:nowrap}}@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}}
 </style>
   <script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js" type="text/javascript"></script>
   <script src="https://cdn.tailwindcss.com/3.4.17" type="text/javascript"></script>
@@ -185,7 +185,7 @@ main{isolation:isolate}main>section{animation:section-in .45s var(--ease) both}@
         <div class="flex items-center gap-2 mt-2"><label for="work-type" data-template-id="worktype-label" class="canva-text muted font-medium" style="font-weight: 400; font-style: normal; font-size: 14px;">Tipo de trabalho</label> <select id="work-type" class="field" style="width:auto"> <option value="tcc">TCC</option><option value="dissertacao">Dissertação</option><option value="tese">Tese</option> </select>
         </div>
        </div>
-       <div class="flex flex-col items-end gap-2"><button type="button" id="save-btn" class="btn btn-accent"><i data-lucide="save" style="width:18px;height:18px"></i><span data-template-id="save-button" class="canva-text" style="font-weight: 400; font-style: normal; font-size: 16px;">Salvar rascunho</span></button> <span data-template-id="save-state-saved" id="saved-ind" class="canva-text muted text-sm" style="font-weight: 400; font-style: normal; font-size: 13px;">Todas as alterações salvas</span> <span data-template-id="save-state-unsaved" id="unsaved-ind" class="canva-text text-sm hidden" style="color: var(--warn); font-weight: 400; font-style: normal; font-size: 13px;">Alterações não salvas</span>
+       <div class="flex flex-col items-end gap-2"><div class="flex flex-wrap justify-end gap-2"><button type="button" id="export-project-btn" class="btn btn-ghost" title="Exportar projeto em JSON"><i data-lucide="download" style="width:18px;height:18px"></i><span>Exportar</span></button><button type="button" id="import-project-btn" class="btn btn-ghost" title="Importar projeto em JSON"><i data-lucide="upload" style="width:18px;height:18px"></i><span>Importar</span></button><button type="button" id="save-btn" class="btn btn-accent"><i data-lucide="save" style="width:18px;height:18px"></i><span data-template-id="save-button" class="canva-text" style="font-weight: 400; font-style: normal; font-size: 16px;">Salvar rascunho</span></button></div> <span data-template-id="save-state-saved" id="saved-ind" class="canva-text muted text-sm" style="font-weight: 400; font-style: normal; font-size: 13px;">Todas as alterações salvas</span> <span data-template-id="save-state-unsaved" id="unsaved-ind" class="canva-text text-sm hidden" style="color: var(--warn); font-weight: 400; font-style: normal; font-size: 13px;">Alterações não salvas</span>
        </div>
       </div>
       <div class="mt-4">
@@ -380,7 +380,7 @@ main{isolation:isolate}main>section{animation:section-in .45s var(--ease) both}@
      </nav>
     </div>
    </footer>
-   <div id="toast" class="toast" role="status" aria-live="polite"></div>
+   <input id="import-project-input" type="file" accept="application/json,.json" hidden><div id="toast" class="toast" role="status" aria-live="polite"></div>
   </div>
   <script>
 // ---- Dados de demonstração (fáceis de substituir) ----
@@ -412,7 +412,7 @@ let backendRecords = [], dirty = false, loaded = false, vFilter = 'all', initial
 
 const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
 function toast(msg, err){const t=$('#toast');t.textContent=msg;t.className='toast show'+(err?' error':'');clearTimeout(t._h);t._h=setTimeout(()=>t.className='toast',3200);}
-function markDirty(){dirty=true;$('#saved-ind').classList.add('hidden');$('#unsaved-ind').classList.remove('hidden');renderProgress();}
+function markDirty(){dirty=true;saveLocal();$('#saved-ind').classList.add('hidden');$('#unsaved-ind').classList.remove('hidden');renderProgress();}
 function markClean(){dirty=false;$('#saved-ind').classList.remove('hidden');$('#unsaved-ind').classList.add('hidden');}
 function esc(s){return String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
 
@@ -443,6 +443,14 @@ $('#menu-btn').addEventListener('click',()=>{const m=$('#mobile-menu');const ope
 // ---- Tema ----
 function applyTheme(){$('#shell').classList.toggle('dark',state.theme==='dark');$('#theme-icon').innerHTML=`<i data-lucide="${state.theme==='dark'?'sun':'moon'}"></i>`;lucide.createIcons();}
 $('#theme-btn').addEventListener('click',()=>{state.theme=state.theme==='dark'?'light':'dark';applyTheme();markDirty();});
+const LOCAL_KEY='mdt-ufsm-draft-v2';
+function saveLocal(){try{localStorage.setItem(LOCAL_KEY,JSON.stringify(projectPayload()))}catch(e){}}
+function loadLocal(){try{var r=JSON.parse(localStorage.getItem(LOCAL_KEY)||'null');if(!r)return false;state={workType:r.work_type||'dissertacao',structure:Array.isArray(r.structure)?r.structure:DEFAULT_STRUCTURE(),validation:r.validation||DEFAULT_VALIDATION(),references:Array.isArray(r.references)?r.references:DEFAULT_REFS(),refStyle:r.reference_style||'abnt',theme:r.theme||'light'};return true}catch(e){return false}}
+$('#export-project-btn').addEventListener('click',exportProject);
+$('#import-project-btn').addEventListener('click',()=>$('#import-project-input').click());
+$('#import-project-input').addEventListener('change',async e=>{var file=e.target.files[0];if(!file)return;try{var r=JSON.parse(await file.text());if(!r||!Array.isArray(r.structure)||!Array.isArray(r.references))throw new Error('invalid');state={workType:r.work_type||'dissertacao',structure:r.structure,validation:r.validation||DEFAULT_VALIDATION(),references:r.references,refStyle:r.reference_style||'abnt',theme:r.theme||'light'};renderAll();markDirty();saveLocal();toast('Projeto importado. Revise os dados antes de salvar.');go('trabalho')}catch(err){toast('Arquivo inválido ou incompatível.',true)}finally{e.target.value=''}});
+window.addEventListener('beforeunload',e=>{if(dirty){saveLocal();e.preventDefault();e.returnValue=''}});
+document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='s'){e.preventDefault();saveLocal();$('#save-btn').click();return}if(e.key==='Escape'&&$('#mobile-menu')&&!$('#mobile-menu').classList.contains('hidden'))$('#menu-btn').click()});
 
 // ---- Estrutura ----
 function renderTree(){
@@ -570,13 +578,13 @@ function renderSummary(){
 }
 $('#work-type').addEventListener('change',e=>{state.workType=e.target.value;markDirty();renderSummary();toast('Tipo de trabalho: '+WT[state.workType]);});
 
-// ---- Gerar (simulado) ----
-$('#gen-form').addEventListener('submit',e=>{
-  e.preventDefault();const btn=$('#gen-btn');btn.disabled=true;$('#gen-done').classList.add('hidden');
-  $('#gen-progress-wrap').classList.remove('hidden');let p=0;$('#gen-live').textContent='Processando documento (simulação)…';
-  const iv=setInterval(()=>{p+=20;$('#gen-bar').style.width=p+'%';
-    if(p>=100){clearInterval(iv);btn.disabled=false;$('#gen-live').textContent=`Simulação concluída (${$('#gn-format').value}).`;$('#gen-done').classList.remove('hidden');}},600);
-});
+// ---- Exportação / geração ----
+function downloadBlob(content,name,type){var blob=new Blob([content],{type:type||'text/plain'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(url)},500)}
+function projectPayload(){return {version:1,app:'MDT UFSM',exported_at:new Date().toISOString(),work_type:state.workType,structure:state.structure,validation:state.validation,references:state.references,reference_style:state.refStyle,theme:state.theme}}
+function exportProject(){downloadBlob(JSON.stringify(projectPayload(),null,2),'mdt-ufsm-projeto.json','application/json');toast('Projeto exportado em JSON.')}
+function latexEscape(s){return String(s||'').replace(/([\\{}%&#_$])/g,'\\$1').replace(/~/g,'\\textasciitilde{}').replace(/\^/g,'\\textasciicircum{}')}
+function buildLatex(){var title=state.workType==='tcc'?'Trabalho de Conclusão de Curso':state.workType==='tese'?'Tese':'Dissertação';var sections=state.structure.filter(function(s){return s.group==='text'}).map(function(s){return '\\section{'+latexEscape(s.title)+'}'}).join('\n\n');var refs=state.references.filter(complete).sort(function(a,b){return a.author.localeCompare(b.author)}).map(function(r){return '\\bibitem{ref'+r.id+'} '+latexEscape(r.author)+'. \\textit{'+latexEscape(r.title)+'}. '+latexEscape(r.year)+'.'}).join('\n');return '\\documentclass[12pt,a4paper]{article}\n\\usepackage[utf8]{inputenc}\n\\usepackage[T1]{fontenc}\n\\usepackage[brazil]{babel}\n\\usepackage{geometry}\n\\geometry{a4paper,margin=3cm}\n\\begin{document}\n\\begin{titlepage}\n\\centering\n{\\Large '+latexEscape(title)+'\\par}\n\\vfill\n{\\large Modelo inicial gerado pelo protótipo MDT UFSM\\par}\n\\vfill\n{\\large '+new Date().getFullYear()+'\\par}\n\\end{titlepage}\n'+sections+'\n\\section*{Referências}\n\\begin{thebibliography}{99}\n'+refs+'\n\\end{thebibliography}\n\\end{document}\n'}
+$('#gen-form').addEventListener('submit',function(e){e.preventDefault();var fmt=$('#gn-format').value,btn=$('#gen-btn');btn.disabled=true;$('#gen-done').classList.add('hidden');$('#gen-progress-wrap').classList.remove('hidden');$('#gen-live').textContent='Preparando arquivo…';if(fmt!=='LaTeX'){setTimeout(function(){btn.disabled=false;$('#gen-live').textContent='O protótipo gera LaTeX diretamente no navegador. PDF e DOCX exigem compilação ou conversão externa.';$('#gen-done-text').textContent='Escolha LaTeX para baixar um arquivo .tex editável.';$('#gen-done').classList.remove('hidden')},250);return}var p=0,iv=setInterval(function(){p+=25;$('#gen-bar').style.width=p+'%';if(p>=100){clearInterval(iv);downloadBlob(buildLatex(),'mdt-ufsm.tex','application/x-tex');btn.disabled=false;$('#gen-live').textContent='Arquivo LaTeX gerado.';$('#gen-done-text').textContent='O arquivo .tex foi baixado. Revise-o junto ao MDT 2021 oficial antes de usar.';$('#gen-done').classList.remove('hidden')}},120)})
 
 function renderAll(){$('#work-type').value=state.workType;$('#rf-style').value=state.refStyle;applyTheme();renderTree();renderChecklist();renderRefs();renderProgress();renderSummary();}
 
@@ -609,7 +617,7 @@ $('#save-btn').addEventListener('click',async e=>{
   finally{btn.disabled=false;}
 });
 
-document.addEventListener('DOMContentLoaded',()=>{lucide.createIcons();renderAll();markClean();go('inicio');initData();});
+document.addEventListener('DOMContentLoaded',()=>{lucide.createIcons();const hadLocal=loadLocal();renderAll();markClean();go('inicio');if(hadLocal)toast('Rascunho local restaurado automaticamente.');initData();});
 </script>
  
 </body></html>
