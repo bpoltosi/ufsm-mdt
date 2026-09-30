@@ -1,53 +1,73 @@
 # UFSM-MDT
 
-Ferramenta open source em desenvolvimento para facilitar a criação, organização, formatação e validação técnica de trabalhos acadêmicos baseados nas diretrizes do Manual de Dissertações e Teses (MDT) da Universidade Federal de Santa Maria (UFSM).
+Ferramenta open source em desenvolvimento para facilitar a criação, estruturação, validação e geração de trabalhos acadêmicos conforme o **Manual de Dissertações e Teses da UFSM (MDT 2021)**.
 
-> **Status:** 🟡 Fundação do projeto.
+> **Status:** 🟡 Fundação / especificação do núcleo.
 
 ## Objetivo
 
-Reduzir o trabalho manual necessário para iniciar e manter trabalhos acadêmicos da UFSM, oferecendo uma estrutura versionável, documentada e preparada para automação.
+O foco do projeto é **gerar corretamente os diferentes tipos de trabalhos acadêmicos suportados**, preservando a implementação LaTeX do modelo MDT UFSM 2021 e transformando regras verificáveis do manual em validações automatizadas.
 
-O projeto pretende evoluir de um template LaTeX organizado para uma ferramenta capaz de centralizar metadados, estruturar documentos, facilitar a compilação, verificar regras técnicas e integrar validações ao GitHub Actions.
-
-## Estrutura
-
-- `template/` — base LaTeX
-- `config/` — metadados e configurações
-- `examples/` — exemplos mínimos
-- `scripts/` — automação e validação
-- `docs/` — documentação, arquitetura, fontes e roadmap
-- `.github/workflows/` — futura integração contínua
+O projeto não substitui o MDT, regulamentos, editais ou orientação de professores da UFSM.
 
 ## Fluxo planejado
 
-1. Iniciar um trabalho a partir do template.
-2. Preencher os dados básicos.
-3. Escrever o conteúdo.
-4. Compilar localmente ou no Overleaf.
-5. Executar as validações.
-6. Corrigir erros e avisos.
-7. Manter o histórico com Git.
+```
+Escolher tipo
+    ↓
+Preencher dados e conteúdo
+    ↓
+Validar
+    ↓
+Gerar projeto LaTeX
+    ├── baixar e compilar manualmente
+    └── solicitar PDF online
+              ↓
+       GitHub Actions
+```
 
-## Importante
+A compilação online é opcional. O usuário sempre deverá poder baixar o projeto LaTeX e compilá-lo localmente ou no Overleaf, quando as dependências forem compatíveis.
 
-O projeto não substitui o MDT, regulamentos, editais ou orientação de professores da UFSM. Regras institucionais deverão ser verificadas contra fontes oficiais e registradas com sua versão/data. Uma validação automatizada não será tratada como aprovação institucional.
+## Escopo inicial
+
+O projeto **não** terá inicialmente:
+
+- VM ou backend permanente;
+- banco de dados;
+- contas de usuários;
+- colaboração;
+- IA;
+- editor visual complexo;
+- importação de PDF;
+- armazenamento permanente dos trabalhos.
+
+A prioridade é a correção do gerador e das regras do MDT.
 
 ## Documentação
 
-- [Visão geral](docs/visao-geral.md)
+- [Decisões do projeto](docs/decisoes.md)
+- [Blocos de construção](docs/blocos.md)
 - [Arquitetura](docs/arquitetura.md)
-- [Fontes e referências](docs/fontes.md)
+- [Especificação técnica](docs/especificacao-tecnica.md)
+- [Fontes e rastreabilidade](docs/fontes.md)
 - [Roadmap](docs/roadmap.md)
-- [Contribuição](CONTRIBUTING.md)
+- [Documentação geral](docs/README.md)
 
-## Tecnologias previstas
+## Fontes principais
 
-LaTeX · Python · Git/GitHub · GitHub Actions · Overleaf
+- UFSM — Normas MDT: https://www.ufsm.br/orgaos-suplementares/biblioteca/mdt
+- UFSM — Normas ABNT/MDT: https://www.ufsm.br/orgaos-suplementares/biblioteca/normas-abnt-mdt
+- MDT UFSM 2021: https://www.ufsm.br/app/uploads/sites/538/2021/12/MDT_UFSM_2021.pdf
+- Template LaTeX: https://github.com/Eugenio-Pozzobon/mdt-ufsm-2021-latex
+- Template Overleaf: https://www.overleaf.com/latex/templates/mdt-ufsm-2021/wbmqyzfngtgv
+
+## Tecnologias
+
+A tecnologia final será escolhida em função do núcleo do projeto. A base LaTeX utiliza XeLaTeX conforme a documentação do template de referência. A aplicação deverá manter o núcleo independente da interface.
 
 ## Licença
 
-A licença definitiva será definida após a verificação das licenças das fontes e templates utilizados.
+A licença definitiva do `ufsm-mdt` será definida após a verificação das licenças dos componentes incorporados.
 
 ## Autor
 
