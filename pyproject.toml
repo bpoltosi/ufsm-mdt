@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ufsm-mdt"
+version = "0.1.0"
+description = "Gerador e validador de trabalhos acadêmicos conforme a MDT UFSM 2021."
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+ufsm-mdt = "ufsm_mdt.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
