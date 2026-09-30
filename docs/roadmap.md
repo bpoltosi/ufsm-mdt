@@ -1,61 +1,82 @@
 # Roadmap
 
-## Fase 0 — Fundação
+## Fase 0 — Decisões e fontes
 - [x] Estrutura inicial
 - [x] Objetivo e escopo
-- [x] Organização de pastas
-- [x] Arquitetura técnica
-- [x] Especificação técnica inicial
-- [x] Registro de fontes
-- [x] Verificação do MDT institucional 2021
-- [x] Análise do modelo LaTeX/Overleaf MDT UFSM 2021
-- [x] Identificação da licença indicada no Overleaf
-- [ ] Confirmar versão/commit exato que será incorporado
+- [x] Arquitetura inicial
+- [x] Especificação inicial
+- [x] Fontes confiáveis registradas
+- [x] Decisões do projeto documentadas
+- [x] Blocos de construção definidos
+- [ ] Fixar versão/commit exato do template incorporado
 
-## Fase 1 — Template
+## Fase 1 — Engenharia do MDT
+- [ ] Mapear elementos do MDT 2021
+- [ ] Mapear tipos de trabalho
+- [ ] Mapear metadados por tipo
+- [ ] Mapear elementos obrigatórios/opcionais
+- [ ] Registrar regras com seção/página
+- [ ] Registrar ambiguidades
+
+## Fase 2 — Template
 - [ ] Incorporar base LaTeX permitida
-- [ ] Mapear todos os metadados da classe
-- [ ] Separar configuração de conteúdo
-- [ ] Criar TCC mínimo compilável
-- [ ] Criar relatório mínimo compilável
-- [ ] Guia de compilação local
-- [ ] Guia de uso no Overleaf
+- [ ] Registrar origem e versão
+- [ ] Isolar arquivos auxiliares
+- [ ] Definir ambiente de compilação
+- [ ] Criar fixture mínimo para cada tipo inicialmente suportado
 
-## Fase 2 — Configuração
-- [ ] Definir schema YAML/TOML
-- [ ] Criar validação do schema
-- [ ] Mapear campos obrigatórios por tipo
-- [ ] Criar gerador de configuração
-- [ ] Criar fixtures
+## Fase 3 — Modelo e perfis
+- [ ] Definir modelo interno
+- [ ] Definir formato dos perfis
+- [ ] Criar perfis dos tipos suportados
+- [ ] Validar perfis contra o MDT
+- [ ] Criar exemplos mínimos
 
-## Fase 3 — Validação
-- [ ] Definir catálogo de regras
-- [ ] IDs e severidades
-- [ ] Validação de metadados
-- [ ] Validação de resumo/palavras-chave
-- [ ] Validação de referências
-- [ ] Validação de figuras/tabelas/quadros
-- [ ] Relatório de validação
+## Fase 4 — Gerador
+- [ ] Gerar metadados
+- [ ] Gerar elementos pré-textuais
+- [ ] Gerar conteúdo textual
+- [ ] Gerar elementos pós-textuais
+- [ ] Gerar referências
+- [ ] Gerar assets
+- [ ] Gerar projeto independente
 
-## Fase 4 — Automação
-- [ ] GitHub Actions
-- [ ] Build dos exemplos
-- [ ] Testes automatizados
-- [ ] Artefatos PDF
-- [ ] Validação em Pull Requests
+## Fase 5 — Validador
+- [ ] Regras de configuração
+- [ ] Regras estruturais
+- [ ] Regras de conteúdo
+- [ ] Regras de referências
+- [ ] Regras de elementos gráficos
+- [ ] Regras de build
+- [ ] Relatório ERROR/WARNING/INFO
 
-## Fase 5 — Experiência de uso
-- [ ] CLI
-- [ ] comando `init`
-- [ ] comando `validate`
-- [ ] comando `build`
-- [ ] comando `check`
-- [ ] exemplos de TCC e relatórios
-- [ ] guia rápido
+## Fase 6 — Testes
+- [ ] Testes unitários
+- [ ] Testes de geração
+- [ ] Testes de build
+- [ ] Testes por tipo de trabalho
+- [ ] Regressão de template
+- [ ] Avaliar testes visuais
 
-## Fase 6 — Evolução
-- [ ] Versionamento das regras do MDT
+## Fase 7 — Interface
+- [ ] Seleção de tipo
+- [ ] Formulário de metadados
+- [ ] Entrada de conteúdo
+- [ ] Validação
+- [ ] Download do projeto
+- [ ] Solicitação de PDF
+
+## Fase 8 — PDF sob demanda
+- [ ] Workflow de build manual
+- [ ] Ambiente de compilação versionado
+- [ ] Artefato PDF
+- [ ] Retorno de erros de build
+- [ ] Limitar workflow ao pedido explícito do usuário
+
+## Fase 9 — Documentação e distribuição
+- [ ] Guia local
+- [ ] Guia Overleaf
+- [ ] Guia da aplicação
+- [ ] Exemplos
 - [ ] Changelog
-- [ ] Testes de regressão visual
-- [ ] Avaliar Markdown → LaTeX
-- [ ] Avaliar suporte a futuras versões do MDT
+- [ ] Política de atualização do MDT
