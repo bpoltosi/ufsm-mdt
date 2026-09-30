@@ -181,3 +181,24 @@ Novas funcionalidades somente entram na primeira versão quando forem necessári
 - permitir o uso básico da ferramenta.
 
 Funcionalidades de conveniência ficam para depois.
+
+
+## D-001 — Todas as tipologias documentadas serão implementadas
+
+As 11 tipologias catalogadas em `docs/mdt/tipos.md` serão representadas desde a primeira arquitetura funcional. A ausência de comando dedicado no template não elimina a tipologia: usa-se a capacidade genérica da classe quando tecnicamente apropriado.
+
+## D-002 — Incorporação direta do upstream
+
+A base útil do template será incorporada diretamente ao repositório, com commit upstream fixado e cabeçalhos de origem preservados. O projeto pode modificar a base quando necessário, mas deve manter rastreabilidade da origem e das alterações.
+
+## D-003 — GitHub Actions é o ambiente oficial de automação
+
+Testes e compilação controlada serão executados por GitHub Actions. O PDF final para usuário não será produzido automaticamente pelo fluxo de edição; será solicitado explicitamente.
+
+## D-004 — Completude acima do mínimo
+
+A UX pode informar que um campo ou elemento é opcional, mas a configuração padrão deve privilegiar o trabalho mais completo quando isso não contradizer a MDT. O sistema não deve remover elementos apenas para simplificar a interface.
+
+## D-005 — Regra acadêmica separada de implementação
+
+Um comando LaTeX, sozinho, não cria uma equivalência normativa. A fonte normativa continua sendo a MDT/UFSM; a classe LaTeX é a implementação técnica.
