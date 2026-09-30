@@ -73,3 +73,30 @@ MDT UFSM 2021, seção 2.2, especialmente pp. 14–16 do documento eletrônico.
 
 Fonte oficial:
 https://www.ufsm.br/app/uploads/sites/538/2021/12/MDT_UFSM_2021.pdf
+
+
+## Matriz de cruzamento normativa × implementação
+
+| Tipologia normativa MDT | Evidência no template | Identificador técnico no produto | Situação |
+|---|---|---|---|
+| Projeto de Pesquisa | Não identificado como comando dedicado na classe | `research-project` (proposto) | requer decisão de perfil |
+| Trabalho de Conclusão de Curso | `\\tcc`, `\\tccg`, `\\tf`, `\\tfg`, `\\monografia`, `\\monografiag` | `tcc` / variantes estruturais | requer consolidação de perfis |
+| Relatório de Estágio | `\\relatorio` | `internship-report` | candidato |
+| Dissertação | `\\dissertacao` | `dissertation` | candidato |
+| Tese | `\\tese` | `thesis` | candidato |
+| Artigo Científico | não há comando dedicado identificado | `article` (proposto) | requer decisão de perfil |
+| Relatório Técnico-Científico | `\\relatorio` pode ser tecnicamente reutilizado, mas não prova equivalência normativa | `technical-report` | requer decisão de perfil |
+| Monografia | `\\monografia`, `\\monografiag` | `monograph` | candidato |
+| Material Didático | não há comando dedicado identificado | `didactic-material` (proposto) | requer decisão de perfil |
+| Recurso Pedagógico | não há comando dedicado identificado | `pedagogical-resource` (proposto) | requer decisão de perfil |
+| Projeto de aplicação/adequação/inovação | não há comando dedicado identificado | `professional-project` (proposto) | requer decisão de perfil |
+
+### Regra de interpretação
+
+O cruzamento acima não declara que duas tipologias são equivalentes. Ele registra apenas a evidência disponível para orientar a próxima etapa. Um perfil só poderá ser considerado suportado depois de:
+
+1. confirmar a estrutura exigida na MDT;
+2. confirmar que o template consegue expressá-la;
+3. definir os metadados necessários;
+4. criar fixture mínimo;
+5. validar e compilar o fixture.
