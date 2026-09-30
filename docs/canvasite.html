@@ -112,6 +112,31 @@ main{isolation:isolate}main>section{animation:section-in .45s var(--ease) both}@
 @media (max-width:767px){main{padding-top:1.25rem!important;padding-bottom:2rem!important}h1{font-size:clamp(2rem,9vw,3rem)!important}.feat{min-height:0}.demo-strip p{line-height:1.35}}
  @media print{.topbar,.demo-strip,nav,.btn,.tab-btn,.toast,#mobile-menu{display:none!important}.app-shell{background:#fff!important}.surface{box-shadow:none!important;border:1px solid #ccc!important}.hidden{display:none!important}body{background:#fff!important;color:#111!important}.muted{color:#444!important}}
 .mobile-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}.mobile-scroll table{min-width:760px}button:disabled{cursor:not-allowed!important}.btn-accent{box-shadow:0 6px 18px color-mix(in srgb,var(--accent) 20%,transparent)}@media (max-width:767px){.btn{min-height:44px}.icon-btn{min-width:40px;min-height:40px}.tab-btn{min-height:44px}.toast{left:.75rem;right:.75rem;bottom:.75rem;max-width:none}.reftable th,.reftable td{white-space:nowrap}}@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}}
+
+/* Final audit refinements */
+@media print{
+  body.printing .app-shell{background:#fff!important}
+  body.printing main{padding:0!important;max-width:none!important}
+  body.printing .topbar,body.printing footer,body.printing .demo-strip,body.printing nav,body.printing .btn,body.printing .tab-btn,body.printing .toast,body.printing #mobile-menu,body.printing #overview-actions{display:none!important}
+  body.printing .surface{box-shadow:none!important;border:0!important}
+  body.printing [data-view="trabalho"]{display:block!important}
+  body.printing [data-panel]{display:block!important}
+}
+@media (max-width:767px){
+  .reftable thead{display:none}
+  .reftable,.reftable tbody,.reftable tr,.reftable td{display:block;width:100%;min-width:0}
+  .reftable tr{padding:.75rem 0;border-bottom:1px solid var(--border)}
+  .reftable td{border:0;padding:.3rem 0;white-space:normal}
+  .reftable td::before{display:block;font-size:.72rem;font-weight:700;color:var(--muted);margin-bottom:.15rem}
+  .reftable td:nth-child(1)::before{content:"Autor"}
+  .reftable td:nth-child(2)::before{content:"Ano"}
+  .reftable td:nth-child(3)::before{content:"Título"}
+  .reftable td:nth-child(4)::before{content:"Tipo"}
+  .reftable td:nth-child(5)::before{content:"Editora / periódico"}
+  .reftable td:nth-child(6)::before{content:"Estado"}
+  .reftable td:nth-child(7)::before{content:"Ações"}
+  .reftable td input,.reftable td select{min-height:42px}
+}
 </style>
   <script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js" type="text/javascript"></script>
   <script src="https://cdn.tailwindcss.com/3.4.17" type="text/javascript"></script>
@@ -123,9 +148,9 @@ main{isolation:isolate}main>section{animation:section-in .45s var(--ease) both}@
   <a class="skip-link" href="#main">Pular para o conteúdo</a>\n  <div id="shell" class="app-shell">
    <header class="topbar sticky top-0 z-40">
     <div class="max-w-7xl mx-auto px-4 md:px-6 h-16 flex items-center gap-4"><button type="button" class="flex items-center gap-2" data-go="inicio" aria-label="Ir para o início"> <span class="w-8 h-8 rounded-md grid place-items-center" style="background:var(--primary);color:var(--surface)"><i data-lucide="book-open" style="width:18px;height:18px"></i></span> <span data-template-id="brand-name" class="canva-text font-bold" style="font-weight: 700; font-style: normal; font-size: 18px;">MDT UFSM</span> </button> <span data-template-id="badge-open-source" class="canva-tag badge badge-os hidden sm:inline-block" style="font-weight: 400; font-style: normal; font-size: 16px;">protótipo público</span>
-     <nav aria-label="Principal" class="hidden md:flex items-center gap-1 ml-4"><button type="button" class="nav-link" data-nav="inicio" data-template-id="nav-inicio" style="font-weight: 400; font-style: normal; font-size: 16px;">Início</button> <button type="button" class="nav-link" data-nav="trabalho" data-template-id="nav-trabalho" style="font-weight: 400; font-style: normal; font-size: 16px;">Meu trabalho</button> <button type="button" class="nav-link" data-nav="structure" data-template-id="nav-estrutura" style="font-weight: 400; font-style: normal; font-size: 16px;">Estrutura</button> <button type="button" class="nav-link" data-nav="validation" data-template-id="nav-validacao" style="font-weight: 400; font-style: normal; font-size: 16px;">Validação</button> <button type="button" class="nav-link" data-nav="ajuda" data-template-id="nav-ajuda" style="font-weight: 400; font-style: normal; font-size: 16px;">Ajuda</button>
+     <nav aria-label="Principal" class="hidden md:flex items-center gap-1 ml-4"><button type="button" class="nav-link" data-nav="inicio" data-template-id="nav-inicio" style="font-weight: 400; font-style: normal; font-size: 16px;">Início</button> <button type="button" class="nav-link" data-nav="trabalho" data-template-id="nav-trabalho" style="font-weight: 400; font-style: normal; font-size: 16px;">Meu trabalho</button> <button type="button" class="nav-link" data-nav="structure" data-template-id="nav-estrutura" style="font-weight: 400; font-style: normal; font-size: 16px;">Estrutura</button> <button type="button" class="nav-link" data-nav="validation" data-template-id="nav-validacao" style="font-weight: 400; font-style: normal; font-size: 16px;">Conferência MDT</button> <button type="button" class="nav-link" data-nav="ajuda" data-template-id="nav-ajuda" style="font-weight: 400; font-style: normal; font-size: 16px;">Ajuda</button>
      </nav>
-     <div class="ml-auto flex items-center gap-1"><button type="button" id="theme-btn" class="icon-btn" aria-label="Alternar tema claro e escuro"><span id="theme-icon"><i data-lucide="moon"></i></span></button> <button type="button" id="menu-btn" class="icon-btn md:hidden" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu"><i data-lucide="menu"></i></button>
+     <div class="ml-auto flex items-center gap-1"><button type="button" id="theme-btn" class="icon-btn" aria-label="Alternar tema: claro, escuro ou sistema" title="Tema: claro, escuro ou sistema"><span id="theme-icon"><i data-lucide="monitor"></i></span></button> <button type="button" id="menu-btn" class="icon-btn md:hidden" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu"><i data-lucide="menu"></i></button>
      </div>
     </div>
     <nav id="mobile-menu" aria-label="Menu mobile" class="md:hidden hidden border-t px-4 py-2 flex-col gap-1" style="border-color:var(--border)"><button type="button" class="nav-link text-left" data-nav="inicio" data-template-id="mnav-inicio" style="font-weight: 400; font-style: normal; font-size: 16px;">Início</button> <button type="button" class="nav-link text-left" data-nav="trabalho" data-template-id="mnav-trabalho" style="font-weight: 400; font-style: normal; font-size: 16px;">Meu trabalho</button> <button type="button" class="nav-link text-left" data-nav="structure" data-template-id="mnav-estrutura" style="font-weight: 400; font-style: normal; font-size: 16px;">Estrutura</button> <button type="button" class="nav-link text-left" data-nav="validation" data-template-id="mnav-validacao" style="font-weight: 400; font-style: normal; font-size: 16px;">Validação</button> <button type="button" class="nav-link text-left" data-nav="ajuda" data-template-id="mnav-ajuda" style="font-weight: 400; font-style: normal; font-size: 16px;">Ajuda</button>
@@ -167,7 +192,7 @@ main{isolation:isolate}main>section{animation:section-in .45s var(--ease) both}@
      </div>
      <section class="py-8" aria-labelledby="features-h">
       <h2 id="features-h" data-template-id="features-title" class="canva-text font-bold mb-6" style="font-weight: 700; font-style: normal; font-size: 24px;">O que você pode fazer</h2>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5"><button type="button" class="surface feat" data-nav="structure"><i data-lucide="list-tree" style="color:var(--primary)"></i><h3 data-template-id="feat-1-title" class="canva-text font-semibold mt-3 mb-1" style="font-weight: 400; font-style: normal; font-size: 19px;">Montar a estrutura</h3><p data-template-id="feat-1-text" class="canva-text muted mb-3" style="font-weight: 400; font-style: normal; font-size: 15px;">Organize os elementos pré-textuais, textuais e pós-textuais em uma árvore editável.</p><span data-template-id="feat-1-link" class="canva-link font-semibold" style="color: var(--primary); font-weight: 400; font-style: normal; font-size: 14px;">Abrir estrutura →</span></button> <button type="button" class="surface feat" data-nav="validation"><i data-lucide="list-checks" style="color:var(--primary)"></i><h3 data-template-id="feat-2-title" class="canva-text font-semibold mt-3 mb-1" style="font-weight: 400; font-style: normal; font-size: 19px;">Validar requisitos</h3><p data-template-id="feat-2-text" class="canva-text muted mb-3" style="font-weight: 400; font-style: normal; font-size: 15px;">Acompanhe verificações assistivas inspiradas no MDT 2021; elas não constituem validação oficial.</p><span data-template-id="feat-2-link" class="canva-link font-semibold" style="color: var(--primary); font-weight: 400; font-style: normal; font-size: 14px;">Abrir validação →</span></button> <button type="button" class="surface feat" data-nav="references"><i data-lucide="library" style="color:var(--primary)"></i><h3 data-template-id="feat-3-title" class="canva-text font-semibold mt-3 mb-1" style="font-weight: 400; font-style: normal; font-size: 19px;">Organizar referências</h3><p data-template-id="feat-3-text" class="canva-text muted mb-3" style="font-weight: 400; font-style: normal; font-size: 15px;">Cadastre, busque e revise referências com uma prévia formatada.</p><span data-template-id="feat-3-link" class="canva-link font-semibold" style="color: var(--primary); font-weight: 400; font-style: normal; font-size: 14px;">Abrir referências →</span></button> <button type="button" class="surface feat" data-nav="generate"><i data-lucide="file-output" style="color:var(--primary)"></i><h3 data-template-id="feat-4-title" class="canva-text font-semibold mt-3 mb-1" style="font-weight: 400; font-style: normal; font-size: 19px;">Gerar o documento final</h3><p data-template-id="feat-4-text" class="canva-text muted mb-3" style="font-weight: 400; font-style: normal; font-size: 15px;">Revise um resumo do projeto e visualize o fluxo de geração (protótipo).</p><span data-template-id="feat-4-link" class="canva-link font-semibold" style="color: var(--primary); font-weight: 400; font-style: normal; font-size: 14px;">Abrir geração →</span></button>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5"><button type="button" class="surface feat" data-nav="structure"><i data-lucide="list-tree" style="color:var(--primary)"></i><h3 data-template-id="feat-1-title" class="canva-text font-semibold mt-3 mb-1" style="font-weight: 400; font-style: normal; font-size: 19px;">Montar a estrutura</h3><p data-template-id="feat-1-text" class="canva-text muted mb-3" style="font-weight: 400; font-style: normal; font-size: 15px;">Organize os elementos pré-textuais, textuais e pós-textuais em uma árvore editável.</p><span data-template-id="feat-1-link" class="canva-link font-semibold" style="color: var(--primary); font-weight: 400; font-style: normal; font-size: 14px;">Abrir estrutura →</span></button> <button type="button" class="surface feat" data-nav="validation"><i data-lucide="list-checks" style="color:var(--primary)"></i><h3 data-template-id="feat-2-title" class="canva-text font-semibold mt-3 mb-1" style="font-weight: 400; font-style: normal; font-size: 19px;">Conferir requisitos</h3><p data-template-id="feat-2-text" class="canva-text muted mb-3" style="font-weight: 400; font-style: normal; font-size: 15px;">Acompanhe verificações assistivas inspiradas no MDT 2021; elas não constituem validação oficial.</p><span data-template-id="feat-2-link" class="canva-link font-semibold" style="color: var(--primary); font-weight: 400; font-style: normal; font-size: 14px;">Abrir conferência →</span></button> <button type="button" class="surface feat" data-nav="references"><i data-lucide="library" style="color:var(--primary)"></i><h3 data-template-id="feat-3-title" class="canva-text font-semibold mt-3 mb-1" style="font-weight: 400; font-style: normal; font-size: 19px;">Organizar referências</h3><p data-template-id="feat-3-text" class="canva-text muted mb-3" style="font-weight: 400; font-style: normal; font-size: 15px;">Cadastre, busque e revise referências com uma prévia formatada.</p><span data-template-id="feat-3-link" class="canva-link font-semibold" style="color: var(--primary); font-weight: 400; font-style: normal; font-size: 14px;">Abrir referências →</span></button> <button type="button" class="surface feat" data-nav="generate"><i data-lucide="file-output" style="color:var(--primary)"></i><h3 data-template-id="feat-4-title" class="canva-text font-semibold mt-3 mb-1" style="font-weight: 400; font-style: normal; font-size: 19px;">Preparar a saída</h3><p data-template-id="feat-4-text" class="canva-text muted mb-3" style="font-weight: 400; font-style: normal; font-size: 15px;">Revise um resumo do projeto e visualize o fluxo de geração (protótipo).</p><span data-template-id="feat-4-link" class="canva-link font-semibold" style="color: var(--primary); font-weight: 400; font-style: normal; font-size: 14px;">Abrir geração →</span></button>
       </div>
      </section>
      <section class="py-6" aria-labelledby="sc-h">
@@ -186,7 +211,7 @@ main{isolation:isolate}main>section{animation:section-in .45s var(--ease) both}@
         <div class="flex items-center gap-2 mt-2"><label for="work-type" data-template-id="worktype-label" class="canva-text muted font-medium" style="font-weight: 400; font-style: normal; font-size: 14px;">Tipo de trabalho</label> <select id="work-type" class="field" style="width:auto"> <option value="tcc">TCC</option><option value="dissertacao">Dissertação</option><option value="tese">Tese</option> </select>
         </div>
        </div>
-       <div class="flex flex-col items-end gap-2"><div class="flex flex-wrap justify-end gap-2"><button type="button" id="reset-project-btn" class="btn btn-ghost" title="Restaurar projeto de demonstração"><i data-lucide="rotate-ccw" style="width:18px;height:18px"></i><span>Restaurar</span></button><button type="button" id="print-project-btn" class="btn btn-ghost" title="Imprimir ou salvar como PDF"><i data-lucide="printer" style="width:18px;height:18px"></i><span>Imprimir</span></button><button type="button" id="export-project-btn" class="btn btn-ghost" title="Exportar projeto em JSON"><i data-lucide="download" style="width:18px;height:18px"></i><span>Exportar</span></button><button type="button" id="import-project-btn" class="btn btn-ghost" title="Importar projeto em JSON"><i data-lucide="upload" style="width:18px;height:18px"></i><span>Importar</span></button><button type="button" id="save-btn" class="btn btn-accent"><i data-lucide="save" style="width:18px;height:18px"></i><span data-template-id="save-button" class="canva-text" style="font-weight: 400; font-style: normal; font-size: 16px;">Salvar rascunho</span></button></div> <span data-template-id="save-state-saved" id="saved-ind" class="canva-text muted text-sm" style="font-weight: 400; font-style: normal; font-size: 13px;">Todas as alterações salvas</span> <span data-template-id="save-state-unsaved" id="unsaved-ind" class="canva-text text-sm hidden" style="color: var(--warn); font-weight: 400; font-style: normal; font-size: 13px;">Alterações não salvas</span>
+       <div class="flex flex-col items-end gap-2"><div class="flex flex-wrap justify-end gap-2"><button type="button" id="reset-project-btn" class="btn btn-ghost" title="Restaurar projeto de demonstração"><i data-lucide="rotate-ccw" style="width:18px;height:18px"></i><span>Restaurar</span></button><button type="button" id="print-project-btn" title="Abrir prévia limpa para impressão" class="btn btn-ghost" title="Imprimir ou salvar como PDF"><i data-lucide="printer" style="width:18px;height:18px"></i><span>Prévia de impressão</span></button><button type="button" id="export-project-btn" class="btn btn-ghost" title="Exportar projeto em JSON"><i data-lucide="download" style="width:18px;height:18px"></i><span>Exportar</span></button><button type="button" id="import-project-btn" class="btn btn-ghost" title="Importar projeto em JSON"><i data-lucide="upload" style="width:18px;height:18px"></i><span>Importar</span></button><button type="button" id="save-btn" class="btn btn-accent"><i data-lucide="save" style="width:18px;height:18px"></i><span data-template-id="save-button" class="canva-text" style="font-weight: 400; font-style: normal; font-size: 16px;">Salvar e sincronizar</span></button></div> <span data-template-id="save-state-saved" id="saved-ind" class="canva-text muted text-sm" style="font-weight: 400; font-style: normal; font-size: 13px;">Sincronizado</span> <span data-template-id="save-state-unsaved" id="unsaved-ind" class="canva-text text-sm hidden" style="color: var(--warn); font-weight: 400; font-style: normal; font-size: 13px;">Alterações não sincronizadas</span>
        </div>
       </div>
       <div class="mt-4">
@@ -200,7 +225,7 @@ main{isolation:isolate}main>section{animation:section-in .45s var(--ease) both}@
      </div>
      <div class="grid lg:grid-cols-[220px_1fr] gap-6">
       <aside aria-label="Áreas do projeto">
-       <div role="tablist" aria-orientation="vertical" class="surface p-2 flex lg:flex-col gap-1 overflow-x-auto"><button type="button" role="tab" class="tab-btn" data-tab="overview"><i data-lucide="layout-dashboard" style="width:18px;height:18px"></i><span data-template-id="tab-overview" class="canva-text whitespace-nowrap" style="font-weight: 400; font-style: normal; font-size: 16px;">Visão geral</span></button> <button type="button" role="tab" class="tab-btn" data-tab="structure"><i data-lucide="list-tree" style="width:18px;height:18px"></i><span data-template-id="tab-structure" class="canva-text whitespace-nowrap" style="font-weight: 400; font-style: normal; font-size: 16px;">Estrutura</span></button> <button type="button" role="tab" class="tab-btn" data-tab="validation"><i data-lucide="list-checks" style="width:18px;height:18px"></i><span data-template-id="tab-validation" class="canva-text whitespace-nowrap" style="font-weight: 400; font-style: normal; font-size: 16px;">Validação</span></button> <button type="button" role="tab" class="tab-btn" data-tab="references"><i data-lucide="library" style="width:18px;height:18px"></i><span data-template-id="tab-references" class="canva-text whitespace-nowrap" style="font-weight: 400; font-style: normal; font-size: 16px;">Referências</span></button> <button type="button" role="tab" class="tab-btn" data-tab="generate"><i data-lucide="file-output" style="width:18px;height:18px"></i><span data-template-id="tab-generate" class="canva-text whitespace-nowrap" style="font-weight: 400; font-style: normal; font-size: 16px;">Gerar documento</span></button>
+       <div role="tablist" aria-orientation="vertical" class="surface p-2 flex lg:flex-col gap-1 overflow-x-auto"><button type="button" role="tab" class="tab-btn" data-tab="overview"><i data-lucide="layout-dashboard" style="width:18px;height:18px"></i><span data-template-id="tab-overview" class="canva-text whitespace-nowrap" style="font-weight: 400; font-style: normal; font-size: 16px;">Visão geral</span></button> <button type="button" role="tab" class="tab-btn" data-tab="structure"><i data-lucide="list-tree" style="width:18px;height:18px"></i><span data-template-id="tab-structure" class="canva-text whitespace-nowrap" style="font-weight: 400; font-style: normal; font-size: 16px;">Estrutura</span></button> <button type="button" role="tab" class="tab-btn" data-tab="validation"><i data-lucide="list-checks" style="width:18px;height:18px"></i><span data-template-id="tab-validation" class="canva-text whitespace-nowrap" style="font-weight: 400; font-style: normal; font-size: 16px;">Validação</span></button> <button type="button" role="tab" class="tab-btn" data-tab="references"><i data-lucide="library" style="width:18px;height:18px"></i><span data-template-id="tab-references" class="canva-text whitespace-nowrap" style="font-weight: 400; font-style: normal; font-size: 16px;">Referências</span></button> <button type="button" role="tab" class="tab-btn" data-tab="generate"><i data-lucide="file-output" style="width:18px;height:18px"></i><span data-template-id="tab-generate" class="canva-text whitespace-nowrap" style="font-weight: 400; font-style: normal; font-size: 16px;">Baixar projeto LaTeX</span></button>
        </div>
       </aside>
       <div class="min-w-0"><!-- Visão geral -->
@@ -302,7 +327,7 @@ main{isolation:isolate}main>section{animation:section-in .45s var(--ease) both}@
         </div>
        </section><!-- Gerar -->
        <section data-panel="generate" role="tabpanel" class="hidden fade-in">
-        <h2 data-template-id="gn-title" class="canva-text font-bold mb-4" style="font-weight: 400; font-style: normal; font-size: 22px;">Gerar documento</h2>
+        <h2 data-template-id="gn-title" class="canva-text font-bold mb-4" style="font-weight: 400; font-style: normal; font-size: 22px;">Preparar saída</h2>
         <div class="grid md:grid-cols-2 gap-5">
          <div class="surface p-4">
           <h3 data-template-id="gn-summary-title" class="canva-text font-semibold mb-3" style="font-weight: 400; font-style: normal; font-size: 19px;">Resumo do projeto</h3>
@@ -310,7 +335,7 @@ main{isolation:isolate}main>section{animation:section-in .45s var(--ease) both}@
          </div>
          <form id="gen-form" class="surface p-4 space-y-3">
           <div>
-           <label for="gn-format" data-template-id="gn-format-label" class="canva-text text-sm font-medium block mb-1" style="font-weight: 400; font-style: normal; font-size: 16px;">Formato de saída</label> <select id="gn-format" class="field"><option>PDF</option><option>DOCX</option><option>LaTeX</option></select>
+           <label for="gn-format" data-template-id="gn-format-label" class="canva-text text-sm font-medium block mb-1" style="font-weight: 400; font-style: normal; font-size: 16px;">Formato de saída</label> <select id="gn-format" class="field"><option value="PDF" disabled>PDF — em desenvolvimento</option><option value="DOCX" disabled>DOCX — em desenvolvimento</option><option value="LaTeX">LaTeX — projeto inicial</option></select>
           </div>
           <fieldset class="space-y-2">
            <legend data-template-id="gn-options-legend" class="canva-text text-sm font-medium mb-1" style="font-weight: 400; font-style: normal; font-size: 16px;">Incluir no documento</legend>
@@ -334,7 +359,7 @@ main{isolation:isolate}main>section{animation:section-in .45s var(--ease) both}@
           </div>
           <p id="gen-live" class="text-sm" role="status" aria-live="polite"></p>
           <div id="gen-done" class="hidden note p-3">
-           <p data-template-id="gen-done-text" class="canva-text text-sm" style="font-weight: 400; font-style: normal; font-size: 16px;">Protótipo funcional: o fluxo de geração foi simulado. A exportação real de arquivos ainda não está disponível nesta versão.</p>
+           <p data-template-id="gen-done-text" class="canva-text text-sm" style="font-weight: 400; font-style: normal; font-size: 16px;">A saída LaTeX é um projeto inicial para revisão. PDF e DOCX permanecem em desenvolvimento.</p>
           </div>
          </form>
         </div>
@@ -355,8 +380,8 @@ main{isolation:isolate}main>section{animation:section-in .45s var(--ease) both}@
        <p data-template-id="faq-1-a" class="canva-text muted mt-3" style="font-weight: 400; font-style: normal; font-size: 16px;">É o Manual de Dissertações e Teses da UFSM, que orienta a estrutura e a apresentação de trabalhos acadêmicos na instituição.</p>
       </details>
       <details class="surface p-4">
-       <summary class="flex justify-between items-center gap-3"><span data-template-id="faq-2-q" class="canva-text font-semibold" style="font-weight: 400; font-style: normal; font-size: 16px;">A validação garante que meu trabalho está correto?</span><i data-lucide="chevron-down" class="chev"></i></summary>
-       <p data-template-id="faq-2-a" class="canva-text muted mt-3" style="font-weight: 400; font-style: normal; font-size: 16px;">Não. O checklist é um apoio organizacional. A conferência final deve ser feita com o manual vigente e com seu orientador.</p>
+       <summary class="flex justify-between items-center gap-3"><span data-template-id="faq-2-q" class="canva-text font-semibold" style="font-weight: 400; font-style: normal; font-size: 16px;">A conferência garante que meu trabalho está correto?</span><i data-lucide="chevron-down" class="chev"></i></summary>
+       <p data-template-id="faq-2-a" class="canva-text muted mt-3" style="font-weight: 400; font-style: normal; font-size: 16px;">Não. O checklist é um apoio organizacional e não constitui certificação. A conferência final deve ser feita com o manual vigente e com seu orientador.</p>
       </details>
       <details class="surface p-4">
        <summary class="flex justify-between items-center gap-3"><span data-template-id="faq-3-q" class="canva-text font-semibold" style="font-weight: 400; font-style: normal; font-size: 16px;">Meus dados ficam salvos?</span><i data-lucide="chevron-down" class="chev"></i></summary>
@@ -384,252 +409,119 @@ main{isolation:isolate}main>section{animation:section-in .45s var(--ease) both}@
    <input id="import-project-input" type="file" accept="application/json,.json" hidden><div id="toast" class="toast" role="status" aria-live="polite"></div>
   </div>
   <script>
-// ---- Dados de demonstração (fáceis de substituir) ----
-const uid = () => Math.random().toString(36).slice(2, 9);
-const DEFAULT_STRUCTURE = () => [
-  ['pre','Capa'],['pre','Folha de rosto'],['pre','Folha de aprovação'],['pre','Ficha catalográfica'],['pre','Declaração de autoria'],['pre','Resumo'],['pre','Resumo em língua estrangeira'],['pre','Sumário'],
-  ['text','Introdução'],['text','Desenvolvimento'],['text','Conclusão'],
-  ['post','Referências'],['post','Apêndices'],['post','Anexos']
-].map(([group,title],i)=>({id:uid(),group,title,done:i<2}));
-const DEFAULT_REFS = () => [
-  {id:uid(),author:'SOBRENOME, Nome (exemplo)',year:'2020',title:'Título de livro de exemplo',type:'Livro'},
-  {id:uid(),author:'AUTOR, Exemplo',year:'2019',title:'Título de artigo de exemplo',type:'Artigo'},
-  {id:uid(),author:'',year:'2021',title:'Documento eletrônico de exemplo',type:'Documento eletrônico'}
+// ---- Estado, presets e persistência ----
+const uid=()=>crypto.randomUUID?crypto.randomUUID():Math.random().toString(36).slice(2,11);
+const PRESETS={
+  tcc:[['pre','Capa'],['pre','Folha de rosto'],['pre','Folha de aprovação'],['pre','Resumo'],['pre','Resumo em língua estrangeira'],['pre','Sumário'],['text','Introdução'],['text','Desenvolvimento'],['text','Conclusão'],['post','Referências'],['post','Apêndices'],['post','Anexos']],
+  dissertacao:[['pre','Capa'],['pre','Folha de rosto'],['pre','Folha de aprovação'],['pre','Ficha catalográfica'],['pre','Resumo'],['pre','Resumo em língua estrangeira'],['pre','Sumário'],['text','Introdução'],['text','Desenvolvimento'],['text','Conclusão'],['post','Referências'],['post','Apêndices'],['post','Anexos']],
+  tese:[['pre','Capa'],['pre','Folha de rosto'],['pre','Folha de aprovação'],['pre','Ficha catalográfica'],['pre','Resumo'],['pre','Resumo em língua estrangeira'],['pre','Sumário'],['text','Introdução'],['text','Desenvolvimento'],['text','Conclusão'],['post','Referências'],['post','Apêndices'],['post','Anexos']]
+};
+const DEFAULT_STRUCTURE=(type='dissertacao')=>PRESETS[type].map(([group,title],i)=>({id:uid(),group,title,done:i<2}));
+const DEFAULT_REFS=()=>[
+  {id:uid(),author:'SOBRENOME, Nome (exemplo)',year:'2020',title:'Título de livro de exemplo',type:'Livro',publisher:'Editora exemplo',url:'',doi:''},
+  {id:uid(),author:'AUTOR, Exemplo',year:'2019',title:'Título de artigo de exemplo',type:'Artigo',publisher:'Periódico exemplo',url:'',doi:''},
+  {id:uid(),author:'',year:'2021',title:'Documento eletrônico de exemplo',type:'Documento eletrônico',publisher:'',url:'https://exemplo.org',doi:''}
 ];
-const CHECKLIST = [
-  {cat:'Estrutura',items:[['s1','Elementos pré-textuais conferidos conforme o tipo de trabalho e o MDT 2021'],['s2','Estrutura textual conferida para o tipo de trabalho adotado'],['s3','Numeração progressiva das seções conferida']]},
-  {cat:'Formatação',items:[['f1','Margens, fonte e espaçamento conferidos no MDT 2021'],['f2','Paginação conferida conforme o MDT 2021'],['f3','Títulos e numeração das seções conferidos']]},
-  {cat:'Referências',items:[['r1','Todas as citações possuem referência correspondente'],['r2','Referências com dados completos'],['r3','Ordenação das referências conferida']]},
-  {cat:'Elementos obrigatórios',items:[['o1','Resumo e palavras-chave presentes'],['o2','Resumo em língua estrangeira conferido quando aplicável'],['o3','Sumário conferido quando aplicável']]}
+const CHECKLIST=[
+ {cat:'Estrutura',items:[['s1','Elementos pré-textuais conferidos conforme o tipo e o MDT 2021'],['s2','Estrutura textual conferida para o tipo adotado'],['s3','Numeração progressiva das seções conferida']]},
+ {cat:'Formatação',items:[['f1','Margens, fonte e espaçamento conferidos no MDT 2021'],['f2','Paginação conferida conforme o MDT 2021'],['f3','Títulos e numeração das seções conferidos']]},
+ {cat:'Referências',items:[['r1','Todas as citações possuem referência correspondente'],['r2','Referências com dados completos'],['r3','Ordenação das referências conferida']]},
+ {cat:'Elementos',items:[['o1','Resumo e palavras-chave presentes'],['o2','Resumo em língua estrangeira conferido quando aplicável'],['o3','Sumário conferido quando aplicável']]}
 ];
-const DEFAULT_VALIDATION = () => ({s1:'ok',s2:'warn',r2:'warn',o1:'ok'});
-const GROUPS = {pre:'Pré-textuais',text:'Textuais',post:'Pós-textuais'};
-const STATUS = {ok:'Aprovado',warn:'Atenção',pend:'Pendente'};
-const WT = {tcc:'TCC',dissertacao:'Dissertação',tese:'Tese'};
-
-let state = freshState();
-function freshState(){return {workType:'dissertacao',structure:DEFAULT_STRUCTURE(),validation:DEFAULT_VALIDATION(),references:DEFAULT_REFS(),refStyle:'abnt',theme:'light'};}
-let backendRecords = [], dirty = false, loaded = false, vFilter = 'all', initialTimer;
-const history={undo:[],redo:[],busy:false}; let lastSnapshot='';
+const DEFAULT_VALIDATION=()=>({s1:'ok',s2:'warn',r2:'warn',o1:'ok'});
+const GROUPS={pre:'Pré-textuais',text:'Textuais',post:'Pós-textuais'};
+const STATUS={ok:'Conferido',warn:'Atenção',pend:'Pendente'};
+const WT={tcc:'TCC',dissertacao:'Dissertação',tese:'Tese'};
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const STORAGE_KEY='mdt-ufsm-draft-v3';
+const SCHEMA_VERSION=3;
+let state=freshState(),backendRecords=[],activeRecord=null,dirty=false,loaded=false,vFilter='all',initialTimer,localSnapshot=null,conflict=false;
+const history={undo:[],redo:[],busy:false};let lastSnapshot='';
+function freshState(type='dissertacao'){return {workType:type,structure:DEFAULT_STRUCTURE(type),validation:DEFAULT_VALIDATION(),references:DEFAULT_REFS(),refStyle:'abnt',theme:'system',updated_at:new Date().toISOString()};}
 function snapshot(){return JSON.stringify({workType:state.workType,structure:state.structure,validation:state.validation,references:state.references,refStyle:state.refStyle,theme:state.theme});}
-function restoreSnapshot(raw){const x=JSON.parse(raw);state={workType:x.workType,structure:x.structure,validation:x.validation,references:x.references,refStyle:x.refStyle,theme:x.theme};renderAll();lastSnapshot=snapshot();saveLocal();updateHistoryButtons();}
-function pushHistory(){if(history.busy)return;const current=snapshot();if(lastSnapshot&&current!==lastSnapshot){history.undo.push(lastSnapshot);if(history.undo.length>30)history.undo.shift();history.redo=[];}lastSnapshot=current;updateHistoryButtons();}
+function normalizeState(raw){
+  const typeId=raw?.workType||raw?.work_type; const type=WT[typeId]?typeId:'dissertacao';
+  return {workType:type,structure:Array.isArray(raw?.structure)?raw.structure.filter(x=>x&&typeof x==='object'&&typeof x.id==='string'&&GROUPS[x.group]&&typeof x.title==='string').map(x=>({...x,done:Boolean(x.done)})):DEFAULT_STRUCTURE(type),validation:raw?.validation&&typeof raw.validation==='object'?raw.validation:{},references:Array.isArray(raw?.references)?raw.references.filter(r=>r&&typeof r==='object').map(r=>({id:typeof r.id==='string'?r.id:uid(),author:String(r.author??''),year:String(r.year??''),title:String(r.title??''),type:TYPES.includes(r.type)?r.type:'Outro',publisher:String(r.publisher??''),url:String(r.url??''),doi:String(r.doi??'')})):[],refStyle:(raw?.refStyle||raw?.reference_style)==='abnt'?'abnt':'simple',theme:['light','dark','system'].includes(raw?.theme)?raw.theme:'system',updated_at:raw?.updated_at||new Date().toISOString()};}
+function restoreSnapshot(raw){state=normalizeState(JSON.parse(raw));renderAll();lastSnapshot=snapshot();updateHistoryButtons();}
+function pushHistory(){if(history.busy)return;const current=snapshot();if(lastSnapshot&&current!==lastSnapshot){history.undo.push(lastSnapshot);if(history.undo.length>40)history.undo.shift();history.redo=[];}lastSnapshot=current;updateHistoryButtons();}
 function updateHistoryButtons(){$('#undo-btn').disabled=!history.undo.length;$('#redo-btn').disabled=!history.redo.length;}
-function undo(){if(!history.undo.length)return;history.busy=true;history.redo.push(snapshot());restoreSnapshot(history.undo.pop());history.busy=false;dirty=true;$('#saved-ind').classList.add('hidden');$('#unsaved-ind').classList.remove('hidden');renderProgress();toast('Alteração desfeita.');}
-function redo(){if(!history.redo.length)return;history.busy=true;history.undo.push(snapshot());restoreSnapshot(history.redo.pop());history.busy=false;dirty=true;$('#saved-ind').classList.add('hidden');$('#unsaved-ind').classList.remove('hidden');renderProgress();toast('Alteração refeita.');}
-
-const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
-function toast(msg, err){const t=$('#toast');t.textContent=msg;t.className='toast show'+(err?' error':'');clearTimeout(t._h);t._h=setTimeout(()=>t.className='toast',3200);}
-function markDirty(){pushHistory();dirty=true;saveLocal();$('#saved-ind').classList.add('hidden');$('#unsaved-ind').classList.remove('hidden');renderProgress();}
-function markClean(){dirty=false;$('#saved-ind').classList.remove('hidden');$('#unsaved-ind').classList.add('hidden');}
+function undo(){if(!history.undo.length)return;history.busy=true;history.redo.push(snapshot());restoreSnapshot(history.undo.pop());history.busy=false;markDirty(false);toast('Alteração desfeita.');}
+function redo(){if(!history.redo.length)return;history.busy=true;history.undo.push(snapshot());restoreSnapshot(history.redo.pop());history.busy=false;markDirty(false);toast('Alteração refeita.');}
+function saveLocal(){
+  try{state.updated_at=new Date().toISOString();const payload={schema_version:SCHEMA_VERSION,app:'MDT UFSM',saved_at:state.updated_at,record_id:activeRecord?.id||null,document:projectPayload(false)};localStorage.setItem(STORAGE_KEY,JSON.stringify(payload));localSnapshot=payload;return true}catch(e){return false}
+}
+function readLocal(){
+  try{const raw=localStorage.getItem(STORAGE_KEY);if(!raw)return null;const x=JSON.parse(raw);if(x?.schema_version!==SCHEMA_VERSION||!x.document)return null;return x}catch(e){return null}
+}
+function adoptLocal(x){state=normalizeState(x.document);localSnapshot=x;renderAll();lastSnapshot=snapshot();}
+function markDirty(push=true){if(push)pushHistory();dirty=true;state.updated_at=new Date().toISOString();saveLocal();setSaveState('local');renderProgress();}
+function markClean(){dirty=false;setSaveState('synced');}
+function setSaveState(kind){
+ const saved=$('#saved-ind'),unsaved=$('#unsaved-ind');
+ saved.classList.toggle('hidden',kind!=='synced'&&kind!=='local');
+ unsaved.classList.toggle('hidden',kind==='synced');
+ if(kind==='local'){saved.textContent='Salvo neste navegador';unsaved.textContent=conflict?'Conflito de sincronização':'Alterações não sincronizadas';}
+ else if(kind==='synced'){saved.textContent='Sincronizado';unsaved.textContent='';}
+ else {saved.textContent='';unsaved.textContent='Erro ao sincronizar';}
+}
 function esc(s){return String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
-
-// ---- Navegação ----
-const TABS=['overview','structure','validation','references','generate'];
-function go(target){
-  const view = TABS.includes(target) && target!=='overview' ? 'trabalho' : target;
-  $$('[data-view]').forEach(v=>v.classList.toggle('hidden',v.dataset.view!==view));
-  if(view==='trabalho') setTab(TABS.includes(target)?target:'overview');
-  $$('[data-nav]').forEach(b=>{if(b.classList.contains('nav-link')){const n=b.dataset.nav;const active=(n===target)||(n==='trabalho'&&view==='trabalho'&&!['structure','validation'].includes(target));b.toggleAttribute('aria-current',active);if(active)b.setAttribute('aria-current','page');}});
-  $('#mobile-menu').classList.add('hidden');$('#mobile-menu').classList.remove('flex');$('#menu-btn').setAttribute('aria-expanded','false');
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-function setTab(t){
-  $$('[data-tab]').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.tab===t)));
-  $$('[data-panel]').forEach(p=>p.classList.toggle('hidden',p.dataset.panel!==t));
-  if(t==='generate') renderSummary();
-}
-document.addEventListener('click',e=>{
-  const n=e.target.closest('[data-nav]'); if(n){go(n.dataset.nav);return;}
-  const g=e.target.closest('[data-go]'); if(g){go(g.dataset.go);return;}
-  const tb=e.target.closest('[data-tab]'); if(tb){setTab(tb.dataset.tab);return;}
-  
-  if(e.target.closest('[data-action="new"]')){state=freshState();state.theme=document.getElementById('shell').classList.contains('dark')?'dark':'light';renderAll();markDirty();go('trabalho');toast('Novo projeto iniciado. Clique em "Salvar rascunho" para guardar.');}
-});
-$('#menu-btn').addEventListener('click',()=>{const m=$('#mobile-menu');const open=m.classList.contains('hidden');m.classList.toggle('hidden',!open);m.classList.toggle('flex',open);$('#menu-btn').setAttribute('aria-expanded',String(open));});
-
 // ---- Tema ----
-function applyTheme(){$('#shell').classList.toggle('dark',state.theme==='dark');$('#theme-icon').innerHTML=`<i data-lucide="${state.theme==='dark'?'sun':'moon'}"></i>`;lucide.createIcons();}
-$('#theme-btn').addEventListener('click',()=>{state.theme=state.theme==='dark'?'light':'dark';applyTheme();markDirty();});
-const LOCAL_KEY='mdt-ufsm-draft-v2';
-function saveLocal(){try{localStorage.setItem(LOCAL_KEY,JSON.stringify(projectPayload()))}catch(e){}}
-function loadLocal(){try{var r=JSON.parse(localStorage.getItem(LOCAL_KEY)||'null');if(!r)return false;state={workType:r.work_type||'dissertacao',structure:Array.isArray(r.structure)?r.structure:DEFAULT_STRUCTURE(),validation:r.validation||DEFAULT_VALIDATION(),references:Array.isArray(r.references)?r.references:DEFAULT_REFS(),refStyle:r.reference_style||'abnt',theme:r.theme||'light'};return true}catch(e){return false}}
-$('#reset-project-btn').addEventListener('click',()=>{if(!confirm('Restaurar o projeto de demonstração? As alterações atuais serão substituídas.'))return;state=freshState();history.undo=[];history.redo=[];renderAll();markDirty();updateHistoryButtons();toast('Projeto de demonstração restaurado.');});
-$('#print-project-btn').addEventListener('click',()=>{go('trabalho');setTimeout(()=>window.print(),50);});
+function resolvedTheme(){return state.theme==='system'?(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'):state.theme;}
+function applyTheme(){const dark=resolvedTheme()==='dark';$('#shell').classList.toggle('dark',dark);$('#theme-icon').innerHTML='<i data-lucide="'+(dark?'sun':'moon')+'"></i>';$('#theme-btn').title='Tema: '+state.theme;$('#theme-btn').setAttribute('aria-label','Tema atual: '+state.theme+'. Clique para alternar.');lucide.createIcons();}
+$('#theme-btn').addEventListener('click',()=>{state.theme=state.theme==='system'?'light':state.theme==='light'?'dark':'system';applyTheme();markDirty();toast('Tema: '+state.theme+'.');});
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{if(state.theme==='system')applyTheme();});
+$('#reset-project-btn').addEventListener('click',()=>{if(!confirm('Restaurar o projeto de demonstração? As alterações atuais serão substituídas.'))return;state=freshState(state.workType);history.undo=[];history.redo=[];conflict=false;renderAll();markDirty();updateHistoryButtons();toast('Projeto de demonstração restaurado.');});
+$('#print-project-btn').addEventListener('click',()=>{go('trabalho');document.body.classList.add('printing');setTimeout(()=>{window.print();setTimeout(()=>document.body.classList.remove('printing'),500)},50);});
 $('#undo-btn').addEventListener('click',undo);$('#redo-btn').addEventListener('click',redo);
 $('#export-project-btn').addEventListener('click',exportProject);
 $('#import-project-btn').addEventListener('click',()=>$('#import-project-input').click());
-$('#import-project-input').addEventListener('change',async e=>{var file=e.target.files[0];if(!file)return;try{var r=JSON.parse(await file.text());if(!r||!Array.isArray(r.structure)||!Array.isArray(r.references))throw new Error('invalid');state={workType:r.work_type||'dissertacao',structure:r.structure,validation:r.validation||DEFAULT_VALIDATION(),references:r.references,refStyle:r.reference_style||'abnt',theme:r.theme||'light'};renderAll();markDirty();saveLocal();toast('Projeto importado. Revise os dados antes de salvar.');go('trabalho')}catch(err){toast('Arquivo inválido ou incompatível.',true)}finally{e.target.value=''}});
+$('#import-project-input').addEventListener('change',async e=>{const file=e.target.files[0];if(!file)return;try{const r=JSON.parse(await file.text());const raw=r?.document??r;if(!raw||!Array.isArray(raw.structure)||!Array.isArray(raw.references)||!WT[raw.workType||raw.work_type])throw new Error('invalid');state=normalizeState({...raw,workType:raw.workType||raw.work_type,refStyle:raw.refStyle||raw.reference_style,updated_at:raw.updated_at||new Date().toISOString()});renderAll();markDirty();go('trabalho');toast('Projeto importado e validado localmente.');}catch(err){toast('Arquivo inválido ou incompatível; o projeto atual não foi alterado.',true)}finally{e.target.value=''}});
 window.addEventListener('beforeunload',e=>{if(dirty){saveLocal();e.preventDefault();e.returnValue=''}});
-document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='s'){e.preventDefault();saveLocal();$('#save-btn').click();return}if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'){e.preventDefault();e.shiftKey?redo():undo();return}if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='y'){e.preventDefault();redo();return}if(e.key==='Escape'&&$('#mobile-menu')&&!$('#mobile-menu').classList.contains('hidden'))$('#menu-btn').click()});
-
+document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='s'){e.preventDefault();$('#save-btn').click();return}if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'){e.preventDefault();e.shiftKey?redo():undo();return}if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='y'){e.preventDefault();redo();return}if(e.key==='Escape'&&$('#mobile-menu')&&!$('#mobile-menu').classList.contains('hidden'))$('#menu-btn').click()});
 // ---- Estrutura ----
 function renderTree(){
-  const tree=$('#tree');tree.innerHTML='';
-  Object.keys(GROUPS).forEach(g=>{
-    const items=state.structure.filter(s=>s.group===g);
-    const wrap=document.createElement('div');wrap.className='mb-4';
-    wrap.innerHTML=`<h3 class="font-semibold text-sm uppercase tracking-wide muted mb-1">${GROUPS[g]}</h3>`;
-    if(!items.length) wrap.innerHTML+='<p class="text-sm muted px-2">Nenhuma seção.</p>';
-    items.forEach((s,i)=>{
-      const row=document.createElement('div');row.className='tree-row'+(s.done?' done':'');row.dataset.id=s.id;
-      row.innerHTML=`<input type="checkbox" ${s.done?'checked':''} aria-label="Concluída: ${esc(s.title)}" data-act="done">
-      <input type="text" value="${esc(s.title)}" aria-label="Nome da seção" data-act="rename">
-      <button type="button" class="icon-btn" data-act="up" aria-label="Mover para cima" ${i===0?'disabled':''}><i data-lucide="arrow-up" style="width:16px;height:16px"></i></button>
-      <button type="button" class="icon-btn" data-act="down" aria-label="Mover para baixo" ${i===items.length-1?'disabled':''}><i data-lucide="arrow-down" style="width:16px;height:16px"></i></button>
-      <button type="button" class="icon-btn" data-act="del" aria-label="Remover seção"><i data-lucide="trash-2" style="width:16px;height:16px"></i></button>`;
-      wrap.appendChild(row);
-    });
-    tree.appendChild(wrap);
-  });
-  lucide.createIcons();renderPreview();
-}
-function renderPreview(){
-  let n=0;$('#preview').innerHTML=Object.keys(GROUPS).map(g=>state.structure.filter(s=>s.group===g).map(s=>{
-    const num=g==='text'?`${++n} `:'';
-    return `<li class="flex gap-2 ${s.done?'':'muted'}"><span aria-hidden="true">${s.done?'✓':'○'}</span><span class="${g==='text'?'font-semibold':''}">${num}${esc(s.title.toUpperCase())}</span></li>`;
-  }).join('')).join('<li class="border-t my-1" style="border-color:var(--border)" aria-hidden="true"></li>');
-}
-$('#tree').addEventListener('change',e=>{
-  const row=e.target.closest('.tree-row');if(!row)return;const s=state.structure.find(x=>x.id===row.dataset.id);
-  if(e.target.dataset.act==='done'){s.done=e.target.checked;row.classList.toggle('done',s.done);}
-  if(e.target.dataset.act==='rename'){const v=e.target.value.trim();if(!v){e.target.value=s.title;toast('O nome da seção não pode ficar vazio.',true);return;}s.title=v;toast('Seção renomeada.');}
-  renderPreview();markDirty();
-});
-$('#tree').addEventListener('click',e=>{
-  const b=e.target.closest('button[data-act]');if(!b)return;const row=b.closest('.tree-row');const s=state.structure.find(x=>x.id===row.dataset.id);
-  const act=b.dataset.act;
-  if(act==='del'){state.structure=state.structure.filter(x=>x!==s);toast('Seção removida.');}
-  else{
-    const same=state.structure.filter(x=>x.group===s.group);const i=same.indexOf(s);const j=act==='up'?i-1:i+1;if(j<0||j>=same.length)return;
-    const a=state.structure.indexOf(s),c=state.structure.indexOf(same[j]);[state.structure[a],state.structure[c]]=[state.structure[c],state.structure[a]];
-  }
-  renderTree();markDirty();
-  const again=$(`.tree-row[data-id="${s.id}"] [data-act="${act}"]`);if(again&&!again.disabled)again.focus();
-});
-$('#add-section-form').addEventListener('submit',e=>{
-  e.preventDefault();const t=$('#new-sec-title').value.trim();
-  if(!t){toast('Informe o nome da seção.',true);$('#new-sec-title').focus();return;}
-  state.structure.push({id:uid(),group:$('#new-sec-group').value,title:t,done:false});$('#new-sec-title').value='';renderTree();markDirty();toast('Seção adicionada.');
-});
-
+ const tree=$('#tree');tree.innerHTML='';
+ Object.keys(GROUPS).forEach(g=>{const items=state.structure.filter(s=>s.group===g);const wrap=document.createElement('div');wrap.className='mb-4';wrap.innerHTML='<h3 class="font-semibold text-sm uppercase tracking-wide muted mb-1">'+GROUPS[g]+'</h3>';if(!items.length)wrap.innerHTML+='<p class="text-sm muted px-2">Nenhuma seção.</p>';items.forEach((s,i)=>{const row=document.createElement('div');row.className='tree-row'+(s.done?' done':'');row.dataset.id=s.id;row.innerHTML='<input type="checkbox" '+(s.done?'checked':'')+' aria-label="Conferida: '+esc(s.title)+'" data-act="done"><input type="text" value="'+esc(s.title)+'" aria-label="Nome da seção" data-act="rename"><button type="button" class="icon-btn" data-act="up" aria-label="Mover para cima" '+(i===0?'disabled':'')+'><i data-lucide="arrow-up"></i></button><button type="button" class="icon-btn" data-act="down" aria-label="Mover para baixo" '+(i===items.length-1?'disabled':'')+'><i data-lucide="arrow-down"></i></button><button type="button" class="icon-btn" data-act="del" aria-label="Remover seção"><i data-lucide="trash-2"></i></button>';wrap.appendChild(row)});tree.appendChild(wrap)});lucide.createIcons();renderPreview();}
+function renderPreview(){let n=0;$('#preview').innerHTML=Object.keys(GROUPS).map(g=>state.structure.filter(s=>s.group===g).map(s=>{const num=g==='text'?++n+'. ':'';return '<li class="flex gap-2 '+(s.done?'':'muted')+'"><span aria-hidden="true">'+(s.done?'✓':'○')+'</span><span class="'+(g==='text'?'font-semibold':'')+'">'+num+esc(s.title.toUpperCase())+'</span></li>'}).join('')).join('<li class="border-t my-1" style="border-color:var(--border)" aria-hidden="true"></li>');}
+$('#tree').addEventListener('change',e=>{const row=e.target.closest('.tree-row');if(!row)return;const s=state.structure.find(x=>x.id===row.dataset.id);if(e.target.dataset.act==='done')s.done=e.target.checked;if(e.target.dataset.act==='rename'){const v=e.target.value.trim();if(!v){e.target.value=s.title;toast('O nome da seção não pode ficar vazio.',true);return}s.title=v}renderPreview();markDirty();});
+$('#tree').addEventListener('click',e=>{const b=e.target.closest('button[data-act]');if(!b)return;const row=b.closest('.tree-row'),s=state.structure.find(x=>x.id===row.dataset.id),act=b.dataset.act;if(act==='del'){if(!confirm('Remover esta seção? Você poderá usar Desfazer imediatamente.'))return;state.structure=state.structure.filter(x=>x!==s);toast('Seção removida.');}else{const same=state.structure.filter(x=>x.group===s.group),i=same.indexOf(s),j=act==='up'?i-1:i+1;if(j<0||j>=same.length)return;const a=state.structure.indexOf(s),c=state.structure.indexOf(same[j]);[state.structure[a],state.structure[c]]=[state.structure[c],state.structure[a]];}renderTree();markDirty();});
+$('#add-section-form').addEventListener('submit',e=>{e.preventDefault();const t=$('#new-sec-title').value.trim();if(!t){toast('Informe o nome da seção.',true);$('#new-sec-title').focus();return}state.structure.push({id:uid(),group:$('#new-sec-group').value,title:t,done:false});$('#new-sec-title').value='';renderTree();markDirty();toast('Seção adicionada.');});
 // ---- Validação ----
-const allItems=()=>CHECKLIST.flatMap(c=>c.items);
-const statusOf=id=>state.validation[id]||'pend';
-function conformity(){const it=allItems();return Math.round(it.filter(([id])=>statusOf(id)==='ok').length/it.length*100);}
-function renderChecklist(){
-  $('#checklist').innerHTML=CHECKLIST.map(c=>{
-    const rows=c.items.filter(([id])=>vFilter==='all'||statusOf(id)===vFilter);
-    if(!rows.length)return '';
-    return `<div class="surface p-4"><h3 class="font-semibold mb-2">${c.cat}</h3><ul class="space-y-2">${rows.map(([id,txt])=>{const st=statusOf(id);return `<li class="flex flex-wrap items-center gap-3 py-1">
-      <input type="checkbox" id="chk-${id}" data-vid="${id}" ${st==='ok'?'checked':''}><label for="chk-${id}" class="flex-1 min-w-[200px]">${txt}</label>
-      <span class="badge st-${st}">${STATUS[st]}</span>
-      <label for="sel-${id}" class="sr-only">Status de: ${txt}</label>
-      <select id="sel-${id}" class="field text-sm" style="width:auto;padding:.25rem .5rem" data-vsel="${id}">${Object.entries(STATUS).map(([k,v])=>`<option value="${k}" ${k===st?'selected':''}>${v}</option>`).join('')}</select></li>`;}).join('')}</ul></div>`;
-  }).join('')||'<p class="muted">Nenhum item com este status.</p>';
-  const it=allItems();const cnt=k=>it.filter(([id])=>statusOf(id)===k).length;
-  $('#va-percent').textContent=conformity()+'%';
-  $('#va-counts').innerHTML=Object.entries(STATUS).map(([k,v])=>`<span class="badge st-${k}">${v}: ${cnt(k)}</span>`).join('');
-}
-$('#checklist').addEventListener('change',e=>{
-  const id=e.target.dataset.vid||e.target.dataset.vsel;if(!id)return;
-  state.validation[id]=e.target.dataset.vid?(e.target.checked?'ok':'pend'):e.target.value;renderChecklist();markDirty();
-});
-$('#clear-validation').addEventListener('click',()=>{state.validation={};renderChecklist();markDirty();toast('Validação reiniciada.');});
-$('[data-vfilter]').forEach(b=>b.addEventListener('click',()=>{vFilter=b.dataset.vfilter;$$('[data-vfilter]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));renderChecklist();}));
-
+const allItems=()=>CHECKLIST.flatMap(c=>c.items);const statusOf=id=>state.validation[id]||'pend';function conformity(){const it=allItems();return it.length?Math.round(it.filter(([id])=>statusOf(id)==='ok').length/it.length*100):0;}
+function renderChecklist(){$('#checklist').innerHTML=CHECKLIST.map(c=>{const rows=c.items.filter(([id])=>vFilter==='all'||statusOf(id)===vFilter);if(!rows.length)return '';return '<div class="surface p-4"><h3 class="font-semibold mb-2">'+c.cat+'</h3><ul class="space-y-2">'+rows.map(([id,txt])=>{const st=statusOf(id);return '<li class="flex flex-wrap items-center gap-3 py-1"><input type="checkbox" id="chk-'+id+'" data-vid="'+id+'" '+(st==='ok'?'checked':'')+'><label for="chk-'+id+'" class="flex-1 min-w-[200px]">'+txt+'</label><span class="badge st-'+st+'">'+STATUS[st]+'</span><label for="sel-'+id+'" class="sr-only">Status de: '+txt+'</label><select id="sel-'+id+'" class="field text-sm" style="width:auto;padding:.25rem .5rem" data-vsel="'+id+'">'+Object.entries(STATUS).map(([k,v])=>'<option value="'+k+'" '+(k===st?'selected':'')+'>'+v+'</option>').join('')+'</select></li>'}).join('')+'</ul></div>'}).join('')||'<p class="muted">Nenhum item com este status.</p>';const it=allItems(),cnt=k=>it.filter(([id])=>statusOf(id)===k).length;$('#va-percent').textContent=conformity()+'%';$('#va-counts').innerHTML=Object.entries(STATUS).map(([k,v])=>'<span class="badge st-'+k+'">'+v+': '+cnt(k)+'</span>').join('');}
+$('#checklist').addEventListener('change',e=>{const id=e.target.dataset.vid||e.target.dataset.vsel;if(!id)return;state.validation[id]=e.target.dataset.vid?(e.target.checked?'ok':'pend'):e.target.value;renderChecklist();markDirty();});
+$('#clear-validation').addEventListener('click',()=>{state.validation={};renderChecklist();markDirty();toast('Checklist reiniciado.');});
+$('[data-vfilter]').forEach(b=>b.addEventListener('click',()=>{vFilter=b.dataset.vfilter;$('[data-vfilter]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));renderChecklist();}));
 // ---- Referências ----
-const complete=r=>r.author.trim()&&r.year.trim()&&r.title.trim()&&r.type;
-const TYPES=['Livro','Artigo','Capítulo','Documento eletrônico','Outro'];
-function filteredRefs(){
-  const q=$('#rf-search').value.toLowerCase(),t=$('#rf-type').value,s=$('#rf-status').value;
-  return state.references.filter(r=>(!q||(r.author+r.title+r.year).toLowerCase().includes(q))&&(t==='all'||r.type===t)&&(s==='all'||(s==='complete')===!!complete(r)));
-}
+const TYPES=['Livro','Artigo','Capítulo','Documento eletrônico','Outro'];const complete=r=>r.author.trim()&&r.year.trim()&&r.title.trim()&&r.type;
+function filteredRefs(){const q=$('#rf-search').value.toLowerCase(),t=$('#rf-type').value,s=$('#rf-status').value;return state.references.filter(r=>(!q||(r.author+r.title+r.year+r.publisher+r.doi+r.url).toLowerCase().includes(q))&&(t==='all'||r.type===t)&&(s==='all'||(s==='complete')===!!complete(r)));}
 function statusBadge(r){return complete(r)?'<span class="badge st-ok">Completa</span>':'<span class="badge st-warn">Incompleta</span>';}
-function renderRefs(){
-  const list=filteredRefs();
-  $('#ref-body').innerHTML=list.map(r=>`<tr data-id="${r.id}">
-    <td><input aria-label="Autor" data-f="author" value="${esc(r.author)}" placeholder="SOBRENOME, Nome"></td>
-    <td><input aria-label="Ano" data-f="year" value="${esc(r.year)}" inputmode="numeric" maxlength="4"></td>
-    <td><input aria-label="Título" data-f="title" value="${esc(r.title)}"></td>
-    <td><select aria-label="Tipo" data-f="type">${TYPES.map(t=>`<option ${t===r.type?'selected':''}>${t}</option>`).join('')}</select></td>
-    <td class="st-cell">${statusBadge(r)}</td>
-    <td><button type="button" class="icon-btn" data-dup aria-label="Duplicar referência"><i data-lucide="copy" style="width:16px;height:16px"></i></button><button type="button" class="icon-btn" data-del aria-label="Remover referência"><i data-lucide="trash-2" style="width:16px;height:16px"></i></button></td></tr>`).join('');
-  $('#ref-empty').classList.toggle('hidden',list.length>0);lucide.createIcons();renderRefPreview();
-}
-function renderRefPreview(){
-  const refs=[...state.references].filter(complete).sort((a,b)=>a.author.localeCompare(b.author));
-  $('#ref-preview').innerHTML=refs.length?refs.map(r=>state.refStyle==='abnt'
-    ?`<li>${esc(r.author.toUpperCase())}. <strong>${esc(r.title)}</strong>. [${esc(r.type)}], ${esc(r.year)}.</li>`
-    :`<li>${esc(r.author)} (${esc(r.year)}). <em>${esc(r.title)}</em>. ${esc(r.type)}.</li>`).join('')+'<li class="muted text-xs pt-2">Prévia de demonstração — a formatação final deve ser conferida no MDT 2021 e nas normas aplicáveis.</li>'
-    :'<li class="muted">Nenhuma referência completa para exibir.</li>';
-}
-$('#ref-body').addEventListener('input',e=>{
-  const tr=e.target.closest('tr');const r=state.references.find(x=>x.id===tr.dataset.id);r[e.target.dataset.f]=e.target.value;
-  tr.querySelector('.st-cell').innerHTML=statusBadge(r);renderRefPreview();markDirty();
-});
-$('#ref-body').addEventListener('click',e=>{const tr=e.target.closest('tr');if(!tr)return;const id=tr.dataset.id;if(e.target.closest('[data-dup]')){const r=state.references.find(x=>x.id===id);state.references.push({...r,id:uid()});renderRefs();markDirty();toast('Referência duplicada.');return}if(!e.target.closest('[data-del]'))return;state.references=state.references.filter(r=>r.id!==id);renderRefs();markDirty();toast('Referência removida.');});
-$('#add-ref').addEventListener('click',()=>{
-  ['#rf-search','#rf-type','#rf-status'].forEach(s=>$(s).value=s==='#rf-search'?'':'all');
-  state.references.push({id:uid(),author:'',year:'',title:'',type:'Livro'});renderRefs();markDirty();
-  const inputs=$$('#ref-body tr:last-child input');inputs[0]&&inputs[0].focus();toast('Nova referência adicionada. Preencha os campos.');
-});
-['#rf-search','#rf-type','#rf-status'].forEach(s=>$(s).addEventListener('input',renderRefs));
-$('#rf-style').addEventListener('change',e=>{state.refStyle=e.target.value;renderRefPreview();markDirty();});
-
+function renderRefs(){const list=filteredRefs();$('#ref-body').innerHTML=list.map(r=>'<tr data-id="'+r.id+'"><td><input aria-label="Autor" data-f="author" value="'+esc(r.author)+'" placeholder="SOBRENOME, Nome"></td><td><input aria-label="Ano" data-f="year" value="'+esc(r.year)+'" inputmode="numeric" maxlength="4"></td><td><input aria-label="Título" data-f="title" value="'+esc(r.title)+'"></td><td><select aria-label="Tipo" data-f="type">'+TYPES.map(t=>'<option '+(t===r.type?'selected':'')+'>'+t+'</option>').join('')+'</select></td><td><input aria-label="Editora ou periódico" data-f="publisher" value="'+esc(r.publisher)+'" placeholder="Editora/periódico"></td><td class="st-cell">'+statusBadge(r)+'</td><td><button type="button" class="icon-btn" data-dup aria-label="Duplicar referência"><i data-lucide="copy"></i></button><button type="button" class="icon-btn" data-del aria-label="Remover referência"><i data-lucide="trash-2"></i></button></td></tr>').join('');$('#ref-empty').classList.toggle('hidden',list.length>0);const emptyText=!state.references.length?'Nenhuma referência cadastrada. Clique em “Adicionar referência” para começar.':list.length===0?'Nenhuma referência corresponde aos filtros atuais.':' ';$('#ref-empty').textContent=emptyText;lucide.createIcons();renderRefPreview();}
+function renderRefPreview(){const refs=[...state.references].filter(complete).sort((a,b)=>a.author.localeCompare(b.author));$('#ref-preview').innerHTML=refs.length?refs.map(r=>state.refStyle==='abnt'?'<li>'+esc(r.author.toUpperCase())+'. <strong>'+esc(r.title)+'</strong>. <span class="muted">'+esc(r.publisher||r.type)+', '+esc(r.year)+'.</span></li>':'<li>'+esc(r.author)+' ('+esc(r.year)+'). <em>'+esc(r.title)+'</em>. '+esc(r.publisher||r.type)+'.</li>').join('')+'<li class="muted text-xs pt-2">Prévia simplificada — confira a referência final no MDT 2021 e nas normas ABNT aplicáveis.</li>':'<li class="muted">Nenhuma referência completa para exibir.</li>';}
+$('#ref-body').addEventListener('input',e=>{const tr=e.target.closest('tr');if(!tr)return;const r=state.references.find(x=>x.id===tr.dataset.id);r[e.target.dataset.f]=e.target.value;tr.querySelector('.st-cell').innerHTML=statusBadge(r);renderRefPreview();markDirty(false);});
+$('#ref-body').addEventListener('change',e=>{if(e.target.dataset.f){const tr=e.target.closest('tr');const r=state.references.find(x=>x.id===tr.dataset.id);r[e.target.dataset.f]=e.target.value;renderRefPreview();markDirty();}});
+$('#ref-body').addEventListener('click',e=>{const tr=e.target.closest('tr');if(!tr)return;const id=tr.dataset.id;if(e.target.closest('[data-dup]')){const r=state.references.find(x=>x.id===id);state.references.push({...r,id:uid()});renderRefs();markDirty();toast('Referência duplicada.');return}if(e.target.closest('[data-del]')){state.references=state.references.filter(r=>r.id!==id);renderRefs();markDirty();toast('Referência removida.');}});
+$('#add-ref').addEventListener('click',()=>{$('#rf-search').value='';$('#rf-type').value='all';$('#rf-status').value='all';state.references.push({id:uid(),author:'',year:'',title:'',type:'Livro',publisher:'',url:'',doi:''});renderRefs();markDirty();const i=$('#ref-body tr:last-child input');if(i)i.focus();toast('Nova referência adicionada. Preencha autor, ano, título e editora/periódico quando aplicável.');});
+['#rf-search','#rf-type','#rf-status'].forEach(s=>$(s).addEventListener('input',renderRefs));$('#rf-style').addEventListener('change',e=>{state.refStyle=e.target.value;renderRefPreview();markDirty();});
 // ---- Progresso / resumo ----
-function progress(){const s=state.structure;const sp=s.length?s.filter(x=>x.done).length/s.length*100:0;return Math.round((sp+conformity())/2);}
-function renderProgress(){
-  const p=progress();$('#progress-bar').style.width=p+'%';$('#progress-text').textContent=p+'%';$('#progress-aria').setAttribute('aria-valuenow',p);
-  $('#ov-sections').textContent=`${state.structure.filter(x=>x.done).length}/${state.structure.length}`;
-  $('#ov-conform').textContent=conformity()+'%';$('#ov-refs').textContent=state.references.length;
-}
-function renderSummary(){
-  const rows=[['Tipo de trabalho',WT[state.workType]],['Seções',state.structure.length],['Conformidade',conformity()+'%'],['Referências',state.references.length],['Progresso',progress()+'%']];
-  $('#gn-summary').innerHTML=rows.map(([k,v])=>`<div class="flex justify-between border-b pb-1" style="border-color:var(--border)"><dt class="muted">${k}</dt><dd class="font-semibold">${v}</dd></div>`).join('');
-}
-$('#work-type').addEventListener('change',e=>{state.workType=e.target.value;markDirty();renderSummary();toast('Tipo de trabalho: '+WT[state.workType]);});
-
+function progress(){const s=state.structure,sp=s.length?s.filter(x=>x.done).length/s.length*100:0;return Math.round((sp+conformity())/2);}
+function renderProgress(){const p=progress();$('#progress-bar').style.width=p+'%';$('#progress-text').textContent=p+'%';$('#progress-aria').setAttribute('aria-valuenow',p);$('#ov-sections').textContent=state.structure.filter(x=>x.done).length+'/'+state.structure.length;$('#ov-conform').textContent=conformity()+'%';$('#ov-refs').textContent=state.references.length;}
+function renderSummary(){$('#gn-summary').innerHTML=[['Tipo de trabalho',WT[state.workType]],['Seções',state.structure.length],['Itens conferidos',conformity()+'%'],['Referências',state.references.length],['Progresso',progress()+'%']].map(([k,v])=>'<div class="flex justify-between border-b pb-1" style="border-color:var(--border)"><dt class="muted">'+k+'</dt><dd class="font-semibold">'+v+'</dd></div>').join('');}
+$('#work-type').addEventListener('change',e=>{const next=e.target.value;if(next===state.workType)return;const ok=confirm('Trocar o tipo de trabalho aplica uma estrutura de referência. Sua estrutura atual será preservada se você cancelar. Continuar?');if(!ok){e.target.value=state.workType;return}state.workType=next;state.structure=DEFAULT_STRUCTURE(next);state.validation={};renderAll();markDirty();toast('Tipo alterado e estrutura de referência aplicada.');});
 // ---- Exportação / geração ----
-function downloadBlob(content,name,type){var blob=new Blob([content],{type:type||'text/plain'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(url)},500)}
-function projectPayload(){return {version:1,app:'MDT UFSM',exported_at:new Date().toISOString(),work_type:state.workType,structure:state.structure,validation:state.validation,references:state.references,reference_style:state.refStyle,theme:state.theme}}
-function exportProject(){downloadBlob(JSON.stringify(projectPayload(),null,2),'mdt-ufsm-projeto.json','application/json');toast('Projeto exportado em JSON.')}
-function latexEscape(s){return String(s||'').replace(/([\\{}%&#_$])/g,'\\$1').replace(/~/g,'\\textasciitilde{}').replace(/\^/g,'\\textasciicircum{}')}
-function buildLatex(){var title=state.workType==='tcc'?'Trabalho de Conclusão de Curso':state.workType==='tese'?'Tese':'Dissertação';var sections=state.structure.filter(function(s){return s.group==='text'}).map(function(s){return '\\section{'+latexEscape(s.title)+'}'}).join('\n\n');var refs=state.references.filter(complete).sort(function(a,b){return a.author.localeCompare(b.author)}).map(function(r){return '\\bibitem{ref'+r.id+'} '+latexEscape(r.author)+'. \\textit{'+latexEscape(r.title)+'}. '+latexEscape(r.year)+'.'}).join('\n');return '\\documentclass[12pt,a4paper]{article}\n\\usepackage[utf8]{inputenc}\n\\usepackage[T1]{fontenc}\n\\usepackage[brazil]{babel}\n\\usepackage{geometry}\n\\geometry{a4paper,margin=3cm}\n\\begin{document}\n\\begin{titlepage}\n\\centering\n{\\Large '+latexEscape(title)+'\\par}\n\\vfill\n{\\large Modelo inicial gerado pelo protótipo MDT UFSM\\par}\n\\vfill\n{\\large '+new Date().getFullYear()+'\\par}\n\\end{titlepage}\n'+sections+'\n\\section*{Referências}\n\\begin{thebibliography}{99}\n'+refs+'\n\\end{thebibliography}\n\\end{document}\n'}
-$('#gen-form').addEventListener('submit',function(e){e.preventDefault();var fmt=$('#gn-format').value,btn=$('#gen-btn');btn.disabled=true;$('#gen-done').classList.add('hidden');$('#gen-progress-wrap').classList.remove('hidden');$('#gen-live').textContent='Preparando arquivo…';if(fmt!=='LaTeX'){setTimeout(function(){btn.disabled=false;$('#gen-live').textContent='O protótipo gera LaTeX diretamente no navegador. PDF e DOCX exigem compilação ou conversão externa.';$('#gen-done-text').textContent='Escolha LaTeX para baixar um arquivo .tex editável.';$('#gen-done').classList.remove('hidden')},250);return}var p=0,iv=setInterval(function(){p+=25;$('#gen-bar').style.width=p+'%';if(p>=100){clearInterval(iv);downloadBlob(buildLatex(),'mdt-ufsm.tex','application/x-tex');btn.disabled=false;$('#gen-live').textContent='Arquivo LaTeX gerado.';$('#gen-done-text').textContent='O arquivo .tex foi baixado. Revise-o junto ao MDT 2021 oficial antes de usar.';$('#gen-done').classList.remove('hidden')}},120)})
-
+function downloadBlob(content,name,type){const blob=new Blob([content],{type:type||'text/plain'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),500);}
+function projectPayload(withTimestamp=true){return {schema_version:SCHEMA_VERSION,app:'MDT UFSM',exported_at:new Date().toISOString(),updated_at:state.updated_at||new Date().toISOString(),work_type:state.workType,structure:state.structure,validation:state.validation,references:state.references,reference_style:state.refStyle,theme:state.theme};}
+function exportProject(){downloadBlob(JSON.stringify(projectPayload(),null,2)+'\n','mdt-ufsm-projeto.json','application/json');toast('Projeto exportado em JSON.');}
+function latexEscape(s){return String(s||'').replace(/\\/g,'\\textbackslash{}').replace(/([{}%&#_$])/g,'\\$1').replace(/~/g,'\\textasciitilde{}').replace(/\^/g,'\\textasciicircum{}');}
+function buildLatex(){const title=WT[state.workType]||'Trabalho acadêmico';const sections=state.structure.filter(s=>s.group==='text').map(s=>'\\section{'+latexEscape(s.title)+'}\n'+latexEscape('Conteúdo a desenvolver: '+s.title)).join('\n\n');const refs=state.references.filter(complete).sort((a,b)=>a.author.localeCompare(b.author)).map(r=>'\\bibitem{ref'+r.id.replace(/-/g,'')+'} '+latexEscape(r.author)+'. \\textit{'+latexEscape(r.title)+'}. '+latexEscape(r.publisher||r.type)+', '+latexEscape(r.year)+'.').join('\n');return '% Projeto inicial — revise conforme o template MDT UFSM 2021 oficial.\n\\documentclass[12pt,a4paper]{article}\n\\usepackage[utf8]{inputenc}\n\\usepackage[T1]{fontenc}\n\\usepackage[brazil]{babel}\n\\usepackage{geometry}\n\\geometry{a4paper,margin=3cm}\n\\begin{document}\n\\begin{titlepage}\\centering\\Large '+latexEscape(title)+'\\par\\vfill\\end{titlepage}\n'+sections+'\n\\section*{Referências}\n\\begin{thebibliography}{99}\n'+refs+'\n\\end{thebibliography}\n\\end{document}\n';}
+$('#gen-form').addEventListener('submit',e=>{e.preventDefault();const fmt=$('#gn-format').value;if(fmt!=='LaTeX'){toast('Este formato ainda está em desenvolvimento.',true);return}const btn=$('#gen-btn');btn.disabled=true;$('#gen-progress-wrap').classList.remove('hidden');$('#gen-bar').style.width='20%';$('#gen-live').textContent='Gerando projeto LaTeX inicial…';setTimeout(()=>{downloadBlob(buildLatex(),'mdt-ufsm-projeto.tex','application/x-tex');$('#gen-bar').style.width='100%';btn.disabled=false;$('#gen-live').textContent='Projeto LaTeX baixado. A arquitetura atual é inicial e ainda deve ser alinhada ao template MDT UFSM versionado.';$('#gen-done-text').textContent='Saída real: arquivo .tex baixado. A geração PDF/DOCX e a integração completa ao template MDT continuam pendentes.';$('#gen-done').classList.remove('hidden');},180);});
 function renderAll(){$('#work-type').value=state.workType;$('#rf-style').value=state.refStyle;applyTheme();renderTree();renderChecklist();renderRefs();renderProgress();renderSummary();}
-
-// ---- Canva Sheet ----
-function loadFromRecord(r){
-  try{
-    state={workType:r.work_type||'dissertacao',structure:JSON.parse(r.structure_json||'[]'),validation:JSON.parse(r.validation_json||'{}'),references:JSON.parse(r.references_json||'[]'),refStyle:r.reference_style||'abnt',theme:r.theme_preference||'light'};
-  }catch(err){toast('Não foi possível ler o rascunho salvo.',true);}
-}
-const handler={onDataChanged(data){
-  clearTimeout(initialTimer);backendRecords=data;
-  if(!loaded){loaded=true;if(data[0]&&!dirty){loadFromRecord(data[0]);renderAll();markClean();}}
-}};
-async function initData(){
-  clearTimeout(initialTimer);
-  initialTimer=setTimeout(()=>toast('Não foi possível carregar o rascunho salvo. Recarregue para tentar de novo.',true),8000);
-  const res=await window.dataSdk.init(handler);
-  if(!res.isOk){clearTimeout(initialTimer);toast('Não foi possível conectar ao salvamento.',true);}
-}
-$('#save-btn').addEventListener('click',async e=>{
-  const btn=e.currentTarget;btn.disabled=true;
-  const rec={work_type:state.workType,structure_json:JSON.stringify(state.structure),validation_json:JSON.stringify(state.validation),references_json:JSON.stringify(state.references),reference_style:state.refStyle,theme_preference:state.theme,progress_percent:progress(),updated_at:new Date().toISOString()};
-  try{
-    let res;
-    if(backendRecords[0]) res=await window.dataSdk.update({...backendRecords[0],...rec});
-    else{if(backendRecords.length>=999){toast('Limite de registros atingido.',true);return;}res=await window.dataSdk.create(rec);}
-    if(res.isOk){markClean();toast('Rascunho salvo com sucesso.');}
-    else toast('Não foi possível confirmar o salvamento. Recarregue antes de tentar de novo.',true);
-  }catch(err){toast('Erro ao salvar o rascunho.',true);}
-  finally{btn.disabled=false;}
-});
-
-document.addEventListener('DOMContentLoaded',()=>{lucide.createIcons();const hadLocal=loadLocal();renderAll();markClean();history.undo=[];history.redo=[];lastSnapshot=snapshot();updateHistoryButtons();go('inicio');if(hadLocal)toast('Rascunho local restaurado automaticamente.');initData();});
+function loadFromRecord(r){try{const remote=normalizeState({workType:r.work_type,structure:JSON.parse(r.structure_json||'[]'),validation:JSON.parse(r.validation_json||'{}'),references:JSON.parse(r.references_json||'[]'),refStyle:r.reference_style,theme:r.theme_preference,updated_at:r.updated_at});state=remote;lastSnapshot=snapshot();}catch(err){toast('Não foi possível ler o rascunho remoto.',true);}}
+const handler={onDataChanged(data){clearTimeout(initialTimer);backendRecords=Array.isArray(data)?data:[];const remote=backendRecords.slice().sort((a,b)=>Date.parse(b.updated_at||0)-Date.parse(a.updated_at||0))[0];const local=localSnapshot||readLocal();if(!loaded){loaded=true;if(local&&remote){const lt=Date.parse(local.saved_at||local.document?.updated_at||0),rt=Date.parse(remote.updated_at||0);if(lt>rt){activeRecord=local.record_id?backendRecords.find(r=>r.id===local.record_id)||remote:remote;adoptLocal(local);conflict=true;setSaveState('local');toast('Seu rascunho local é mais recente que o remoto. Ele foi preservado; salve para sincronizar.',true);}else{activeRecord=remote;loadFromRecord(remote);markClean();}}else if(local){adoptLocal(local);markClean();toast('Rascunho local restaurado.');}else if(remote){activeRecord=remote;loadFromRecord(remote);markClean();}else{markClean();}}}};
+async function initData(){clearTimeout(initialTimer);initialTimer=setTimeout(()=>{if(!loaded)toast('Salvamento remoto indisponível. O rascunho local continua disponível.',true)},8000);try{const res=await window.dataSdk.init(handler);if(!res.isOk){clearTimeout(initialTimer);toast('Salvamento remoto indisponível. Trabalhando localmente.',true);}}catch(e){clearTimeout(initialTimer);toast('Salvamento remoto indisponível. Trabalhando localmente.',true);}}
+$('#save-btn').addEventListener('click',async e=>{const btn=e.currentTarget;btn.disabled=true;state.updated_at=new Date().toISOString();saveLocal();const rec={work_type:state.workType,structure_json:JSON.stringify(state.structure),validation_json:JSON.stringify(state.validation),references_json:JSON.stringify(state.references),reference_style:state.refStyle,theme_preference:state.theme,progress_percent:progress(),updated_at:state.updated_at};try{let res;if(activeRecord)res=await window.dataSdk.update({...activeRecord,...rec});else{if(backendRecords.length>=999){toast('Limite de registros atingido.',true);return}res=await window.dataSdk.create(rec)}if(res.isOk){activeRecord=res.data||activeRecord;conflict=false;markClean();saveLocal();toast('Rascunho sincronizado com sucesso.')}else{setSaveState('error');toast('Não foi possível confirmar a sincronização. O rascunho local foi preservado.',true)}}catch(err){setSaveState('error');toast('Erro ao sincronizar. O rascunho local foi preservado.',true)}finally{btn.disabled=false}});
+document.addEventListener('DOMContentLoaded',()=>{lucide.createIcons();localSnapshot=readLocal();if(localSnapshot)adoptLocal(localSnapshot);else{state=freshState();renderAll();}history.undo=[];history.redo=[];lastSnapshot=snapshot();updateHistoryButtons();go('inicio');initData();});
+// ---- End state ----
 </script>
  
 </body></html>
