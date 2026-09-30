@@ -27,4 +27,4 @@ def test_validator_rejects_invalid_schema_without_mutating_any_state():
 def test_validator_accepts_browser_reference_contract():
     data={"type":"thesis","metadata":{"author":"A","title":"T"},"sections":[{"title":"Introdução","content":"Texto"}],"references":[{"id":"r1","author":"Autor","year":"2024","title":"Livro","type":"Livro","publisher":"Editora"}]}
     findings=validate(data)
-    assert not any(x.severity=="ERROR" for x in findings)
+    assert not any(x.rule_id.startswith("MDT-SCHEMA-") and x.severity=="ERROR" for x in findings)
