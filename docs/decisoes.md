@@ -202,3 +202,15 @@ A UX pode informar que um campo ou elemento é opcional, mas a configuração pa
 ## D-005 — Regra acadêmica separada de implementação
 
 Um comando LaTeX, sozinho, não cria uma equivalência normativa. A fonte normativa continua sendo a MDT/UFSM; a classe LaTeX é a implementação técnica.
+
+## Decisões da auditoria final da interface — 2026-09-30
+
+- A ação de criação da interface é denominada **Novo rascunho** enquanto não houver gerenciamento explícito de múltiplos projetos.
+- A conferência da interface é assistiva: a nomenclatura usa **Conferência MDT**, **Itens conferidos** e **Conferido**, sem prometer certificação ou validação oficial.
+- O rascunho local é fonte de recuperação quando estiver mais recente que o registro remoto; o sistema informa o conflito antes da sincronização.
+- O registro remoto ativo é identificado pelo registro persistido e, na descoberta inicial, o mais recente por `updated_at` é escolhido, evitando dependência do primeiro registro retornado.
+- O tema possui três estados: claro, escuro e sistema, respeitando `prefers-color-scheme`.
+- PDF e DOCX não são apresentados como funcionalidades disponíveis; permanecem explicitamente em desenvolvimento.
+- A saída LaTeX do navegador é tratada como **projeto inicial**. A autoridade de geração permanece no núcleo Python e na base LaTeX MDT UFSM versionada.
+- O contrato web aceita referências estruturadas (author, year, title, type, publisher, url, doi) e o núcleo mantém compatibilidade com BibTeX textual legado.
+- Importações JSON são rejeitadas quando o shape é inválido; o estado atual não é substituído por dados parcialmente inválidos.
