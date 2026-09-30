@@ -55,3 +55,26 @@ Para Projeto de Pesquisa, o próprio manual registra que a estrutura e apresenta
 - UFSM — MDT 2021
 - UFSM — página oficial das Normas MDT
 - UFSM — página oficial Normas ABNT/MDT e referência ao modelo LaTeX 2021
+
+
+## Mapeamento normativo inicial — MDT 2021
+
+A leitura direta do documento oficial permite fixar alguns pontos de rastreabilidade antes de automatizar regras:
+
+| ID | Evidência normativa | Localização | Tratamento no produto |
+|---|---|---|---|
+| MDT-SCOPE-001 | O manual define um padrão institucional de apresentação e esclarece que não determina a qualidade ou o teor científico do texto; regulamentos de curso/PPG também devem ser observados. | §1, pp. 10–11 | Não automatizar qualidade/conteúdo científico. |
+| MDT-LANG-001 | Português é a língua oficial para trabalhos de conclusão; outros idiomas podem ser usados quando previstos em Regimento do Curso/Programa. A versão final deve conter título, resumo e palavras-chave em português. | §2, pp. 12–13 | Planejada; depende de metadado sobre idioma/regulamento. |
+| MDT-TYPE-001 | A seção 2.2 lista, entre as tipologias frequentes, monografia, dissertação, tese, artigo científico, material didático, recurso pedagógico, relatório de estágio, relatório técnico-científico e projeto de aplicação/adequação/inovação. | §2.2, p. 14 | Já refletida em `docs/mdt/tipos.md`; não implica equivalência entre perfis. |
+| MDT-RESEARCH-001 | Projeto de Pesquisa segue a NBR 15287 vigente; cada PPG pode determinar modelo de apresentação/estrutura se aprovado e regulamentado. | §2.2, p. 15 | Não impor estrutura institucional global sem configuração do PPG. |
+| MDT-PRE-001 | A estrutura do manual identifica folha de rosto, ficha catalográfica, folha de aprovação, resumo em língua vernácula, resumo em língua estrangeira e sumário como obrigatórios; errata, dedicatória, agradecimentos, epígrafe e listas são opcionais no escopo geral descrito. | §3.2, pp. 25–47 | Planejada; a obrigatoriedade precisa ser cruzada com o contexto/tipologia antes de virar regra de perfil. |
+| MDT-MARGIN-001 | O manual possui seção específica para configuração geral de margens. | §3.2.12, p. 47 | Planejada; extrair parâmetros e verificar se o template já os garante. |
+| MDT-CIT-001 | O manual dedica seção própria a citações diretas, indiretas, citação de citação, regras gerais e sistemas autor-data/numérico. | §4.2, pp. 56–68 | Planejada; exige modelagem da referência/citação antes da validação. |
+| MDT-GRAPHIC-001 | O manual trata equações/fórmulas, ilustrações, quadros e tabelas em seções próprias. | §4.3–4.5, pp. 69–72 | Planejada; validação deve operar sobre elementos estruturados, não sobre texto LaTeX arbitrário. |
+| MDT-POST-001 | O manual define apêndice e anexo como elementos pós-textuais e mantém referências em seção própria. | §5–6, pp. 74–114 | Planejada; mapear cardinalidade/ordem por contexto antes de automatizar. |
+
+> **Fonte primária:** Universidade Federal de Santa Maria, *Manual de Dissertações e Teses da UFSM: Estrutura e Apresentação Documental para Trabalhos Acadêmicos*, Santa Maria, 2021. PDF oficial consultado em 30/09/2026. A numeração de páginas acima segue a paginação impressa indicada no próprio manual.
+
+### Regra de interpretação
+
+Esses itens são um **mapa de evidências**, não uma lista de novas exigências já ativadas. Antes de transformar qualquer item em ERROR/WARNING, devemos cruzar a norma com a tipologia, o regulamento aplicável e a capacidade do template de representar a informação.
