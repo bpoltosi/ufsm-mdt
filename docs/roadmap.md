@@ -8,7 +8,7 @@
 - [x] Fontes confiáveis registradas
 - [x] Decisões do projeto documentadas
 - [x] Blocos de construção definidos
-- [ ] Fixar versão/commit exato do template incorporado
+- [x] Fixar versão/commit exato do template de referência (snapshot documentado; incorporação ainda bloqueada por verificação/licenciamento e build)
 
 ## Fase 1 — Engenharia do MDT
 - [ ] Mapear elementos do MDT 2021
