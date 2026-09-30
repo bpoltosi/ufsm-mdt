@@ -410,10 +410,10 @@ const WT = {tcc:'TCC',dissertacao:'Dissertação',tese:'Tese'};
 let state = freshState();
 function freshState(){return {workType:'dissertacao',structure:DEFAULT_STRUCTURE(),validation:DEFAULT_VALIDATION(),references:DEFAULT_REFS(),refStyle:'abnt',theme:'light'};}
 let backendRecords = [], dirty = false, loaded = false, vFilter = 'all', initialTimer;
-const history={undo:[],redo:[],busy:false};
+const history={undo:[],redo:[],busy:false}; let lastSnapshot='';
 function snapshot(){return JSON.stringify({workType:state.workType,structure:state.structure,validation:state.validation,references:state.references,refStyle:state.refStyle,theme:state.theme});}
-function restoreSnapshot(raw){const x=JSON.parse(raw);state={workType:x.workType,structure:x.structure,validation:x.validation, references:x.references,refStyle:x.refStyle,theme:x.theme};renderAll();saveLocal();updateHistoryButtons();}
-function pushHistory(){if(history.busy)return;history.undo.push(snapshot());if(history.undo.length>30)history.undo.shift();history.redo=[];updateHistoryButtons();}
+function restoreSnapshot(raw){const x=JSON.parse(raw);state={workType:x.workType,structure:x.structure,validation:x.validation,references:x.references,refStyle:x.refStyle,theme:x.theme};renderAll();lastSnapshot=snapshot();saveLocal();updateHistoryButtons();}
+function pushHistory(){if(history.busy)return;const current=snapshot();if(lastSnapshot&&current!==lastSnapshot){history.undo.push(lastSnapshot);if(history.undo.length>30)history.undo.shift();history.redo=[];}lastSnapshot=current;updateHistoryButtons();}
 function updateHistoryButtons(){$('#undo-btn').disabled=!history.undo.length;$('#redo-btn').disabled=!history.redo.length;}
 function undo(){if(!history.undo.length)return;history.busy=true;history.redo.push(snapshot());restoreSnapshot(history.undo.pop());history.busy=false;dirty=true;$('#saved-ind').classList.add('hidden');$('#unsaved-ind').classList.remove('hidden');renderProgress();toast('Alteração desfeita.');}
 function redo(){if(!history.redo.length)return;history.busy=true;history.undo.push(snapshot());restoreSnapshot(history.redo.pop());history.busy=false;dirty=true;$('#saved-ind').classList.add('hidden');$('#unsaved-ind').classList.remove('hidden');renderProgress();toast('Alteração refeita.');}
@@ -629,7 +629,7 @@ $('#save-btn').addEventListener('click',async e=>{
   finally{btn.disabled=false;}
 });
 
-document.addEventListener('DOMContentLoaded',()=>{lucide.createIcons();const hadLocal=loadLocal();renderAll();markClean();history.undo=[];history.redo=[];updateHistoryButtons();go('inicio');if(hadLocal)toast('Rascunho local restaurado automaticamente.');initData();});
+document.addEventListener('DOMContentLoaded',()=>{lucide.createIcons();const hadLocal=loadLocal();renderAll();markClean();history.undo=[];history.redo=[];lastSnapshot=snapshot();updateHistoryButtons();go('inicio');if(hadLocal)toast('Rascunho local restaurado automaticamente.');initData();});
 </script>
  
 </body></html>
