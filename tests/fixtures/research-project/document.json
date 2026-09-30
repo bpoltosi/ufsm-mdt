@@ -1,0 +1,38 @@
+{
+  "type": "research-project",
+  "metadata": {
+    "author": "Autor de Teste",
+    "title": "Trabalho de Teste",
+    "english_title": "Test Work",
+    "centro_ensino": "Centro de Ensino",
+    "centro_ensino_sigla": "UFSM",
+    "nivel_ensino": "Graduação",
+    "curso": "Curso de Teste",
+    "status_curso": "Curso",
+    "cidade": "Santa Maria",
+    "estado": "RS",
+    "grau_ensino": "Graduação",
+    "grau_obtido": "Graduado",
+    "email": "autor@example.org",
+    "day": "01",
+    "month": "01",
+    "year": "2026",
+    "orientador_nome": "Orientador de Teste",
+    "orientador_titulo": "Dr.",
+    "orientador_instituicao": "UFSM",
+    "orientador_sexo": "M",
+    "orientador_presidente": "P"
+  },
+  "sections": [
+    {
+      "title": "Introdução",
+      "content": "Conteúdo mínimo para teste de geração."
+    },
+    {
+      "title": "Conclusão",
+      "content": "Conclusão mínima para teste."
+    }
+  ],
+  "references": "@misc{fixture, title={Fixture UFSM MDT}, author={UFSM}, year={2026}}",
+  "assets": []
+}
