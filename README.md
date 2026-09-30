@@ -4,54 +4,90 @@ Ferramenta open source em desenvolvimento para facilitar a criação, estrutura�
 
 > **Status:** 🟡 Fundação / especificação do núcleo.
 
-## Objetivo
+## Comece pelo Pages
 
-O foco do projeto é **gerar corretamente os diferentes tipos de trabalhos acadêmicos suportados**, preservando a implementação LaTeX do modelo MDT UFSM 2021 e transformando regras verificáveis do manual em validações automatizadas.
+A interface estática em `site/` é a porta de entrada visual do projeto:
 
-O projeto não substitui o MDT, regulamentos, editais ou orientação de professores da UFSM.
+1. **Criar** — abra o [criador guiado](site/creator.html) para selecionar um perfil e montar um documento.
+2. **Explorar perfis** — consulte o [catálogo de perfis](site/profiles.html).
+3. **Consultar regras** — veja o [catálogo de regras e evidências](site/rules.html).
+4. **Desenvolver localmente** — use o núcleo Python para validar e gerar o projeto LaTeX.
 
-## Fluxo planejado
+O criador do navegador produz o mesmo contrato estrutural usado pelo núcleo (`type`, `metadata`, `sections`, `references` e `assets`). A interface não é a autoridade normativa: a validação oficial do documento permanece no Python.
+
+## Fluxo técnico
 
 ```
-Escolher tipo
+Pages / criador
     ↓
-Preencher dados e conteúdo
+Documento estruturado (JSON)
     ↓
-Validar
+ufsm-mdt validate
     ↓
-Gerar projeto LaTeX
-    ├── baixar e compilar manualmente
-    └── solicitar PDF online
-              ↓
-       GitHub Actions
+ufsm-mdt generate
+    ↓
+Projeto LaTeX
+    ├── compilação local
+    └── Overleaf, quando compatível
 ```
 
-A compilação online é opcional. O usuário sempre deverá poder baixar o projeto LaTeX e compilá-lo localmente ou no Overleaf, quando as dependências forem compatíveis.
+A interface web é deliberadamente estática: não há login, banco de dados ou armazenamento permanente dos trabalhos.
 
-## Escopo inicial
+## Desenvolvimento local
 
-O projeto **não** terá inicialmente:
+Instale o projeto em ambiente Python e consulte a ajuda da CLI:
 
-- VM ou backend permanente;
-- banco de dados;
-- contas de usuários;
-- colaboração;
-- IA;
-- editor visual complexo;
-- importação de PDF;
-- armazenamento permanente dos trabalhos.
+```bash
+python -m ufsm_mdt --help
+```
 
-A prioridade é a correção do gerador e das regras do MDT.
+Com um documento JSON:
 
-## Documentação
+```bash
+python -m ufsm_mdt validate documento.json
+python -m ufsm_mdt generate documento.json ./saida
+```
 
-- [Decisões do projeto](docs/decisoes.md)
-- [Blocos de construção](docs/blocos.md)
-- [Arquitetura](docs/arquitetura.md)
-- [Especificação técnica](docs/especificacao-tecnica.md)
-- [Fontes e rastreabilidade](docs/fontes.md)
-- [Roadmap](docs/roadmap.md)
-- [Documentação geral](docs/README.md)
+Os comandos exatos e opções disponíveis devem ser conferidos na CLI da versão em uso; o README não replica regras do validador.
+
+## Arquitetura resumida
+
+- `src/ufsm_mdt/` — modelo, perfis, validação, geração e CLI.
+- `profiles/` — perfis declarativos; a interface web consome uma representação derivada deles.
+- `template/upstream/` — base LaTeX versionada quando incorporada ao projeto.
+- `docs/mdt/` — documentação normativa e matriz de regras.
+- `site/` — GitHub Pages, sem backend.
+- `scripts/build_site_data.py` — gera dados derivados para o Pages durante o deploy.
+
+## Estendendo perfis e regras
+
+### Novo perfil
+
+1. Verifique a fonte normativa e registre-a em `docs/mdt/`.
+2. Crie ou atualize o JSON correspondente em `profiles/`.
+3. Defina somente metadados e comandos respaldados pelo contrato existente.
+4. Adicione fixture quando o fluxo do núcleo exigir.
+5. Rode a validação/testes locais.
+6. Verifique a representação gerada no Pages; `site/data/profiles.json` é artefato de deploy e não deve ser editado manualmente.
+
+### Nova regra
+
+1. Identifique a fonte e o contexto.
+2. Diferencie evidência, regra planejada e regra automatizada.
+3. Implemente a regra no núcleo Python quando houver contrato verificável.
+4. Atualize `docs/mdt/regras.md`.
+5. Não copie a regra para JavaScript apenas para reproduzir a validação.
+
+## Contribuição
+
+Consulte [CONTRIBUTING.md](CONTRIBUTING.md). Em especial:
+
+- documentação em português do Brasil;
+- fonte explícita para regras institucionais;
+- alterações pequenas e verificáveis;
+- nenhuma exigência normativa inventada;
+- sem dados pessoais ou trabalhos reais;
+- validação local antes de abrir PR, para reduzir execuções desnecessárias de Actions.
 
 ## Fontes principais
 
