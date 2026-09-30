@@ -3,7 +3,22 @@ from .profiles import load_profile
 from .model import Document
 TEMPLATE=Path(__file__).resolve().parents[2]/"template"/"upstream"
 def _tex(v):
-    return str(v if v is not None else "").replace("\\",r"\\textbackslash{}").replace("&",r"\\&").replace("%",r"\\%").replace("#",r"\\#").replace("_",r"\\_")
+    value = str(v if v is not None else "")
+    replacements = (
+        ("\\\\", r"\\textbackslash{}"),
+        ("&", r"\\&"),
+        ("%", r"\\%"),
+        ("$", r"\\$"),
+        ("#", r"\\#"),
+        ("_", r"\\_"),
+        ("{", r"\\{"),
+        ("}", r"\\}"),
+        ("~", r"\\textasciitilde{}"),
+        ("^", r"\\textasciicircum{}"),
+    )
+    for source, escaped in replacements:
+        value = value.replace(source, escaped)
+    return value
 def _cmd(name,*values): return "\\"+name+"".join("{"+_tex(v)+"}" for v in values)
 def render_main(document):
     p=load_profile(document.type); m=document.metadata
