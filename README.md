@@ -1,110 +1,78 @@
 # UFSM-MDT
 
-Ferramenta open source em desenvolvimento para facilitar a criação, estruturação, validação e geração de trabalhos acadêmicos conforme o **Manual de Dissertações e Teses da UFSM (MDT 2021)**.
+Ferramenta open source em desenvolvimento para estruturar, validar e gerar documentos acadêmicos com base nas diretrizes do **Manual de Dissertações e Teses da Universidade Federal de Santa Maria (MDT/UFSM 2021)**.
 
-> **Status:** 🟡 Fundação / especificação do núcleo.
+> O projeto é independente e não representa aprovação ou certificação institucional da UFSM. Regras automatizadas devem estar vinculadas a fontes documentadas.
 
-## Comece pelo Pages
+## O que existe no repositório
 
-A interface estática em `site/` é a porta de entrada visual do projeto:
+- Núcleo Python para modelar documentos, listar perfis, validar dados e gerar projetos LaTeX.
+- Perfis declarativos para diferentes tipos de documentos acadêmicos.
+- Fixtures e testes automatizados.
+- Template LaTeX incorporado.
+- Interface web estática em GitHub Pages para explorar perfis, regras e montar documentos estruturados.
+- Documentação de arquitetura, decisões, regras, fontes e roadmap.
+- Workflows GitHub Actions para testes, geração de artefatos e publicação do site.
 
-1. **Criar** — abra o [criador guiado](site/creator.html) para selecionar um perfil e montar um documento.
-2. **Explorar perfis** — consulte o [catálogo de perfis](site/profiles.html).
-3. **Consultar regras** — veja o [catálogo de regras e evidências](site/rules.html).
-4. **Desenvolver localmente** — use o núcleo Python para validar e gerar o projeto LaTeX.
+## Fluxo geral
 
-O criador do navegador produz o mesmo contrato estrutural usado pelo núcleo (`type`, `metadata`, `sections`, `references` e `assets`). A interface não é a autoridade normativa: a validação oficial do documento permanece no Python.
-
-## Fluxo técnico
-
-```
-Pages / criador
-    ↓
-Documento estruturado (JSON)
-    ↓
-ufsm-mdt validate
-    ↓
-ufsm-mdt generate
-    ↓
-Projeto LaTeX
-    ├── compilação local
-    └── Overleaf, quando compatível
+```text
+Interface web ou JSON
+        ↓
+Documento estruturado
+        ↓
+Validação pelo núcleo Python
+        ↓
+Geração de projeto LaTeX
+        ↓
+Compilação pelo ambiente escolhido
 ```
 
-A interface web é deliberadamente estática: não há login, banco de dados ou armazenamento permanente dos trabalhos.
+A interface do navegador não substitui o validador Python, que é a autoridade técnica do projeto. O site é estático e não mantém contas ou armazenamento permanente de trabalhos.
 
-## Desenvolvimento local
+## Estrutura
 
-Instale o projeto em ambiente Python e consulte a ajuda da CLI:
+- `src/ufsm_mdt/` — modelo, perfis, validador, gerador e CLI.
+- `profiles/` — perfis de documentos.
+- `template/` — base LaTeX e referência upstream.
+- `site/` — interface web estática.
+- `docs/` — especificação, arquitetura, regras e decisões.
+- `tests/` — testes e documentos de fixture.
+- `scripts/` — geração de dados derivados para o site.
+
+## Requisitos
+
+- Python 3.11 ou superior.
+- XeLaTeX/TeX Live quando for necessário compilar os arquivos LaTeX gerados.
+
+O pacote Python não declara dependências de runtime externas na configuração atual.
+
+## Instalação e comandos
+
+Na raiz do repositório:
 
 ```bash
-python -m ufsm_mdt --help
+python -m pip install -e .
+ufsm-mdt --help
+ufsm-mdt types
+ufsm-mdt validate documento.json
+ufsm-mdt generate documento.json ./saida
 ```
 
-Com um documento JSON:
+Também é possível utilizar `python -m ufsm_mdt` se o pacote estiver disponível no ambiente.
+
+## Testes
 
 ```bash
-python -m ufsm_mdt validate documento.json
-python -m ufsm_mdt generate documento.json ./saida
+python -m pytest
 ```
 
-Os comandos exatos e opções disponíveis devem ser conferidos na CLI da versão em uso; o README não replica regras do validador.
+Consulte os workflows e a documentação de contribuição para as verificações específicas de cada alteração.
 
-## Arquitetura resumida
+## Fontes e contribuição
 
-- `src/ufsm_mdt/` — modelo, perfis, validação, geração e CLI.
-- `profiles/` — perfis declarativos; a interface web consome uma representação derivada deles.
-- `template/upstream/` — base LaTeX versionada quando incorporada ao projeto.
-- `docs/mdt/` — documentação normativa e matriz de regras.
-- `site/` — GitHub Pages, sem backend.
-- `scripts/build_site_data.py` — gera dados derivados para o Pages durante o deploy.
+As regras devem ser sustentadas por fontes institucionais identificadas em `docs/fontes.md` e `docs/mdt/`. Consulte [CONTRIBUTING.md](CONTRIBUTING.md) antes de propor alterações.
 
-## Estendendo perfis e regras
+## Status
 
-### Novo perfil
-
-1. Verifique a fonte normativa e registre-a em `docs/mdt/`.
-2. Crie ou atualize o JSON correspondente em `profiles/`.
-3. Defina somente metadados e comandos respaldados pelo contrato existente.
-4. Adicione fixture quando o fluxo do núcleo exigir.
-5. Rode a validação/testes locais.
-6. Verifique a representação gerada no Pages; `site/data/profiles.json` é artefato de deploy e não deve ser editado manualmente.
-
-### Nova regra
-
-1. Identifique a fonte e o contexto.
-2. Diferencie evidência, regra planejada e regra automatizada.
-3. Implemente a regra no núcleo Python quando houver contrato verificável.
-4. Atualize `docs/mdt/regras.md`.
-5. Não copie a regra para JavaScript apenas para reproduzir a validação.
-
-## Contribuição
-
-Consulte [CONTRIBUTING.md](CONTRIBUTING.md). Em especial:
-
-- documentação em português do Brasil;
-- fonte explícita para regras institucionais;
-- alterações pequenas e verificáveis;
-- nenhuma exigência normativa inventada;
-- sem dados pessoais ou trabalhos reais;
-- validação local antes de abrir PR, para reduzir execuções desnecessárias de Actions.
-
-## Fontes principais
-
-- UFSM — Normas MDT: https://www.ufsm.br/orgaos-suplementares/biblioteca/mdt
-- UFSM — Normas ABNT/MDT: https://www.ufsm.br/orgaos-suplementares/biblioteca/normas-abnt-mdt
-- MDT UFSM 2021: https://www.ufsm.br/app/uploads/sites/538/2021/12/MDT_UFSM_2021.pdf
-- Template LaTeX: https://github.com/Eugenio-Pozzobon/mdt-ufsm-2021-latex
-- Template Overleaf: https://www.overleaf.com/latex/templates/mdt-ufsm-2021/wbmqyzfngtgv
-
-## Tecnologias
-
-O núcleo está implementado em Python e mantém o modelo de documento independente da apresentação. A base LaTeX incorporada usa XeLaTeX. GitHub Actions é o ambiente oficial de testes e build controlado. O PDF para usuário é compilado somente sob solicitação explícita.
-
-## Licença
-
-A licença definitiva do `ufsm-mdt` será definida após a verificação das licenças dos componentes incorporados.
-
-## Autor
-
-Desenvolvido por [bpoltosi](https://github.com/bpoltosi).
+Projeto em desenvolvimento. Consulte [docs/roadmap.md](docs/roadmap.md) e [docs/visao-geral.md](docs/visao-geral.md) para escopo e evolução.
